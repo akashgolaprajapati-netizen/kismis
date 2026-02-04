@@ -3,242 +3,206 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rose Day Special - For Kismis 🌹</title>
+<title>For Kismis 🌹💖</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --rose-red: #d00000;
-  --soft-cream: #fff5f5;
-}
-
+:root{--rose:#d00000}
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
   font-family:'Poppins',sans-serif;
-  background: linear-gradient(180deg, #fff5f5 0%, #ffdada 100%);
+  background:linear-gradient(180deg,#fff5f5,#ffdada);
+  height:100vh;
+  overflow:hidden;
   color:#4a0404;
-  overflow-x:hidden;
-  height: 100vh;
 }
 
 section{
-  min-height:100vh;
-  padding:40px 22px;
+  position:absolute;
+  width:100%;
+  height:100vh;
+  top:0;left:0;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  position: relative;
+  padding:30px 20px;
+  transition:.6s ease;
 }
 
-/* TIMER STYLES */
-#timer { display: flex; gap: 10px; margin: 20px 0; }
-.time-unit {
-  background: white; padding: 10px; border-radius: 12px;
-  min-width: 65px; box-shadow: 0 4px 10px rgba(208,0,0,0.1);
-}
-.time-unit span { display: block; font-weight: 700; color: var(--rose-red); font-size: 1.2rem; }
-.time-unit label { font-size: 0.65rem; text-transform: uppercase; color: #888; }
+.hidden{opacity:0;pointer-events:none;transform:scale(.96)}
 
-.bear-gif { width: 160px; margin-bottom: 20px; border-radius: 15px; z-index: 10; pointer-events: none;}
+h1{font-family:'Pacifico';color:var(--rose);font-size:2.7rem}
+h2{font-family:'Playfair Display';color:var(--rose);margin-bottom:15px}
 
-/* TEXT */
-h1{ font-family:'Pacifico',cursive; color:var(--rose-red); font-size:2.8rem; margin-bottom:15px; }
-h2{ font-family:'Playfair Display', serif; color:var(--rose-red); margin-bottom:16px; font-weight: 700; }
-.desc { font-size:1.1rem; line-height:1.7; max-width:340px; }
+.desc{max-width:360px;font-size:1.1rem;line-height:1.7}
 
-/* STORY CARDS */
-.story-container{ width:100%; max-width:340px; margin:auto; min-height: 420px; position: relative; }
-.story{ display:none; flex-direction:column; align-items:center; animation:slideFade .8s ease; }
-.story.active{ display:flex; }
-.media-box {
-  width:100%; border-radius:25px; overflow:hidden; 
-  box-shadow:0 15px 35px rgba(208, 0, 0, 0.2); margin-bottom:16px;
-  border: 5px solid white;
-}
-.story img, .story video { width:100%; display: block; }
-
-/* PROPOSAL AREA */
-.proposal-box { position: relative; width: 100%; height: 120px; display: flex; justify-content: center; align-items: center; margin-top: 20px;}
-button {
-  padding:15px 45px; border:none; border-radius:999px;
-  background:var(--rose-red); color:white; font-size:1.1rem;
-  font-weight: 600; cursor:pointer; box-shadow:0 8px 20px rgba(208, 0, 0, 0.3);
-  z-index: 100;
-}
-#noBtn { background: white; color: var(--rose-red); border: 2px solid var(--rose-red); position: absolute; transition: 0.1s ease; z-index: 50; }
-
-/* FINAL CARD */
-#final-card {
-  background: white; padding: 40px 25px; border-radius: 30px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: justify;
-  max-width: 450px; border-top: 8px solid var(--rose-red); animation: slideUp 1s ease;
-}
-.letter-text { font-family: 'Playfair Display', serif; font-size: 1.05rem; line-height: 1.8; color: #333; margin: 20px 0; }
-
-/* FLOATING ROSE & HEART ELEMENTS */
-.particle {
-  position: fixed; top: -10%; user-select: none; pointer-events: none;
-  z-index: 999; animation: fall linear forwards;
+button{
+  margin-top:25px;
+  padding:15px 45px;
+  border:none;
+  border-radius:999px;
+  background:var(--rose);
+  color:#fff;
+  font-size:1.1rem;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(208,0,0,.3);
 }
 
-@keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
-@keyframes slideFade{ from{opacity:0;transform:translateX(30px)} to{opacity:1;transform:translateX(0)} }
-@keyframes slideUp{ from{opacity:0;transform:translateY(50px)} to{opacity:1;transform:translateY(0)} }
-.hidden { display: none !important; }
+#noBtn{
+  background:#fff;
+  color:var(--rose);
+  border:2px solid var(--rose);
+  position:absolute;
+}
+
+.bear-gif{width:160px;margin-bottom:20px}
+
+#final-card{
+  background:#fff;
+  padding:35px 25px;
+  border-radius:30px;
+  max-width:420px;
+  box-shadow:0 15px 40px rgba(0,0,0,.15);
+  border-top:8px solid var(--rose);
+}
+
+.letter-text{
+  font-family:'Playfair Display';
+  font-size:1.05rem;
+  line-height:1.8;
+  color:#333;
+  text-align:justify;
+}
+
+.signature{
+  margin-top:20px;
+  font-family:'Pacifico';
+  font-size:1.5rem;
+  color:var(--rose);
+  animation:pulse 2s ease infinite alternate;
+}
+
+.particle{
+  position:fixed;
+  top:-10%;
+  font-size:24px;
+  animation:fall linear forwards;
+  pointer-events:none;
+}
+
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+@keyframes pulse{from{opacity:.6}to{opacity:1}}
 </style>
 </head>
+
 <body>
 
 <audio id="bgMusic" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<section id="sec-intro">
-  <img src="https://media.tenor.com/267t1mSQu_YAAAAi/pink-rose-flower.gif" class="bear-gif">
-  <h1>Happy Rose Day 🌹</h1>
-  <p class="desc">A chhota sa digital rose journey mere dil ki taraf se for my Kismis.</p>
-  
-  <div id="timer">
-    <div class="time-unit"><span id="days">00</span><label>Days</label></div>
-    <div class="time-unit"><span id="hours">00</span><label>Hrs</label></div>
-    <div class="time-unit"><span id="mins">00</span><label>Mins</label></div>
-  </div>
-
-  <button onclick="start()">Open the Journey ❤️</button>
+<section id="intro">
+  <img class="bear-gif" src="https://media.tenor.com/267t1mSQu_YAAAAi/pink-rose-flower.gif">
+  <h1 id="mainTitle">Happy Rose Day 🌹</h1>
+  <p class="desc">A small digital journey… from my heart to yours.</p>
+  <button onclick="start()">Open ❤️</button>
 </section>
 
-<section id="sec-story" class="hidden">
-  <div class="story-container">
-    <div class="story active"><div class="media-box"><img src="./photos/memory1-hands.jpg.jpeg"></div><p>Yeh sirf haath nahi… ek connection hai.</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory2-mirror.jpg.jpeg"></div><p>Tumhare saath reflection bhi perfect lagta hai.</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory3-hug-night.jpg.jpeg"></div><p>Tumhari baahon mein duniya shaant ho jaati hai🤭.</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory4-paint-fun.jpg.jpeg"></div><p>Messy moments bhi tumhare saath cute lagte hain 😍.</p></div>
-    <div class="story"><div class="media-box"><video id="loveVid" playsinline loop><source src="./videos/love.mp4.mp4" type="video/mp4"></video></div><p>Jaise main tumhe dekhta hoon… bina filter ke.</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory5-cartoon.jpg.jpeg"></div><p>Pyaar ek kahaani hota, toh tum best page hoti🥰.</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory6-metro.jpg.jpeg"></div><p>Tumhari nazar mere din ko better bana deta hai😚.</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory7-garden.jpg.jpeg"></div><p>Tumhari smile mein kuch rukne nahi deta😘.</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory8-night-play.jpg.jpeg"></div><p>Tumhare saath serious hona mushkil hai 😄</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory9-sit-talk.jpg.jpeg"></div><p>Shaant moments… aur tum. Bas kaafi hai🤗.</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory10-film.jpg.jpeg"></div><p>Yeh moment mujhe future yaad dilata hai😌.</p></div>
-  </div>
-  <button id="nextBtn" onclick="nextStory()">See Next Memory 🌹</button>
-</section>
-
-<section id="sec-onlyone" class="hidden">
-  <img src="https://media.tenor.com/T_7HIdy493EAAAAi/mocha-milk.gif" class="bear-gif">
-  <h2>My Only Rose...</h2>
-  <p class="desc">
-    Main sirf itna kehna chahta hoon ki tum jitni bahar se beautiful ho, usse kahin zyada andar se ho.
-    <br><br>
-    <strong>You are the only girl I see, and the only one I want by my side.</strong>
-  </p>
-  <button onclick="nav('sec-onlyone', 'sec-ask')">I have a question... 💌</button>
-</section>
-
-<section id="sec-ask" class="hidden">
-  <img src="https://media.tenor.com/n9Eis_Y06S8AAAAi/milk-and-mocha-bear.gif" class="bear-gif">
-  <h2>Will you be my Valentine?</h2>
-  <div class="proposal-box">
-    <button onclick="celebrate()">YES 💖</button>
-    <button id="noBtn" onmouseover="moveNo()" onclick="moveNo()">No</button>
+<section id="ask" class="hidden">
+  <img class="bear-gif" src="https://media.tenor.com/n9Eis_Y06S8AAAAi/milk-and-mocha-bear.gif">
+  <h2 id="questionText"></h2>
+  <div style="position:relative;height:120px;">
+    <button onclick="celebrate()" id="yesBtn"></button>
+    <button id="noBtn" onmouseover="moveNo()">No</button>
   </div>
 </section>
 
-<section id="sec-final" class="hidden">
+<section id="final" class="hidden">
   <div id="final-card">
     <h1>Kismis 💕</h1>
-    <div class="letter-text">
-        Sometimes I sit quietly and think about how lucky I am that you exist in my life, and my heart feels full in a way I never knew was possible...
-        <br><br>
-        [Your long message here]
-        <br><br>
-        So with all the love, respect, and sincerity my heart can offer, I ask you—will you be my Valentine, Kismis, and choose me, just as I choose you, today and always? 💖🌹
-    </div>
-    <p style="font-family:'Pacifico'; color:var(--rose-red); font-size:1.4rem; text-align:center;">— Chikku ❤️</p>
+    <div class="letter-text" id="typeText"></div>
+    <div class="signature">— Chikku ❤️</div>
   </div>
 </section>
 
 <script>
-let currentStory = 0;
-const stories = document.querySelectorAll(".story");
-const music = document.getElementById("bgMusic");
+const music=document.getElementById("bgMusic");
+const today=new Date();
+const day=today.getDate();
+const month=today.getMonth()+1;
 
-// ROSE-HEAVY PARTICLE ENGINE
-function createParticle() {
-    const p = document.createElement("div");
-    p.className = "particle";
-    
-    // Increased Rose probability (80% Roses, 20% mixed hearts)
-    const rand = Math.random();
-    if (rand < 0.7) {
-        p.innerHTML = "🌹";
-    } else {
-        const hearts = ["❤️", "💖", "💙", "💕"];
-        p.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
-    }
+// AUTO TEXT SWITCH
+const isValentine = (day===14 && month===2);
 
-    p.style.left = Math.random() * 100 + "vw";
-    p.style.fontSize = Math.random() * 25 + 15 + "px"; // Made roses slightly bigger
-    p.style.animationDuration = Math.random() * 3 + 3 + "s";
-    p.style.opacity = Math.random() * 0.6 + 0.4;
-    document.body.appendChild(p);
-    setTimeout(() => p.remove(), 6000);
-}
-setInterval(createParticle, 250); // Spawns faster for a thicker rain
+document.getElementById("mainTitle").innerText =
+  isValentine ? "Happy Valentine’s Day 💖" : "Happy Rose Day 🌹";
 
-// COUNTDOWN
-function updateTimer() {
-    const vday = new Date("Feb 14, 2026 00:00:00").getTime();
-    const now = new Date().getTime();
-    const diff = vday - now;
-    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    document.getElementById("days").innerHTML = d < 10 ? "0"+d : d;
-    document.getElementById("hours").innerHTML = h < 10 ? "0"+h : h;
-    document.getElementById("mins").innerHTML = m < 10 ? "0"+m : m;
-}
-setInterval(updateTimer, 1000);
+document.getElementById("questionText").innerText =
+  isValentine
+    ? "Will you be my Valentine? 💖"
+    : "Will you accept this rose from me? 🌹";
 
-function nav(hide, show) {
-    document.getElementById(hide).classList.add('hidden');
-    const s = document.getElementById(show);
-    s.classList.remove('hidden');
-    s.style.display = 'flex';
+document.getElementById("yesBtn").innerText =
+  isValentine ? "YES 💖" : "Accept 🌹";
+
+const letter=`Sometimes I sit quietly and think about how lucky I am that you exist in my life, and my heart feels full in a way I never knew was possible. You walked into my world and slowly turned everything into something more beautiful—my days feel lighter, my worries feel smaller, and my dreams feel more real because of you.
+
+The way you understand me, support me, and stand by me without asking for anything in return is something I treasure deeply. With you, love doesn’t feel forced or complicated; it feels safe, warm, and honest.
+
+You are the person I want to share my silences with, the one I want to laugh with on the best days and hold onto on the hardest ones. This day is not just about a rose or a title—it’s about what we mean to each other.
+
+So with all the love, respect, and sincerity my heart can offer, I give you this moment and ask you to keep it close, just like I keep you in my heart. 🌹💖`;
+
+function start(){
+  music.volume=.6;
+  music.play().catch(()=>document.addEventListener("click",()=>music.play(),{once:true}));
+  document.getElementById("intro").classList.add("hidden");
+  document.getElementById("ask").classList.remove("hidden");
 }
 
-function start() { music.play(); nav('sec-intro', 'sec-story'); }
-
-function nextStory(){
-    stories[currentStory].classList.remove("active");
-    const vid = document.getElementById('loveVid');
-    if(vid) vid.pause();
-    currentStory++;
-    if(currentStory < stories.length) {
-        stories[currentStory].classList.add("active");
-        if(stories[currentStory].contains(vid)) vid.play();
-    } else { nav('sec-story', 'sec-onlyone'); }
+function moveNo(){
+  const b=document.getElementById("noBtn");
+  b.style.left=Math.random()*200+"px";
+  b.style.top=Math.random()*80+"px";
 }
 
-function moveNo() {
-    const btn = document.getElementById('noBtn');
-    const x = Math.random() * (window.innerWidth - btn.offsetWidth - 30);
-    const y = Math.random() * (window.innerHeight - btn.offsetHeight - 30);
-    btn.style.left = x + 'px';
-    btn.style.top = y + 'px';
+function celebrate(){
+  document.getElementById("ask").classList.add("hidden");
+  document.getElementById("final").classList.remove("hidden");
+  typeWriter();
+  setInterval(createParticle,60);
 }
 
-function celebrate() {
-    nav('sec-ask', 'sec-final');
-    setInterval(createParticle, 50); // Massive rose shower on YES
+function typeWriter(){
+  let i=0;
+  const box=document.getElementById("typeText");
+  box.innerHTML="";
+  const t=setInterval(()=>{
+    box.innerHTML+=letter.charAt(i);
+    i++;
+    if(i>=letter.length) clearInterval(t);
+  },25);
+}
+
+function createParticle(){
+  const p=document.createElement("div");
+  p.className="particle";
+  p.innerHTML=isValentine?"💖":"🌹";
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=Math.random()*3+3+"s";
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),6000);
 }
 </script>
+
 </body>
-</html>
+</html> 
+
 
 
 
