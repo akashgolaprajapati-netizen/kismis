@@ -3,241 +3,284 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Kismis ❤️</title>
+<title>For Twinkle (Kismis) ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<!-- PREMIUM FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
   font-family:'Poppins',sans-serif;
-  background:linear-gradient(180deg,#fff0f3,#ffd6e0);
+  background:linear-gradient(135deg,#fff0f3,#ffe5ec);
   color:#5a0d1f;
-  overflow-x:hidden;
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-/* SECTION STYLE */
-section{
-  min-height:100vh;
-  padding:70px 22px;
-  display:flex;
+audio{display:none}
+
+/* PAGE */
+.page{
+  display:none;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
+  width:100%;
+  max-width:430px;
+  padding:40px 24px;
+  animation:fadeIn 1s ease;
 }
+.page.active{display:flex}
 
 /* TEXT */
 h1{
-  font-family:'Pacifico',cursive;
+  font-family:'Great Vibes',cursive;
+  font-size:3.8rem;
   color:#ff4d6d;
-  font-size:2.4rem;
-  margin-bottom:20px;
+  margin-bottom:22px;
 }
 h2{
+  font-family:'Playfair Display',serif;
+  font-size:1.9rem;
   color:#ff4d6d;
-  margin-bottom:16px;
+  margin-bottom:18px;
 }
 p{
-  font-size:1.08rem;
-  line-height:1.7;
-  max-width:360px;
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;
+  line-height:1.9;
+  max-width:390px;
 }
 
-/* STORY */
-.story-container{
-  width:100%;
-  max-width:340px;
-  margin:auto;
+/* NAME ANIMATION */
+.name span{
+  opacity:0;
+  animation:reveal .8s forwards;
 }
-.story{
-  display:none;
-  flex-direction:column;
-  align-items:center;
-  animation:slideFade .8s ease;
-}
-.story.active{
-  display:flex;
-}
-.story img,
-.story video{
-  width:100%;
-  border-radius:22px;
-  margin-bottom:16px;
-}
-.story p{
-  font-size:1.05rem;
+.name span:nth-child(n){
+  animation-delay: calc(var(--i) * 0.15s);
 }
 
-/* BUTTON */
+@keyframes reveal{
+  to{opacity:1}
+}
+
+/* MEDIA */
+.media{
+  width:100%;
+  border-radius:26px;
+  margin:26px 0;
+}
+video{
+  width:100%;
+  border-radius:26px;
+}
+.gif{
+  width:200px;
+  margin:20px 0;
+}
+
+/* BUTTONS */
 button{
-  margin-top:24px;
-  padding:14px 36px;
+  margin-top:26px;
+  padding:16px 44px;
   border:none;
   border-radius:999px;
+  font-size:1.2rem;
+  cursor:pointer;
+  transition:all .4s ease;
+  font-family:'Poppins',sans-serif;
+}
+.next{
   background:#ff4d6d;
   color:white;
-  font-size:1.1rem;
-  cursor:pointer;
-  box-shadow:0 10px 26px rgba(0,0,0,.18);
-  animation:pulse 2s infinite;
-}
-@keyframes pulse{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.06)}
+  box-shadow:0 14px 36px rgba(0,0,0,.25);
 }
 
-/* FINAL */
-#final{display:none}
+.choice{
+  display:flex;
+  gap:18px;
+  margin-top:28px;
+}
+
+#yes{
+  background:#ff4d6d;
+  color:white;
+  font-size:1.3rem;
+}
+#no{
+  background:#e0e0e0;
+  color:#666;
+}
+
+/* EFFECTS */
+#yes.grow{
+  transform:scale(1.45);
+  box-shadow:0 18px 48px rgba(255,77,109,.6);
+}
+.fade-text{
+  margin-top:22px;
+  font-size:1.05rem;
+  font-style:italic;
+  color:#7a1f35;
+}
 
 /* HEARTS */
 .heart{
   position:fixed;
   bottom:-10px;
-  font-size:18px;
+  font-size:22px;
   animation:float 6s linear forwards;
 }
 @keyframes float{
-  from{transform:translateY(0);opacity:1}
   to{transform:translateY(-100vh);opacity:0}
 }
-
-@keyframes slideFade{
-  from{opacity:0;transform:translateX(30px)}
-  to{opacity:1;transform:translateX(0)}
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
 }
 </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
-<section>
-  <h1>Kismis ❤️</h1>
-  <p>
-    Yeh page ek story hai…  
-    har moment ka, har feeling ka.  
-    <br><br>
-    Aur yeh sab tumse shuru hota hai.
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="./music/love.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1 : ANIMATED NAME -->
+<div class="page active">
+  <h1 class="name">
+    <span style="--i:1">T</span><span style="--i:2">w</span><span style="--i:3">i</span><span style="--i:4">n</span><span style="--i:5">k</span><span style="--i:6">l</span><span style="--i:7">e</span>
+    <br>
+    <span style="--i:8">(</span><span style="--i:9">K</span><span style="--i:10">i</span><span style="--i:11">s</span><span style="--i:12">m</span><span style="--i:13">i</span><span style="--i:14">s</span><span style="--i:15">)</span>
+    ❤️
+  </h1>
+
+  <p><i>
+    “Tum achanak nahi aayi meri zindagi mein,  
+    tum dheere-dheere meri aadat bani.”
+  </i></p>
+
+  <img class="gif" src="https://media.giphy.com/media/l4FGuhL4U2WyjdkaY/giphy.gif">
+
+  <button class="next" onclick="startMusic(); nextPage()">Next ✨</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <img src="./photos/memory1-hands.jpg" class="media">
+  <p><i>“Yeh sirf haath nahi… yeh ek connection hai.”</i></p>
+  <img class="gif" src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
+  <button class="next" onclick="nextPage()">Next 💞</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <img src="./photos/memory2-mirror.jpg" class="media">
+  <p><i>“Tumhare saath reflection bhi perfect lagta hai.”</i></p>
+  <img class="gif" src="https://media.giphy.com/media/9Y5BbDSkSTiY8/giphy.gif">
+  <button class="next" onclick="nextPage()">Next 🌸</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <video controls playsinline>
+    <source src="./videos/love.mp4" type="video/mp4">
+  </video>
+  <p><i>“Main tumhe waise dekhta hoon, jaise tum ho.”</i></p>
+  <img class="gif" src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
+  <button class="next" onclick="nextPage()">Next 🎬</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <h2>Ek sach 💗</h2>
+  <p><i>
+    “Tum meri zindagi ka shor nahi,  
+    tum meri zindagi ki shaanti ho.”
+  </i></p>
+  <img class="gif" src="https://media.giphy.com/media/3oz8xIsloV7zOmt81G/giphy.gif">
+  <button class="next" onclick="nextPage()">Last 💌</button>
+</div>
+
+<!-- PAGE 6 : PROPOSAL -->
+<div class="page">
+  <h1>Twinkle (Kismis) 💕</h1>
+  <p><i>
+    “Agar pyaar ek choice hai,  
+    toh main har baar tumhe hi choose karta hoon.”
+  </i><br><br>
+  Kya tum meri Valentine banogi?
   </p>
-</section>
 
-<!-- STORY MOMENTS -->
-<section>
-  <h2>Our Moments 💞</h2>
-
-  <div class="story-container">
-
-    <div class="story active">
-      <img src="./photos/memory1-hands.jpg.jpeg">
-      <p>Yeh sirf haath nahi… yeh ek connection hai jo humdo ne sath me banaya hai .</p>
-    </div>
-
-    <div class="story">
-      <img src="./photos/memory2-mirror.jpg.jpeg">
-      <p>Tumhare saath reflection bhi perfect lagta hai.</p>
-    </div>
-
-    <div class="story">
-      <img src="./photos/memory3-hug-night.jpg.jpeg">
-      <p>Tumhari baahon mein duniya thodi shaant ho jaati hai🤭.</p>
-    </div>
-
-    <div class="story">
-      <img src="./photos/memory4-paint-fun.jpg.jpeg">
-      <p>Messy moments bhi tumhare saath cute lagte hain 😍.</p>
-    </div>
-
-    <div class="story">
-      <video controls playsinline>
-        <source src="./videos/love.mp4.mp4" type="video/mp4">
-      </video>
-      <p>Jaise main tumhe dekhta hoon… bina kisi filter ke.</p>
-    </div>
-
-    <div class="story">
-      <img src="./photos/memory5-cartoon.jpg.jpeg">
-      <p>Agar pyaar ek kahaani hota, toh tum uska best page hoti🥰.</p>
-    </div>
-
-    <div class="story">
-      <img src="./photos/memory6-metro.jpg.jpeg">
-      <p>Tumhari nazar ka ek second, mere din ko better bana deta hai😚.</p>
-    </div>
-
-    <div class="story">
-      <img src="./photos/memory7-garden.jpg.jpeg">
-      <p>Tumhari smile mein kuch aisa hai… jo rukne nahi deta😘.</p>
-    </div>
-
-    <div class="story">
-      <img src="./photos/memory8-night-play.jpg.jpeg">
-      <p>Tumhare saath serious hona mushkil hai 😄</p>
-    </div>
-
-    <div class="story">
-      <img src="./photos/memory9-sit-talk.jpg.jpeg"
-      <p>Shaant moments… aur tum. Bas kaafi hai🤗.</p>
-    </div>
-
-    <div class="story">
-      <img src="./photos/memory10-film.jpg.jpeg">
-      <p>Yeh moment mujhe future yaad dilata hai🙂‍↔️😌.</p>
-    </div>
-
+  <div class="choice">
+    <button id="yes" onclick="finalYes()">YES 💖</button>
+    <button id="no" onclick="fakeNo()">No 😢</button>
   </div>
 
-  <button onclick="nextStory()">Next ❤️</button>
-</section>
-
-<!-- QUESTION -->
-<section>
-  <h2>Ek dil se poocha hua sawaal 💗</h2>
-  <p>
-    Tum meri life ka wo hissa ho  
-    jisko main casually nahi leta.  
-    <br><br>
-    Tum important ho…  
-    aur yeh sirf lafz nahi hain.
-  </p>
-  <button onclick="yes()">YES 💖</button>
-</section>
-
-<!-- FINAL -->
-<section id="final">
-  <h1>Kismis 💕</h1>
-  <p>
-    Kya tum meri Valentine banogi?  
-    <br><br>
-    Sirf ek din ke liye nahi,  
-    Sometimes I sit quietly and think about how lucky I am that you exist in my life, and my heart feels full in a way I never knew was possible. You walked into my world and slowly turned everything into something more beautiful—my days feel lighter, my worries feel smaller, and my dreams feel more real because of you. The way you understand me, support me, and stand by me without asking for anything in return is something I treasure deeply. With you, love doesn’t feel forced or complicated; it feels safe, warm, and honest. You are the person I want to share my silences with, the one I want to laugh with on the best days and hold onto on the hardest ones. This Valentine’s Day is not just about celebrating love—it’s about celebrating us, what we are, and what we can become together. I don’t know what tomorrow holds, but I know this: as long as you’re with me, I’m ready to face everything. So with all the love, respect, and sincerity my heart can offer, I ask you—will you be my Valentine, Kismis, and choose me, just as I choose you, today and always? 💖🌸
-  </p>
-  <p><b>— Chikku ❤️</b></p>
-</section>
+  <div id="reaction" class="fade-text"></div>
+</div>
 
 <script>
-let currentStory = 0;
-const stories = document.querySelectorAll(".story");
+let current=0;
+const pages=document.querySelectorAll('.page');
+const music=document.getElementById('bgMusic');
 
-function nextStory(){
-  stories[currentStory].classList.remove("active");
-  currentStory = (currentStory + 1) % stories.length;
-  stories[currentStory].classList.add("active");
+function startMusic(){ music.play().catch(()=>{}); }
+function nextPage(){
+  pages[current].classList.remove('active');
+  current++;
+  pages[current].classList.add('active');
 }
 
-function yes(){
-  document.querySelectorAll("section").forEach(s=>s.style.display="none");
-  document.getElementById("final").style.display="flex";
+const lines=[
+  "Sach mein? 😢",
+  "Dil thoda sa ruk gaya… 🥺",
+  "Ek baar aur soch lo 💔",
+  "Shayad YES hi sahi lag raha hai 💞"
+];
+let noCount=0;
+
+function fakeNo(){
+  noCount++;
+  document.getElementById('reaction').innerText=
+    lines[Math.min(noCount-1,lines.length-1)];
+  document.getElementById('yes').classList.add('grow');
+  if(noCount>=3){
+    document.getElementById('no').innerText="Hmm… YES? 🥹";
+  }
+}
+
+function finalYes(){
+  document.body.innerHTML=`
+    <div class="page active">
+      <h1>Twinkle (Kismis) 💖</h1>
+      <p>
+        “Tumne YES kaha…  
+        aur meri duniya ko ek wajah mil gayi.”
+        <br><br>
+        Thank you for choosing me.  
+        <br><b>— Chikku ❤️</b>
+      </p>
+    </div>
+  `;
   hearts();
 }
 
 function hearts(){
-  for(let i=0;i<30;i++){
-    const h=document.createElement("div");
-    h.className="heart";
-    h.innerHTML="❤️";
-    h.style.left=Math.random()*100+"vw";
+  for(let i=0;i<45;i++){
+    const h=document.createElement('div');
+    h.className='heart';
+    h.innerHTML='❤️';
+    h.style.left=Math.random()*100+'vw';
     document.body.appendChild(h);
     setTimeout(()=>h.remove(),6000);
   }
@@ -245,5 +288,4 @@ function hearts(){
 </script>
 
 </body>
-
 </html>
