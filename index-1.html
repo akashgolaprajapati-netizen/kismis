@@ -1,1 +1,291 @@
-INDEX FILE READY
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Twinkle (Kismis) 🌹💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{--rose:#d00000}
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(180deg,#fff5f5,#ffdada);
+  height:100vh;
+  overflow:hidden;
+  color:#4a0404;
+}
+
+section{
+  position:absolute;
+  width:100%;
+  height:100vh;
+  top:0;left:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:30px 20px;
+  transition:.6s ease;
+}
+.hidden{opacity:0;pointer-events:none;transform:scale(.96)}
+
+h1{font-family:'Pacifico';color:var(--rose);font-size:2.6rem}
+h2{font-family:'Playfair Display';color:var(--rose);margin-bottom:15px}
+
+.desc{max-width:360px;font-size:1.1rem;line-height:1.7}
+
+button{
+  margin-top:25px;
+  padding:15px 45px;
+  border:none;
+  border-radius:999px;
+  background:var(--rose);
+  color:#fff;
+  font-size:1.1rem;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(208,0,0,.3);
+}
+
+#noBtn{
+  background:#fff;
+  color:var(--rose);
+  border:2px solid var(--rose);
+  position:absolute;
+}
+
+.bear-gif{width:160px;margin-bottom:20px}
+
+.story-box{max-width:340px}
+.story{display:none}
+.story.active{display:block}
+.story img,.story video{
+  width:100%;
+  border-radius:20px;
+  margin-bottom:15px;
+}
+
+#final-card{
+  background:#fff;
+  padding:35px 25px;
+  border-radius:30px;
+  max-width:420px;
+  box-shadow:0 15px 40px rgba(0,0,0,.15);
+  border-top:8px solid var(--rose);
+  overflow-y:auto;
+  max-height:85vh;
+}
+
+.letter-text{
+  font-family:'Playfair Display';
+  font-size:1.02rem;
+  line-height:1.85;
+  color:#333;
+  text-align:left;
+  white-space:pre-line;
+}
+
+.particle{
+  position:fixed;
+  top:-10%;
+  font-size:22px;
+  animation:fall linear forwards;
+  pointer-events:none;
+}
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg)}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="./music/love.mp3" type="audio/mpeg">
+</audio>
+
+<section id="intro">
+  <img class="bear-gif" src="https://media.tenor.com/267t1mSQu_YAAAAi/pink-rose-flower.gif">
+  <h1 id="mainTitle"></h1>
+  <p class="desc">A small digital journey… from my heart to yours 🤍</p>
+  <button onclick="start()">Open 🌹</button>
+</section>
+
+<section id="story" class="hidden">
+  <h2>Our Moments 💖</h2>
+  <div class="story-box">
+    <div class="story active">
+      <img src="./photos/memory1-hands.jpg">
+      <p class="desc">Yeh sirf haath nahi… yeh ek connection hai 🤍</p>
+    </div>
+    <div class="story">
+      <img src="./photos/memory2-mirror.jpg">
+      <p class="desc">Tumhare saath reflection bhi khoobsurat lagta hai ✨</p>
+    </div>
+    <div class="story">
+      <img src="./photos/memory3-hug-night.jpg">
+      <p class="desc">Tumhari baahon mein duniya shaant ho jaati hai 🌙</p>
+    </div>
+    <div class="story">
+      <video controls playsinline>
+        <source src="./videos/love.mp4" type="video/mp4">
+      </video>
+      <p class="desc">Jaise main tumhe dekhta hoon… bina filter 💞</p>
+    </div>
+  </div>
+  <button onclick="nextStory()">Next ❤️</button>
+</section>
+
+<section id="ask" class="hidden">
+  <img class="bear-gif" src="https://media.tenor.com/n9Eis_Y06S8AAAAi/milk-and-mocha-bear.gif">
+  <h2 id="questionText"></h2>
+  <div style="position:relative;height:120px;">
+    <button onclick="celebrate()" id="yesBtn"></button>
+    <button id="noBtn" onmouseover="moveNo()">No 😢</button>
+  </div>
+</section>
+
+<section id="final" class="hidden">
+  <div id="final-card">
+    <h1>Twinkle (Kismis) 💕</h1>
+    <div class="letter-text" id="typeText"></div>
+    <div style="margin-top:20px;font-family:'Pacifico';color:var(--rose);font-size:1.4rem;">
+      — Akash (Chikku) ❤️
+    </div>
+  </div>
+</section>
+
+<script>
+const music=document.getElementById("bgMusic");
+const today=new Date();
+const isValentine=(today.getDate()===14 && today.getMonth()+1===2);
+
+mainTitle.innerText=isValentine?"Happy Valentine’s Day 💖":"Happy Rose Day 🌹";
+questionText.innerText=isValentine?"Will you be my Valentine? 💖":"Will you accept this rose from me? 🌹";
+yesBtn.innerText=isValentine?"YES 💖":"Accept 🌹";
+
+const letter=`“This isn’t just a bucket list. It’s my heart quietly planning a future with you.” ❤️✨
+
+Choose each other every day —
+Even when it’s not easy.
+Especially when it’s not easy.
+
+🏡 Make a home that feels warm —
+Where love is felt, not spoken,
+and peace lives in every corner.
+
+🧳 Travel together —
+Get lost in new cities,
+take silly photos,
+and create memories only we understand.
+
+🌅 Watch sunsets without talking —
+Because some moments don’t need words
+when hearts are connected.
+
+I love you because my heart chose you quietly,
+naturally, without force.
+And once it did, it never looked back.
+
+My Kismis,
+
+There are so many things I want to say to you,
+yet words feel small compared to what I feel.
+Loving you isn’t loud or dramatic —
+it’s quiet, deep, and constant.
+
+Before you, I didn’t know love could feel this safe.
+With you, I don’t have to pretend.
+I can be tired, broken, confused —
+and still feel accepted.
+
+You don’t just make me happy.
+You make me better.
+You make me want to grow,
+to heal,
+to become someone worthy of your heart.
+
+Sometimes I get scared —
+not of loving you,
+but of how deeply you matter to me.
+
+If love had a shape,
+it would look like patience,
+understanding,
+and trust.
+
+I don’t promise perfection.
+But I promise honesty.
+I promise to stay.
+
+You are not just someone I love.
+You are someone my soul recognizes.
+
+And if this life gives me one true blessing,
+I hope it’s the chance
+to love you for a long, long time.
+
+Always yours,
+Akash ❤️`;
+
+let storyIndex=0;
+const stories=document.querySelectorAll(".story");
+
+function start(){
+  music.volume=.6;
+  music.play().catch(()=>document.addEventListener("click",()=>music.play(),{once:true}));
+  intro.classList.add("hidden");
+  story.classList.remove("hidden");
+}
+
+function nextStory(){
+  stories[storyIndex].classList.remove("active");
+  storyIndex++;
+  if(storyIndex<stories.length){
+    stories[storyIndex].classList.add("active");
+  }else{
+    story.classList.add("hidden");
+    ask.classList.remove("hidden");
+  }
+}
+
+function moveNo(){
+  noBtn.style.left=Math.random()*200+"px";
+  noBtn.style.top=Math.random()*80+"px";
+}
+
+function celebrate(){
+  ask.classList.add("hidden");
+  final.classList.remove("hidden");
+  typeWriter();
+  setInterval(createParticle,80);
+}
+
+function typeWriter(){
+  let i=0;
+  typeText.innerHTML="";
+  const t=setInterval(()=>{
+    typeText.innerHTML+=letter.charAt(i);
+    i++;
+    if(i>=letter.length) clearInterval(t);
+  },22);
+}
+
+function createParticle(){
+  const p=document.createElement("div");
+  p.className="particle";
+  p.innerHTML=isValentine?"💖":"🌹";
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=Math.random()*3+3+"s";
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),6000);
+}
+</script>
+
+</body>
+</html>
