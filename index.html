@@ -33,16 +33,15 @@ section{
   text-align:center;
 }
 
-/* GIFS */
-.bear-gif { width: 150px; margin-bottom: 20px; }
+.bear-gif { width: 160px; margin-bottom: 20px; border-radius: 15px; }
 
-/* TEXT STYLES */
+/* TEXT */
 h1{ font-family:'Pacifico',cursive; color:var(--primary); font-size:2.8rem; margin-bottom:15px; }
 h2{ font-family:'Playfair Display', serif; color:var(--primary); margin-bottom:16px; font-weight: 700; }
 .desc { font-size:1.1rem; line-height:1.7; max-width:340px; }
 
 /* STORY CARDS */
-.story-container{ width:100%; max-width:340px; margin:auto; min-height: 420px; }
+.story-container{ width:100%; max-width:340px; margin:auto; min-height: 420px; position: relative;}
 .story{ display:none; flex-direction:column; align-items:center; animation:slideFade .8s ease; }
 .story.active{ display:flex; }
 .media-box {
@@ -52,17 +51,33 @@ h2{ font-family:'Playfair Display', serif; color:var(--primary); margin-bottom:1
 }
 .story img, .story video { width:100%; display: block; }
 
-/* BUTTONS */
-.btn-group { display: flex; gap: 15px; margin-top: 30px; position: relative; min-height: 60px; width: 100%; justify-content: center; }
-
-button {
-  padding:14px 40px; border:none; border-radius:999px;
-  background:var(--primary); color:white; font-size:1.1rem;
-  font-weight: 600; cursor:pointer; box-shadow:0 8px 20px rgba(255, 77, 109, 0.3);
-  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+/* PROPOSAL AREA */
+.proposal-box {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 200px; /* Space for the button to jump around */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#noBtn { background: #fff; color: var(--primary); border: 2px solid var(--primary); position: absolute; transition: 0.15s ease; }
+button {
+  padding:15px 45px; border:none; border-radius:999px;
+  background:var(--primary); color:white; font-size:1.1rem;
+  font-weight: 600; cursor:pointer; box-shadow:0 8px 20px rgba(255, 77, 109, 0.3);
+  z-index: 10;
+}
+
+#noBtn {
+  background: white; 
+  color: var(--primary); 
+  border: 2px solid var(--primary); 
+  position: absolute; /* This makes it "fake" and jumpy */
+  transition: all 0.15s ease;
+  z-index: 5;
+  padding: 10px 30px;
+}
 
 /* FINAL LETTER */
 #final-card {
@@ -76,7 +91,6 @@ button {
   line-height: 1.8; color: #444; margin: 20px 0;
 }
 
-/* ANIMATIONS */
 @keyframes float{ from{transform:translateY(0) rotate(0deg); opacity:1} to{transform:translateY(-110vh) rotate(360deg); opacity:0} }
 @keyframes slideFade{ from{opacity:0;transform:translateX(30px)} to{opacity:1;transform:translateX(0)} }
 @keyframes slideUp{ from{opacity:0;transform:translateY(50px)} to{opacity:1;transform:translateY(0)} }
@@ -92,46 +106,46 @@ button {
 </audio>
 
 <section id="sec-intro">
-  <img src="https://media.tenor.com/7p48-8uXidIAAAAi/milk-and-mocha.gif" class="bear-gif" alt="Cute Bears">
+  <img src="https://media.tenor.com/p_m8S_qIAnYAAAAi/milk-and-mocha.gif" class="bear-gif">
   <h1>Kismis ❤️</h1>
-  <p class="desc">Yeh page sirf ek link nahi hai... Yeh meri taraf se ek chhota sa "I Love You" hai.<br><br><strong>Wanna see our story?</strong></p>
-  <button onclick="start()">Yes, Please! ✨</button>
+  <p class="desc">I made something special for you. It's a small journey of us.<br><br><strong>Ready?</strong></p>
+  <button onclick="start()">Yes, Open it! ✨</button>
 </section>
 
 <section id="sec-story" class="hidden">
   <div class="story-container">
-    <div class="story active"><div class="media-box"><img src="./photos/memory1-hands.jpg.jpeg"></div><p>"Yeh sirf haath nahi… ek connection hai."</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory2-mirror.jpg.jpeg"></div><p>"Tumhare saath reflection bhi perfect lagta hai."</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory3-hug-night.jpg.jpeg"></div><p>"Tumhari baahon mein duniya shaant ho jaati hai🤭."</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory4-paint-fun.jpg.jpeg"></div><p>"Messy moments bhi tumhare saath cute lagte hain 😍."</p></div>
-    <div class="story"><div class="media-box"><video id="loveVid" playsinline loop><source src="./videos/love.mp4.mp4" type="video/mp4"></video></div><p>"Jaise main tumhe dekhta hoon… bina filter ke."</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory5-cartoon.jpg.jpeg"></div><p>"Pyaar ek kahaani hota, toh tum best page hoti🥰."</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory6-metro.jpg.jpeg"></div><p>"Tumhari nazar mere din ko better bana deti hai😚."</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory7-garden.jpg.jpeg"></div><p>"Tumhari smile mein kuch rukne nahi deta😘."</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory8-night-play.jpg.jpeg"></div><p>"Tumhare saath serious hona mushkil hai 😄"</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory9-sit-talk.jpg.jpeg"></div><p>"Shaant moments… aur tum. Bas kaafi hai🤗."</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory10-film.jpg.jpeg"></div><p>"Yeh moment mujhe future yaad dilata hai😌."</p></div>
+    <div class="story active"><div class="media-box"><img src="./photos/memory1-hands.jpg.jpeg"></div><p>Yeh sirf haath nahi… ek connection hai.</p></div>
+    <div class="story"><div class="media-box"><img src="./photos/memory2-mirror.jpg.jpeg"></div><p>Tumhare saath reflection bhi perfect lagta hai.</p></div>
+    <div class="story"><div class="media-box"><img src="./photos/memory3-hug-night.jpg.jpeg"></div><p>Tumhari baahon mein duniya shaant ho jaati hai🤭.</p></div>
+    <div class="story"><div class="media-box"><img src="./photos/memory4-paint-fun.jpg.jpeg"></div><p>Messy moments bhi tumhare saath cute lagte hain 😍.</p></div>
+    <div class="story"><div class="media-box"><video id="loveVid" playsinline loop><source src="./videos/love.mp4.mp4" type="video/mp4"></video></div><p>Jaise main tumhe dekhta hoon… bina filter ke.</p></div>
+    <div class="story"><div class="media-box"><img src="./photos/memory5-cartoon.jpg.jpeg"></div><p>Pyaar ek kahaani hota, toh tum best page hoti🥰.</p></div>
+    <div class="story"><div class="media-box"><img src="./photos/memory6-metro.jpg.jpeg"></div><p>Tumhari nazar mere din ko better bana deti hai😚.</p></div>
+    <div class="story"><div class="media-box"><img src="./photos/memory7-garden.jpg.jpeg"></div><p>Tumhari smile mein kuch rukne nahi deta😘.</p></div>
+    <div class="story"><div class="media-box"><img src="./photos/memory8-night-play.jpg.jpeg"></div><p>Tumhare saath serious hona mushkil hai 😄</p></div>
+    <div class="story"><div class="media-box"><img src="./photos/memory9-sit-talk.jpg.jpeg"></div><p>Shaant moments… aur tum. Bas kaafi hai🤗.</p></div>
+    <div class="story"><div class="media-box"><img src="./photos/memory10-film.jpg.jpeg"></div><p>Yeh moment mujhe future yaad dilata hai😌.</p></div>
   </div>
-  <button id="nextBtn" onclick="nextStory()">Next Moment ❤️</button>
+  <button id="nextBtn" onclick="nextStory()">Next Memory ❤️</button>
 </section>
 
 <section id="sec-onlyone" class="hidden">
-  <img src="https://media.tenor.com/7vYf6c_78pYAAAAi/milk-and-mocha.gif" class="bear-gif">
-  <h2>You are the Only One</h2>
+  <img src="https://media.tenor.com/fbeXW8p1-v8AAAAi/milk-and-mocha-bear.gif" class="bear-gif">
+  <h2>The Most Beautiful Girl...</h2>
   <p class="desc">
-    Tumhe pata hai? Is puri duniya mein, mere liye tumhare jaisa koi nahi hai. 
-    Tum itni beautiful ho ki kabhi kabhi main bas tumhe dekhte reh jaata hoon. 
+    Main sirf itna kehna chahta hoon ki tum jitni bahar se beautiful ho, usse kahin zyada andar se ho.
     <br><br>
-    <strong>You are the first and only person I want in my life, today and forever.</strong>
+    Is puri duniya mein, mere liye sirf tum hi ho. <strong>You are the only girl in my life, today and forever.</strong>
   </p>
-  <button onclick="nav('sec-onlyone', 'sec-ask')">Continue... 💌</button>
+  <button onclick="nav('sec-onlyone', 'sec-ask')">I have a question... 💌</button>
 </section>
 
 <section id="sec-ask" class="hidden">
-  <img src="https://media.tenor.com/N28R_ZpS66QAAAAi/milk-and-mocha-bear.gif" class="bear-gif">
-  <h2>Ek dil se poocha hua sawaal...</h2>
-  <p class="desc">I don't just want you for a day. I want you for all my days. Will you be my Valentine?</p>
-  <div class="btn-group">
+  <img src="https://media.tenor.com/T_7HIdy493EAAAAi/mocha-milk.gif" class="bear-gif">
+  <h2>Will you be my Valentine?</h2>
+  <p class="desc">Choose your answer wisely! 😉</p>
+  
+  <div class="proposal-box">
     <button onclick="celebrate()">YES 💖</button>
     <button id="noBtn" onmouseover="moveNo()" onclick="moveNo()">No</button>
   </div>
@@ -184,10 +198,13 @@ function nextStory(){
   }
 }
 
+// THE FAKE BUTTON LOGIC
 function moveNo() {
   const btn = document.getElementById('noBtn');
-  const x = Math.random() * (window.innerWidth - btn.offsetWidth - 50);
-  const y = Math.random() * (window.innerHeight - btn.offsetHeight - 50);
+  // Moves button randomly within the proposal section area
+  const x = Math.random() * (window.innerWidth - btn.offsetWidth - 20);
+  const y = Math.random() * (window.innerHeight - btn.offsetHeight - 20);
+  
   btn.style.left = x + 'px';
   btn.style.top = y + 'px';
 }
@@ -210,5 +227,6 @@ function createHeart() {
 
 </body>
 </html>
+
 
 
