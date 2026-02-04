@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Kismis 🌹💖</title>
+<title>For Twinkle (Kismis) 🌹💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
@@ -19,6 +19,7 @@ body{
   color:#4a0404;
 }
 
+/* PAGES */
 section{
   position:absolute;
   width:100%;
@@ -32,7 +33,6 @@ section{
   padding:30px 20px;
   transition:.6s ease;
 }
-
 .hidden{opacity:0;pointer-events:none;transform:scale(.96)}
 
 h1{font-family:'Pacifico';color:var(--rose);font-size:2.7rem}
@@ -62,6 +62,17 @@ button{
 
 .bear-gif{width:160px;margin-bottom:20px}
 
+/* STORY */
+.story-box{max-width:340px}
+.story{display:none}
+.story.active{display:block}
+.story img, .story video{
+  width:100%;
+  border-radius:20px;
+  margin-bottom:15px;
+}
+
+/* FINAL CARD */
 #final-card{
   background:#fff;
   padding:35px 25px;
@@ -87,6 +98,7 @@ button{
   animation:pulse 2s ease infinite alternate;
 }
 
+/* PARTICLES */
 .particle{
   position:fixed;
   top:-10%;
@@ -94,7 +106,6 @@ button{
   animation:fall linear forwards;
   pointer-events:none;
 }
-
 @keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
 @keyframes pulse{from{opacity:.6}to{opacity:1}}
 </style>
@@ -103,28 +114,62 @@ button{
 <body>
 
 <audio id="bgMusic" loop>
-  <source src="music.mp3" type="audio/mpeg">
+  <source src="./music/love.mp3" type="audio/mpeg">
 </audio>
 
+<!-- INTRO -->
 <section id="intro">
   <img class="bear-gif" src="https://media.tenor.com/267t1mSQu_YAAAAi/pink-rose-flower.gif">
-  <h1 id="mainTitle">Happy Rose Day 🌹</h1>
-  <p class="desc">A small digital journey… from my heart to yours.</p>
-  <button onclick="start()">Open ❤️</button>
+  <h1 id="mainTitle"></h1>
+  <p class="desc">A small digital journey… from my heart to yours 🤍</p>
+  <button onclick="start()">Open 🌹</button>
 </section>
 
+<!-- STORY -->
+<section id="story" class="hidden">
+  <h2>Our Moments 💖</h2>
+
+  <div class="story-box">
+    <div class="story active">
+      <img src="./photos/memory1-hands.jpg">
+      <p class="desc">Yeh sirf haath nahi… yeh ek connection hai 🤍</p>
+    </div>
+
+    <div class="story">
+      <img src="./photos/memory2-mirror.jpg">
+      <p class="desc">Tumhare saath reflection bhi khoobsurat lagta hai ✨</p>
+    </div>
+
+    <div class="story">
+      <img src="./photos/memory3-hug-night.jpg">
+      <p class="desc">Tumhari baahon mein duniya shaant ho jaati hai 🌙</p>
+    </div>
+
+    <div class="story">
+      <video controls playsinline>
+        <source src="./videos/love.mp4" type="video/mp4">
+      </video>
+      <p class="desc">Jaise main tumhe dekhta hoon… bina filter 💞</p>
+    </div>
+  </div>
+
+  <button onclick="nextStory()">Next ❤️</button>
+</section>
+
+<!-- ASK -->
 <section id="ask" class="hidden">
   <img class="bear-gif" src="https://media.tenor.com/n9Eis_Y06S8AAAAi/milk-and-mocha-bear.gif">
   <h2 id="questionText"></h2>
   <div style="position:relative;height:120px;">
     <button onclick="celebrate()" id="yesBtn"></button>
-    <button id="noBtn" onmouseover="moveNo()">No</button>
+    <button id="noBtn" onmouseover="moveNo()">No 😢</button>
   </div>
 </section>
 
+<!-- FINAL -->
 <section id="final" class="hidden">
   <div id="final-card">
-    <h1>Kismis 💕</h1>
+    <h1>Twinkle (Kismis) 💕</h1>
     <div class="letter-text" id="typeText"></div>
     <div class="signature">— Chikku ❤️</div>
   </div>
@@ -135,47 +180,50 @@ const music=document.getElementById("bgMusic");
 const today=new Date();
 const day=today.getDate();
 const month=today.getMonth()+1;
-
-// AUTO TEXT SWITCH
-const isValentine = (day===14 && month===2);
+const isValentine=(day===14 && month===2);
 
 document.getElementById("mainTitle").innerText =
   isValentine ? "Happy Valentine’s Day 💖" : "Happy Rose Day 🌹";
 
 document.getElementById("questionText").innerText =
-  isValentine
-    ? "Will you be my Valentine? 💖"
-    : "Will you accept this rose from me? 🌹";
+  isValentine ? "Will you be my Valentine? 💖" : "Will you accept this rose from me? 🌹";
 
 document.getElementById("yesBtn").innerText =
   isValentine ? "YES 💖" : "Accept 🌹";
 
-const letter=`Sometimes I sit quietly and think about how lucky I am that you exist in my life, and my heart feels full in a way I never knew was possible. You walked into my world and slowly turned everything into something more beautiful—my days feel lighter, my worries feel smaller, and my dreams feel more real because of you.
+const letter=`Sometimes I sit quietly and think about how lucky I am that you exist in my life... 🌹💖`;
 
-The way you understand me, support me, and stand by me without asking for anything in return is something I treasure deeply. With you, love doesn’t feel forced or complicated; it feels safe, warm, and honest.
-
-You are the person I want to share my silences with, the one I want to laugh with on the best days and hold onto on the hardest ones. This day is not just about a rose or a title—it’s about what we mean to each other.
-
-So with all the love, respect, and sincerity my heart can offer, I give you this moment and ask you to keep it close, just like I keep you in my heart. 🌹💖`;
+let storyIndex=0;
+const stories=document.querySelectorAll(".story");
 
 function start(){
   music.volume=.6;
   music.play().catch(()=>document.addEventListener("click",()=>music.play(),{once:true}));
-  document.getElementById("intro").classList.add("hidden");
-  document.getElementById("ask").classList.remove("hidden");
+  intro.classList.add("hidden");
+  story.classList.remove("hidden");
+}
+
+function nextStory(){
+  stories[storyIndex].classList.remove("active");
+  storyIndex++;
+  if(storyIndex<stories.length){
+    stories[storyIndex].classList.add("active");
+  }else{
+    story.classList.add("hidden");
+    ask.classList.remove("hidden");
+  }
 }
 
 function moveNo(){
-  const b=document.getElementById("noBtn");
-  b.style.left=Math.random()*200+"px";
-  b.style.top=Math.random()*80+"px";
+  noBtn.style.left=Math.random()*200+"px";
+  noBtn.style.top=Math.random()*80+"px";
 }
 
 function celebrate(){
-  document.getElementById("ask").classList.add("hidden");
-  document.getElementById("final").classList.remove("hidden");
+  ask.classList.add("hidden");
+  final.classList.remove("hidden");
   typeWriter();
-  setInterval(createParticle,60);
+  setInterval(createParticle,80);
 }
 
 function typeWriter(){
@@ -201,14 +249,255 @@ function createParticle(){
 </script>
 
 </body>
-</html> 
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Twinkle (Kismis) 🌹💖</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
+<style>
+:root{--rose:#d00000}
+*{margin:0;padding:0;box-sizing:border-box}
 
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(180deg,#fff5f5,#ffdada);
+  height:100vh;
+  overflow:hidden;
+  color:#4a0404;
+}
 
+/* PAGES */
+section{
+  position:absolute;
+  width:100%;
+  height:100vh;
+  top:0;left:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:30px 20px;
+  transition:.6s ease;
+}
+.hidden{opacity:0;pointer-events:none;transform:scale(.96)}
 
+h1{font-family:'Pacifico';color:var(--rose);font-size:2.7rem}
+h2{font-family:'Playfair Display';color:var(--rose);margin-bottom:15px}
 
+.desc{max-width:360px;font-size:1.1rem;line-height:1.7}
 
+button{
+  margin-top:25px;
+  padding:15px 45px;
+  border:none;
+  border-radius:999px;
+  background:var(--rose);
+  color:#fff;
+  font-size:1.1rem;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(208,0,0,.3);
+}
 
+#noBtn{
+  background:#fff;
+  color:var(--rose);
+  border:2px solid var(--rose);
+  position:absolute;
+}
 
+.bear-gif{width:160px;margin-bottom:20px}
 
+/* STORY */
+.story-box{max-width:340px}
+.story{display:none}
+.story.active{display:block}
+.story img, .story video{
+  width:100%;
+  border-radius:20px;
+  margin-bottom:15px;
+}
+
+/* FINAL CARD */
+#final-card{
+  background:#fff;
+  padding:35px 25px;
+  border-radius:30px;
+  max-width:420px;
+  box-shadow:0 15px 40px rgba(0,0,0,.15);
+  border-top:8px solid var(--rose);
+}
+
+.letter-text{
+  font-family:'Playfair Display';
+  font-size:1.05rem;
+  line-height:1.8;
+  color:#333;
+  text-align:justify;
+}
+
+.signature{
+  margin-top:20px;
+  font-family:'Pacifico';
+  font-size:1.5rem;
+  color:var(--rose);
+  animation:pulse 2s ease infinite alternate;
+}
+
+/* PARTICLES */
+.particle{
+  position:fixed;
+  top:-10%;
+  font-size:24px;
+  animation:fall linear forwards;
+  pointer-events:none;
+}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+@keyframes pulse{from{opacity:.6}to{opacity:1}}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="./music/love.mp3" type="audio/mpeg">
+</audio>
+
+<!-- INTRO -->
+<section id="intro">
+  <img class="bear-gif" src="https://media.tenor.com/267t1mSQu_YAAAAi/pink-rose-flower.gif">
+  <h1 id="mainTitle"></h1>
+  <p class="desc">A small digital journey… from my heart to yours 🤍</p>
+  <button onclick="start()">Open 🌹</button>
+</section>
+
+<!-- STORY -->
+<section id="story" class="hidden">
+  <h2>Our Moments 💖</h2>
+
+  <div class="story-box">
+    <div class="story active">
+      <img src="./photos/memory1-hands.jpg">
+      <p class="desc">Yeh sirf haath nahi… yeh ek connection hai 🤍</p>
+    </div>
+
+    <div class="story">
+      <img src="./photos/memory2-mirror.jpg">
+      <p class="desc">Tumhare saath reflection bhi khoobsurat lagta hai ✨</p>
+    </div>
+
+    <div class="story">
+      <img src="./photos/memory3-hug-night.jpg">
+      <p class="desc">Tumhari baahon mein duniya shaant ho jaati hai 🌙</p>
+    </div>
+
+    <div class="story">
+      <video controls playsinline>
+        <source src="./videos/love.mp4" type="video/mp4">
+      </video>
+      <p class="desc">Jaise main tumhe dekhta hoon… bina filter 💞</p>
+    </div>
+  </div>
+
+  <button onclick="nextStory()">Next ❤️</button>
+</section>
+
+<!-- ASK -->
+<section id="ask" class="hidden">
+  <img class="bear-gif" src="https://media.tenor.com/n9Eis_Y06S8AAAAi/milk-and-mocha-bear.gif">
+  <h2 id="questionText"></h2>
+  <div style="position:relative;height:120px;">
+    <button onclick="celebrate()" id="yesBtn"></button>
+    <button id="noBtn" onmouseover="moveNo()">No 😢</button>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section id="final" class="hidden">
+  <div id="final-card">
+    <h1>Twinkle (Kismis) 💕</h1>
+    <div class="letter-text" id="typeText"></div>
+    <div class="signature">— Chikku ❤️</div>
+  </div>
+</section>
+
+<script>
+const music=document.getElementById("bgMusic");
+const today=new Date();
+const day=today.getDate();
+const month=today.getMonth()+1;
+const isValentine=(day===14 && month===2);
+
+document.getElementById("mainTitle").innerText =
+  isValentine ? "Happy Valentine’s Day 💖" : "Happy Rose Day 🌹";
+
+document.getElementById("questionText").innerText =
+  isValentine ? "Will you be my Valentine? 💖" : "Will you accept this rose from me? 🌹";
+
+document.getElementById("yesBtn").innerText =
+  isValentine ? "YES 💖" : "Accept 🌹";
+
+const letter=`Sometimes I sit quietly and think about how lucky I am that you exist in my life... 🌹💖`;
+
+let storyIndex=0;
+const stories=document.querySelectorAll(".story");
+
+function start(){
+  music.volume=.6;
+  music.play().catch(()=>document.addEventListener("click",()=>music.play(),{once:true}));
+  intro.classList.add("hidden");
+  story.classList.remove("hidden");
+}
+
+function nextStory(){
+  stories[storyIndex].classList.remove("active");
+  storyIndex++;
+  if(storyIndex<stories.length){
+    stories[storyIndex].classList.add("active");
+  }else{
+    story.classList.add("hidden");
+    ask.classList.remove("hidden");
+  }
+}
+
+function moveNo(){
+  noBtn.style.left=Math.random()*200+"px";
+  noBtn.style.top=Math.random()*80+"px";
+}
+
+function celebrate(){
+  ask.classList.add("hidden");
+  final.classList.remove("hidden");
+  typeWriter();
+  setInterval(createParticle,80);
+}
+
+function typeWriter(){
+  let i=0;
+  const box=document.getElementById("typeText");
+  box.innerHTML="";
+  const t=setInterval(()=>{
+    box.innerHTML+=letter.charAt(i);
+    i++;
+    if(i>=letter.length) clearInterval(t);
+  },25);
+}
+
+function createParticle(){
+  const p=document.createElement("div");
+  p.className="particle";
+  p.innerHTML=isValentine?"💖":"🌹";
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=Math.random()*3+3+"s";
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),6000);
+}
+</script>
+
+</body>
+</html>
