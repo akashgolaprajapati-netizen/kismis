@@ -3,154 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Kismis ❤️</title>
+<title>For My Kismis ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --primary: #ff4d6d;
-  --bg-gradient: linear-gradient(180deg, #fff0f3 0%, #ffdeeb 100%);
-  --text-color: #5a0d1f;
+  --bg-gradient: linear-gradient(180deg, #fff0f3 0%, #ffd6e0 100%);
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
-  font-family: 'Poppins', sans-serif;
+  font-family:'Poppins',sans-serif;
   background: var(--bg-gradient);
-  color: var(--text-color);
-  overflow-x: hidden;
+  color:#5a0d1f;
+  overflow-x:hidden;
   height: 100vh;
 }
 
 section{
-  min-height: 100vh;
-  padding: 40px 25px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  min-height:100vh;
+  padding:40px 22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }
 
-/* Typography */
-h1 {
-  font-family: 'Pacifico', cursive;
-  color: var(--primary);
-  font-size: 2.8rem;
-  margin-bottom: 15px;
-}
+/* GIFS */
+.bear-gif { width: 150px; margin-bottom: 20px; }
 
-h2 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 20px;
-}
+/* TEXT STYLES */
+h1{ font-family:'Pacifico',cursive; color:var(--primary); font-size:2.8rem; margin-bottom:15px; }
+h2{ font-family:'Playfair Display', serif; color:var(--primary); margin-bottom:16px; font-weight: 700; }
+.desc { font-size:1.1rem; line-height:1.7; max-width:340px; }
 
-.sub-text {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  max-width: 320px;
+/* STORY CARDS */
+.story-container{ width:100%; max-width:340px; margin:auto; min-height: 420px; }
+.story{ display:none; flex-direction:column; align-items:center; animation:slideFade .8s ease; }
+.story.active{ display:flex; }
+.media-box {
+  width:100%; border-radius:25px; overflow:hidden; 
+  box-shadow:0 15px 35px rgba(255, 77, 109, 0.25); margin-bottom:16px;
+  border: 5px solid white;
 }
+.story img, .story video { width:100%; display: block; }
 
-/* Media Cards */
-.story-container{
-  width: 100%;
-  max-width: 350px;
-  margin: 20px auto;
-  position: relative;
-}
+/* BUTTONS */
+.btn-group { display: flex; gap: 15px; margin-top: 30px; position: relative; min-height: 60px; width: 100%; justify-content: center; }
 
-.story{
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  animation: fadeIn 0.8s ease-in-out;
-}
-
-.story.active{
-  display: flex;
-}
-
-.media-wrapper {
-  width: 100%;
-  border-radius: 25px;
-  overflow: hidden;
-  box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
-  margin-bottom: 20px;
-  background: white;
-  border: 4px solid white;
-}
-
-.story img, .story video {
-  width: 100%;
-  display: block;
-}
-
-.story p {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1.1rem;
-}
-
-/* Buttons */
 button {
-  margin-top: 30px;
-  padding: 16px 42px;
-  border: none;
-  border-radius: 50px;
-  background: var(--primary);
-  color: white;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(255, 77, 109, 0.3);
-  transition: 0.3s;
+  padding:14px 40px; border:none; border-radius:999px;
+  background:var(--primary); color:white; font-size:1.1rem;
+  font-weight: 600; cursor:pointer; box-shadow:0 8px 20px rgba(255, 77, 109, 0.3);
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-button:active { transform: scale(0.95); }
+#noBtn { background: #fff; color: var(--primary); border: 2px solid var(--primary); position: absolute; transition: 0.15s ease; }
 
-/* The Letter Card */
+/* FINAL LETTER */
 #final-card {
-  background: rgba(255, 255, 255, 0.9);
-  padding: 40px 25px;
-  border-radius: 30px;
-  margin: 20px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-  max-width: 400px;
+  background: white; padding: 40px 25px; border-radius: 30px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.05); text-align: justify;
+  max-width: 450px; border-bottom: 8px solid var(--primary);
+  animation: slideUp 1s ease;
+}
+.letter-text {
+  font-family: 'Playfair Display', serif; font-size: 1.05rem;
+  line-height: 1.8; color: #444; margin: 20px 0;
 }
 
-.letter-body {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.05rem;
-  line-height: 1.8;
-  color: #4a4a4a;
-  text-align: justify;
-}
+/* ANIMATIONS */
+@keyframes float{ from{transform:translateY(0) rotate(0deg); opacity:1} to{transform:translateY(-110vh) rotate(360deg); opacity:0} }
+@keyframes slideFade{ from{opacity:0;transform:translateX(30px)} to{opacity:1;transform:translateX(0)} }
+@keyframes slideUp{ from{opacity:0;transform:translateY(50px)} to{opacity:1;transform:translateY(0)} }
 
-.signature {
-  font-family: 'Pacifico', cursive;
-  font-size: 1.5rem;
-  color: var(--primary);
-  margin-top: 25px;
-}
-
-/* Animations */
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-.heart {
-  position: fixed;
-  bottom: -10px;
-  animation: floatUp 5s linear forwards;
-  z-index: 100;
-}
-
-@keyframes floatUp {
-  to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
-}
-
+.heart { position:fixed; bottom:-10px; animation:float 6s linear forwards; z-index: 99; pointer-events: none; }
 .hidden { display: none !important; }
 </style>
 </head>
@@ -161,54 +92,64 @@ button:active { transform: scale(0.95); }
 </audio>
 
 <section id="sec-intro">
+  <img src="https://media.tenor.com/7p48-8uXidIAAAAi/milk-and-mocha.gif" class="bear-gif" alt="Cute Bears">
   <h1>Kismis ❤️</h1>
-  <p class="sub-text">Yeh page ek story hai… har moment ka, har feeling ka.<br><br><strong>Aur yeh sab tumse shuru hota hai.</strong></p>
-  <button onclick="startExperience()">Begin our Story ✨</button>
+  <p class="desc">Yeh page sirf ek link nahi hai... Yeh meri taraf se ek chhota sa "I Love You" hai.<br><br><strong>Wanna see our story?</strong></p>
+  <button onclick="start()">Yes, Please! ✨</button>
 </section>
 
 <section id="sec-story" class="hidden">
-  <h2>Our Moments 💞</h2>
   <div class="story-container">
-    <div class="story active"><div class="media-wrapper"><img src="./photos/memory1-hands.jpg.jpeg"></div><p>"Yeh sirf haath nahi… yeh ek connection hai."</p></div>
-    <div class="story"><div class="media-wrapper"><img src="./photos/memory2-mirror.jpg.jpeg"></div><p>"Tumhare saath reflection bhi perfect lagta hai."</p></div>
-    <div class="story"><div class="media-wrapper"><img src="./photos/memory3-hug-night.jpg.jpeg"></div><p>"Tumhari baahon mein duniya thodi shaant ho jaati hai🤭."</p></div>
-    <div class="story"><div class="media-wrapper"><img src="./photos/memory4-paint-fun.jpg.jpeg"></div><p>"Messy moments bhi tumhare saath cute lagte hain 😍."</p></div>
-    <div class="story">
-        <div class="media-wrapper"><video id="loveVid" playsinline loop><source src="./videos/love.mp4.mp4" type="video/mp4"></video></div>
-        <p>"Jaise main tumhe dekhta hoon… bina kisi filter ke."</p>
-    </div>
-    <div class="story"><div class="media-wrapper"><img src="./photos/memory5-cartoon.jpg.jpeg"></div><p>"Agar pyaar ek kahaani hota, toh tum uska best page hoti🥰."</p></div>
-    <div class="story"><div class="media-wrapper"><img src="./photos/memory6-metro.jpg.jpeg"></div><p>"Tumhari nazar ka ek second, mere din ko better bana deta hai😚."</p></div>
-    <div class="story"><div class="media-wrapper"><img src="./photos/memory7-garden.jpg.jpeg"></div><p>"Tumhari smile mein kuch aisa hai… jo rukne nahi deta😘."</p></div>
-    <div class="story"><div class="media-wrapper"><img src="./photos/memory8-night-play.jpg.jpeg"></div><p>"Tumhare saath serious hona mushkil hai 😄"</p></div>
-    <div class="story"><div class="media-wrapper"><img src="./photos/memory9-sit-talk.jpg.jpeg"></div><p>"Shaant moments… aur tum. Bas kaafi hai🤗."</p></div>
-    <div class="story"><div class="media-wrapper"><img src="./photos/memory10-film.jpg.jpeg"></div><p>"Yeh moment mujhe future yaad dilata hai🙂‍↔️😌."</p></div>
+    <div class="story active"><div class="media-box"><img src="./photos/memory1-hands.jpg.jpeg"></div><p>"Yeh sirf haath nahi… ek connection hai."</p></div>
+    <div class="story"><div class="media-box"><img src="./photos/memory2-mirror.jpg.jpeg"></div><p>"Tumhare saath reflection bhi perfect lagta hai."</p></div>
+    <div class="story"><div class="media-box"><img src="./photos/memory3-hug-night.jpg.jpeg"></div><p>"Tumhari baahon mein duniya shaant ho jaati hai🤭."</p></div>
+    <div class="story"><div class="media-box"><img src="./photos/memory4-paint-fun.jpg.jpeg"></div><p>"Messy moments bhi tumhare saath cute lagte hain 😍."</p></div>
+    <div class="story"><div class="media-box"><video id="loveVid" playsinline loop><source src="./videos/love.mp4.mp4" type="video/mp4"></video></div><p>"Jaise main tumhe dekhta hoon… bina filter ke."</p></div>
+    <div class="story"><div class="media-box"><img src="./photos/memory5-cartoon.jpg.jpeg"></div><p>"Pyaar ek kahaani hota, toh tum best page hoti🥰."</p></div>
+    <div class="story"><div class="media-box"><img src="./photos/memory6-metro.jpg.jpeg"></div><p>"Tumhari nazar mere din ko better bana deti hai😚."</p></div>
+    <div class="story"><div class="media-box"><img src="./photos/memory7-garden.jpg.jpeg"></div><p>"Tumhari smile mein kuch rukne nahi deta😘."</p></div>
+    <div class="story"><div class="media-box"><img src="./photos/memory8-night-play.jpg.jpeg"></div><p>"Tumhare saath serious hona mushkil hai 😄"</p></div>
+    <div class="story"><div class="media-box"><img src="./photos/memory9-sit-talk.jpg.jpeg"></div><p>"Shaant moments… aur tum. Bas kaafi hai🤗."</p></div>
+    <div class="story"><div class="media-box"><img src="./photos/memory10-film.jpg.jpeg"></div><p>"Yeh moment mujhe future yaad dilata hai😌."</p></div>
   </div>
   <button id="nextBtn" onclick="nextStory()">Next Moment ❤️</button>
 </section>
 
-<section id="sec-question" class="hidden">
-  <h2>Ek dil se poocha hua sawaal 💗</h2>
-  <p class="sub-text">Tum meri life ka wo hissa ho jisko main casually nahi leta.<br><br>Tum important ho… aur yeh sirf lafz nahi hain.</p>
-  <button onclick="showFinal()">Yes, Chikku? 💖</button>
+<section id="sec-onlyone" class="hidden">
+  <img src="https://media.tenor.com/7vYf6c_78pYAAAAi/milk-and-mocha.gif" class="bear-gif">
+  <h2>You are the Only One</h2>
+  <p class="desc">
+    Tumhe pata hai? Is puri duniya mein, mere liye tumhare jaisa koi nahi hai. 
+    Tum itni beautiful ho ki kabhi kabhi main bas tumhe dekhte reh jaata hoon. 
+    <br><br>
+    <strong>You are the first and only person I want in my life, today and forever.</strong>
+  </p>
+  <button onclick="nav('sec-onlyone', 'sec-ask')">Continue... 💌</button>
+</section>
+
+<section id="sec-ask" class="hidden">
+  <img src="https://media.tenor.com/N28R_ZpS66QAAAAi/milk-and-mocha-bear.gif" class="bear-gif">
+  <h2>Ek dil se poocha hua sawaal...</h2>
+  <p class="desc">I don't just want you for a day. I want you for all my days. Will you be my Valentine?</p>
+  <div class="btn-group">
+    <button onclick="celebrate()">YES 💖</button>
+    <button id="noBtn" onmouseover="moveNo()" onclick="moveNo()">No</button>
+  </div>
 </section>
 
 <section id="sec-final" class="hidden">
   <div id="final-card">
     <h1>Kismis 💕</h1>
-    <h2 style="font-size: 1.3rem;">Will you be my Valentine?</h2>
-    <div class="letter-body">
-      Sometimes I sit quietly and think about how lucky I am that you exist in my life, and my heart feels full in a way I never knew was possible. 
-      <br><br>
-      You walked into my world and slowly turned everything into something more beautiful—my days feel lighter, my worries feel smaller, and my dreams feel more real because of you. 
-      <br><br>
-      The way you understand me, support me, and stand by me without asking for anything in return is something I treasure deeply. With you, love doesn’t feel forced or complicated; it feels safe, warm, and honest. 
-      <br><br>
-      This Valentine’s Day is not just about celebrating us, what we are, and what we can become together. As long as you’re with me, I’m ready to face everything. 
-      <br><br>
-      So with all the love, respect, and sincerity my heart can offer, I ask you—will you be my Valentine, Kismis, and choose me, just as I choose you, today and always?
+    <div class="letter-text">
+        Sometimes I sit quietly and think about how lucky I am that you exist in my life, and my heart feels full in a way I never knew was possible. 
+        <br><br>
+        You walked into my world and slowly turned everything into something more beautiful—my days feel lighter, my worries feel smaller, and my dreams feel more real because of you. The way you understand me, support me, and stand by me without asking for anything in return is something I treasure deeply. 
+        <br><br>
+        With you, love doesn’t feel forced or complicated; it feels safe, warm, and honest. You are the person I want to share my silences with, the one I want to laugh with on the best days and hold onto on the hardest ones. This Valentine’s Day is not just about celebrating love—it’s about celebrating us, what we are, and what we can become together. 
+        <br><br>
+        I don’t know what tomorrow holds, but I know this: as long as you’re with me, I’m ready to face everything. So with all the love, respect, and sincerity my heart can offer, I ask you—will you be my Valentine, Kismis, and choose me, just as I choose you, today and always? 💖🌸
     </div>
-    <p class="signature">— Chikku ❤️</p>
+    <p style="font-family:'Pacifico'; color:var(--primary); font-size:1.4rem; text-align:center;">— Chikku ❤️</p>
   </div>
 </section>
 
@@ -217,46 +158,53 @@ let currentStory = 0;
 const stories = document.querySelectorAll(".story");
 const music = document.getElementById("bgMusic");
 
-function startExperience() {
+function nav(hide, show) {
+    document.getElementById(hide).classList.add('hidden');
+    const s = document.getElementById(show);
+    s.classList.remove('hidden');
+    s.style.display = 'flex';
+}
+
+function start() {
   music.play();
-  document.getElementById('sec-intro').classList.add('hidden');
-  document.getElementById('sec-story').classList.remove('hidden');
-  document.getElementById('sec-story').style.display = 'flex';
+  nav('sec-intro', 'sec-story');
 }
 
 function nextStory(){
   stories[currentStory].classList.remove("active");
   const vid = document.getElementById('loveVid');
-  vid.pause();
+  if(vid) vid.pause();
 
   currentStory++;
-
   if(currentStory < stories.length) {
     stories[currentStory].classList.add("active");
     if(stories[currentStory].contains(vid)) vid.play();
-    if(currentStory === stories.length - 1) document.getElementById("nextBtn").innerHTML = "I have a question... 💌";
   } else {
-    document.getElementById('sec-story').classList.add('hidden');
-    document.getElementById('sec-question').classList.remove('hidden');
-    document.getElementById('sec-question').style.display = 'flex';
+    nav('sec-story', 'sec-onlyone');
   }
 }
 
-function showFinal() {
-    document.getElementById('sec-question').classList.add('hidden');
-    document.getElementById('sec-final').classList.remove('hidden');
-    document.getElementById('sec-final').style.display = 'flex';
-    setInterval(createHeart, 300);
+function moveNo() {
+  const btn = document.getElementById('noBtn');
+  const x = Math.random() * (window.innerWidth - btn.offsetWidth - 50);
+  const y = Math.random() * (window.innerHeight - btn.offsetHeight - 50);
+  btn.style.left = x + 'px';
+  btn.style.top = y + 'px';
+}
+
+function celebrate() {
+  nav('sec-ask', 'sec-final');
+  setInterval(createHeart, 300);
 }
 
 function createHeart() {
-    const h = document.createElement("div");
-    h.className = "heart";
-    h.innerHTML = ["❤️", "💖", "🌸", "💕"][Math.floor(Math.random()*4)];
-    h.style.left = Math.random() * 100 + "vw";
-    h.style.fontSize = Math.random() * 20 + 15 + "px";
-    document.body.appendChild(h);
-    setTimeout(() => h.remove(), 5000);
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = ["❤️", "💖", "💕", "🌸"][Math.floor(Math.random()*4)];
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.fontSize = Math.random() * 20 + 20 + "px";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 5000);
 }
 </script>
 
