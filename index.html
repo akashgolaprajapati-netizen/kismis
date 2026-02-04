@@ -31,34 +31,27 @@ section{
   justify-content:center;
   align-items:center;
   text-align:center;
+  position: relative;
 }
 
-/* COUNTDOWN TIMER */
-#timer {
-  display: flex;
-  gap: 15px;
-  margin: 20px 0;
-  font-family: 'Poppins', sans-serif;
-}
+/* TIMER STYLES */
+#timer { display: flex; gap: 10px; margin: 20px 0; }
 .time-unit {
-  background: white;
-  padding: 10px;
-  border-radius: 12px;
-  min-width: 60px;
-  box-shadow: 0 4px 10px rgba(208,0,0,0.1);
+  background: white; padding: 10px; border-radius: 12px;
+  min-width: 65px; box-shadow: 0 4px 10px rgba(208,0,0,0.1);
 }
 .time-unit span { display: block; font-weight: 700; color: var(--rose-red); font-size: 1.2rem; }
-.time-unit label { font-size: 0.7rem; text-transform: uppercase; color: #888; }
+.time-unit label { font-size: 0.65rem; text-transform: uppercase; color: #888; }
 
-.bear-gif { width: 160px; margin-bottom: 20px; border-radius: 15px; z-index: 10;}
+.bear-gif { width: 160px; margin-bottom: 20px; border-radius: 15px; z-index: 10; pointer-events: none;}
 
 /* TEXT */
 h1{ font-family:'Pacifico',cursive; color:var(--rose-red); font-size:2.8rem; margin-bottom:15px; }
 h2{ font-family:'Playfair Display', serif; color:var(--rose-red); margin-bottom:16px; font-weight: 700; }
 .desc { font-size:1.1rem; line-height:1.7; max-width:340px; }
 
-/* MEDIA CARDS */
-.story-container{ width:100%; max-width:340px; margin:auto; min-height: 420px; position: relative;}
+/* STORY CARDS */
+.story-container{ width:100%; max-width:340px; margin:auto; min-height: 420px; position: relative; }
 .story{ display:none; flex-direction:column; align-items:center; animation:slideFade .8s ease; }
 .story.active{ display:flex; }
 .media-box {
@@ -68,55 +61,33 @@ h2{ font-family:'Playfair Display', serif; color:var(--rose-red); margin-bottom:
 }
 .story img, .story video { width:100%; display: block; }
 
-/* THE FAKE BUTTON AREA */
-.proposal-box {
-  position: relative;
-  width: 100%;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
+/* PROPOSAL AREA */
+.proposal-box { position: relative; width: 100%; height: 120px; display: flex; justify-content: center; align-items: center; margin-top: 20px;}
 button {
   padding:15px 45px; border:none; border-radius:999px;
   background:var(--rose-red); color:white; font-size:1.1rem;
   font-weight: 600; cursor:pointer; box-shadow:0 8px 20px rgba(208, 0, 0, 0.3);
   z-index: 100;
 }
-
-#noBtn {
-  background: white; color: var(--rose-red); border: 2px solid var(--rose-red); 
-  position: absolute; transition: 0.1s ease; z-index: 50;
-}
+#noBtn { background: white; color: var(--rose-red); border: 2px solid var(--rose-red); position: absolute; transition: 0.1s ease; z-index: 50; }
 
 /* FINAL CARD */
 #final-card {
   background: white; padding: 40px 25px; border-radius: 30px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: justify;
-  max-width: 450px; border-top: 8px solid var(--rose-red);
-  animation: slideUp 1s ease;
+  max-width: 450px; border-top: 8px solid var(--rose-red); animation: slideUp 1s ease;
 }
-.letter-text {
-  font-family: 'Playfair Display', serif; font-size: 1.05rem;
-  line-height: 1.8; color: #333; margin: 20px 0;
-}
+.letter-text { font-family: 'Playfair Display', serif; font-size: 1.05rem; line-height: 1.8; color: #333; margin: 20px 0; }
 
-/* ROSE PETAL EFFECT */
-.petal {
-  position: fixed;
-  top: -10%;
-  user-select: none;
-  pointer-events: none;
-  z-index: 999;
-  animation: fall linear forwards;
+/* FLOATING ROSE & HEART ELEMENTS */
+.particle {
+  position: fixed; top: -10%; user-select: none; pointer-events: none;
+  z-index: 999; animation: fall linear forwards;
 }
 
 @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
 @keyframes slideFade{ from{opacity:0;transform:translateX(30px)} to{opacity:1;transform:translateX(0)} }
 @keyframes slideUp{ from{opacity:0;transform:translateY(50px)} to{opacity:1;transform:translateY(0)} }
-
 .hidden { display: none !important; }
 </style>
 </head>
@@ -129,7 +100,7 @@ button {
 <section id="sec-intro">
   <img src="https://media.tenor.com/267t1mSQu_YAAAAi/pink-rose-flower.gif" class="bear-gif">
   <h1>Happy Rose Day 🌹</h1>
-  <p class="desc">Is Rose Day par, ek chhota sa digital rose mere dil ki taraf se.</p>
+  <p class="desc">A chhota sa digital rose journey mere dil ki taraf se for my Kismis.</p>
   
   <div id="timer">
     <div class="time-unit"><span id="days">00</span><label>Days</label></div>
@@ -142,8 +113,8 @@ button {
 
 <section id="sec-story" class="hidden">
   <div class="story-container">
-    <div class="story active"><div class="media-box"><img src="./photos/memory1-hands.jpg.jpeg"></div><p>Yeh sirf haath nahi… ek connection jo hum dono ek sath banaya hai🤗.</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory2-mirror.jpg.jpeg"></div><p>Tumhare saath reflection bhi perfect lagta hai😚.</p></div>
+    <div class="story active"><div class="media-box"><img src="./photos/memory1-hands.jpg.jpeg"></div><p>Yeh sirf haath nahi… ek connection hai.</p></div>
+    <div class="story"><div class="media-box"><img src="./photos/memory2-mirror.jpg.jpeg"></div><p>Tumhare saath reflection bhi perfect lagta hai.</p></div>
     <div class="story"><div class="media-box"><img src="./photos/memory3-hug-night.jpg.jpeg"></div><p>Tumhari baahon mein duniya shaant ho jaati hai🤭.</p></div>
     <div class="story"><div class="media-box"><img src="./photos/memory4-paint-fun.jpg.jpeg"></div><p>Messy moments bhi tumhare saath cute lagte hain 😍.</p></div>
     <div class="story"><div class="media-box"><video id="loveVid" playsinline loop><source src="./videos/love.mp4.mp4" type="video/mp4"></video></div><p>Jaise main tumhe dekhta hoon… bina filter ke.</p></div>
@@ -161,7 +132,7 @@ button {
   <img src="https://media.tenor.com/T_7HIdy493EAAAAi/mocha-milk.gif" class="bear-gif">
   <h2>My Only Rose...</h2>
   <p class="desc">
-    Tum mere life ki sabse khoobsurat rose ho—jo kabhi nahi murjhayegi. 
+    Main sirf itna kehna chahta hoon ki tum jitni bahar se beautiful ho, usse kahin zyada andar se ho.
     <br><br>
     <strong>You are the only girl I see, and the only one I want by my side.</strong>
   </p>
@@ -181,13 +152,11 @@ button {
   <div id="final-card">
     <h1>Kismis 💕</h1>
     <div class="letter-text">
-        Sometimes I sit quietly and think about how lucky I am that you exist in my life, and my heart feels full in a way I never knew was possible. 
+        Sometimes I sit quietly and think about how lucky I am that you exist in my life, and my heart feels full in a way I never knew was possible...
         <br><br>
-        You walked into my world and slowly turned everything into something more beautiful—my days feel lighter, my worries feel smaller, and my dreams feel more real because of you. The way you understand me, support me, and stand by me without asking for anything in return is something I treasure deeply. 
+        [Your long message here]
         <br><br>
-        With you, love doesn’t feel forced or complicated; it feels safe, warm, and honest. You are the person I want to share my silences with, the one I want to laugh with on the best days and hold onto on the hardest ones. This Valentine’s Day is not just about celebrating love—it’s about celebrating us, what we are, and what we can become together. 
-        <br><br>
-        I don’t know what tomorrow holds, but I know this: as long as you’re with me, I’m ready to face everything. So with all the love, respect, and sincerity my heart can offer, I ask you—will you be my Valentine, Kismis, and choose me, just as I choose you, today and always? 💖🌹
+        So with all the love, respect, and sincerity my heart can offer, I ask you—will you be my Valentine, Kismis, and choose me, just as I choose you, today and always? 💖🌹
     </div>
     <p style="font-family:'Pacifico'; color:var(--rose-red); font-size:1.4rem; text-align:center;">— Chikku ❤️</p>
   </div>
@@ -198,34 +167,42 @@ let currentStory = 0;
 const stories = document.querySelectorAll(".story");
 const music = document.getElementById("bgMusic");
 
-// COUNTDOWN LOGIC
+// ROSE-HEAVY PARTICLE ENGINE
+function createParticle() {
+    const p = document.createElement("div");
+    p.className = "particle";
+    
+    // Increased Rose probability (80% Roses, 20% mixed hearts)
+    const rand = Math.random();
+    if (rand < 0.7) {
+        p.innerHTML = "🌹";
+    } else {
+        const hearts = ["❤️", "💖", "💙", "💕"];
+        p.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+    }
+
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.fontSize = Math.random() * 25 + 15 + "px"; // Made roses slightly bigger
+    p.style.animationDuration = Math.random() * 3 + 3 + "s";
+    p.style.opacity = Math.random() * 0.6 + 0.4;
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 6000);
+}
+setInterval(createParticle, 250); // Spawns faster for a thicker rain
+
+// COUNTDOWN
 function updateTimer() {
     const vday = new Date("Feb 14, 2026 00:00:00").getTime();
     const now = new Date().getTime();
     const diff = vday - now;
-
     const d = Math.floor(diff / (1000 * 60 * 60 * 24));
     const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
     document.getElementById("days").innerHTML = d < 10 ? "0"+d : d;
     document.getElementById("hours").innerHTML = h < 10 ? "0"+h : h;
     document.getElementById("mins").innerHTML = m < 10 ? "0"+m : m;
 }
 setInterval(updateTimer, 1000);
-
-// ROSE PETAL GENERATOR
-function createPetal() {
-    const p = document.createElement("div");
-    p.className = "petal";
-    p.innerHTML = ["🌹" ," 🌸 ", "🍃", "🌹"][Math.floor(Math.random()*4)];
-    p.style.left = Math.random() * 100 + "vw";
-    p.style.fontSize = Math.random() * 15 + 10 + "px";
-    p.style.animationDuration = Math.random() * 3 + 4 + "s";
-    document.body.appendChild(p);
-    setTimeout(() => p.remove(), 6000);
-}
-setInterval(createPetal, 400);
 
 function nav(hide, show) {
     document.getElementById(hide).classList.add('hidden');
@@ -234,41 +211,35 @@ function nav(hide, show) {
     s.style.display = 'flex';
 }
 
-function start() {
-    music.play();
-    nav('sec-intro', 'sec-story');
-}
+function start() { music.play(); nav('sec-intro', 'sec-story'); }
 
 function nextStory(){
     stories[currentStory].classList.remove("active");
     const vid = document.getElementById('loveVid');
     if(vid) vid.pause();
-
     currentStory++;
     if(currentStory < stories.length) {
         stories[currentStory].classList.add("active");
         if(stories[currentStory].contains(vid)) vid.play();
-    } else {
-        nav('sec-story', 'sec-onlyone');
-    }
+    } else { nav('sec-story', 'sec-onlyone'); }
 }
 
 function moveNo() {
     const btn = document.getElementById('noBtn');
-    const x = Math.random() * (window.innerWidth - btn.offsetWidth - 20);
-    const y = Math.random() * (window.innerHeight - btn.offsetHeight - 20);
+    const x = Math.random() * (window.innerWidth - btn.offsetWidth - 30);
+    const y = Math.random() * (window.innerHeight - btn.offsetHeight - 30);
     btn.style.left = x + 'px';
     btn.style.top = y + 'px';
 }
 
 function celebrate() {
     nav('sec-ask', 'sec-final');
-    setInterval(createPetal, 100);
+    setInterval(createParticle, 50); // Massive rose shower on YES
 }
 </script>
-
 </body>
 </html>
+
 
 
 
