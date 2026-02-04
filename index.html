@@ -3,22 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Kismis ❤️</title>
+<title>Rose Day Special - For Kismis 🌹</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --primary: #ff4d6d;
-  --bg-gradient: linear-gradient(180deg, #fff0f3 0%, #ffd6e0 100%);
+  --rose-red: #d00000;
+  --soft-cream: #fff5f5;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
   font-family:'Poppins',sans-serif;
-  background: var(--bg-gradient);
-  color:#5a0d1f;
+  background: linear-gradient(180deg, #fff5f5 0%, #ffdada 100%);
+  color:#4a0404;
   overflow-x:hidden;
   height: 100vh;
 }
@@ -33,69 +33,90 @@ section{
   text-align:center;
 }
 
-.bear-gif { width: 160px; margin-bottom: 20px; border-radius: 15px; }
+/* COUNTDOWN TIMER */
+#timer {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+  font-family: 'Poppins', sans-serif;
+}
+.time-unit {
+  background: white;
+  padding: 10px;
+  border-radius: 12px;
+  min-width: 60px;
+  box-shadow: 0 4px 10px rgba(208,0,0,0.1);
+}
+.time-unit span { display: block; font-weight: 700; color: var(--rose-red); font-size: 1.2rem; }
+.time-unit label { font-size: 0.7rem; text-transform: uppercase; color: #888; }
+
+.bear-gif { width: 160px; margin-bottom: 20px; border-radius: 15px; z-index: 10;}
 
 /* TEXT */
-h1{ font-family:'Pacifico',cursive; color:var(--primary); font-size:2.8rem; margin-bottom:15px; }
-h2{ font-family:'Playfair Display', serif; color:var(--primary); margin-bottom:16px; font-weight: 700; }
+h1{ font-family:'Pacifico',cursive; color:var(--rose-red); font-size:2.8rem; margin-bottom:15px; }
+h2{ font-family:'Playfair Display', serif; color:var(--rose-red); margin-bottom:16px; font-weight: 700; }
 .desc { font-size:1.1rem; line-height:1.7; max-width:340px; }
 
-/* STORY CARDS */
+/* MEDIA CARDS */
 .story-container{ width:100%; max-width:340px; margin:auto; min-height: 420px; position: relative;}
 .story{ display:none; flex-direction:column; align-items:center; animation:slideFade .8s ease; }
 .story.active{ display:flex; }
 .media-box {
   width:100%; border-radius:25px; overflow:hidden; 
-  box-shadow:0 15px 35px rgba(255, 77, 109, 0.25); margin-bottom:16px;
+  box-shadow:0 15px 35px rgba(208, 0, 0, 0.2); margin-bottom:16px;
   border: 5px solid white;
 }
 .story img, .story video { width:100%; display: block; }
 
-/* PROPOSAL AREA */
+/* THE FAKE BUTTON AREA */
 .proposal-box {
   position: relative;
   width: 100%;
-  max-width: 400px;
-  height: 200px; /* Space for the button to jump around */
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 }
 
 button {
   padding:15px 45px; border:none; border-radius:999px;
-  background:var(--primary); color:white; font-size:1.1rem;
-  font-weight: 600; cursor:pointer; box-shadow:0 8px 20px rgba(255, 77, 109, 0.3);
-  z-index: 10;
+  background:var(--rose-red); color:white; font-size:1.1rem;
+  font-weight: 600; cursor:pointer; box-shadow:0 8px 20px rgba(208, 0, 0, 0.3);
+  z-index: 100;
 }
 
 #noBtn {
-  background: white; 
-  color: var(--primary); 
-  border: 2px solid var(--primary); 
-  position: absolute; /* This makes it "fake" and jumpy */
-  transition: all 0.15s ease;
-  z-index: 5;
-  padding: 10px 30px;
+  background: white; color: var(--rose-red); border: 2px solid var(--rose-red); 
+  position: absolute; transition: 0.1s ease; z-index: 50;
 }
 
-/* FINAL LETTER */
+/* FINAL CARD */
 #final-card {
   background: white; padding: 40px 25px; border-radius: 30px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.05); text-align: justify;
-  max-width: 450px; border-bottom: 8px solid var(--primary);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: justify;
+  max-width: 450px; border-top: 8px solid var(--rose-red);
   animation: slideUp 1s ease;
 }
 .letter-text {
   font-family: 'Playfair Display', serif; font-size: 1.05rem;
-  line-height: 1.8; color: #444; margin: 20px 0;
+  line-height: 1.8; color: #333; margin: 20px 0;
 }
 
-@keyframes float{ from{transform:translateY(0) rotate(0deg); opacity:1} to{transform:translateY(-110vh) rotate(360deg); opacity:0} }
+/* ROSE PETAL EFFECT */
+.petal {
+  position: fixed;
+  top: -10%;
+  user-select: none;
+  pointer-events: none;
+  z-index: 999;
+  animation: fall linear forwards;
+}
+
+@keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
 @keyframes slideFade{ from{opacity:0;transform:translateX(30px)} to{opacity:1;transform:translateX(0)} }
 @keyframes slideUp{ from{opacity:0;transform:translateY(50px)} to{opacity:1;transform:translateY(0)} }
 
-.heart { position:fixed; bottom:-10px; animation:float 6s linear forwards; z-index: 99; pointer-events: none; }
 .hidden { display: none !important; }
 </style>
 </head>
@@ -106,10 +127,17 @@ button {
 </audio>
 
 <section id="sec-intro">
-  <img src="https://media.tenor.com/p_m8S_qIAnYAAAAi/milk-and-mocha.gif" class="bear-gif">
-  <h1>Kismis ❤️</h1>
-  <p class="desc">I made something special for you. It's a small journey of us.<br><br><strong>Ready?</strong></p>
-  <button onclick="start()">Yes, Open it! ✨</button>
+  <img src="https://media.tenor.com/267t1mSQu_YAAAAi/pink-rose-flower.gif" class="bear-gif">
+  <h1>Happy Rose Day 🌹</h1>
+  <p class="desc">Is Rose Day par, ek chhota sa digital rose mere dil ki taraf se.</p>
+  
+  <div id="timer">
+    <div class="time-unit"><span id="days">00</span><label>Days</label></div>
+    <div class="time-unit"><span id="hours">00</span><label>Hrs</label></div>
+    <div class="time-unit"><span id="mins">00</span><label>Mins</label></div>
+  </div>
+
+  <button onclick="start()">Open the Journey ❤️</button>
 </section>
 
 <section id="sec-story" class="hidden">
@@ -120,31 +148,29 @@ button {
     <div class="story"><div class="media-box"><img src="./photos/memory4-paint-fun.jpg.jpeg"></div><p>Messy moments bhi tumhare saath cute lagte hain 😍.</p></div>
     <div class="story"><div class="media-box"><video id="loveVid" playsinline loop><source src="./videos/love.mp4.mp4" type="video/mp4"></video></div><p>Jaise main tumhe dekhta hoon… bina filter ke.</p></div>
     <div class="story"><div class="media-box"><img src="./photos/memory5-cartoon.jpg.jpeg"></div><p>Pyaar ek kahaani hota, toh tum best page hoti🥰.</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory6-metro.jpg.jpeg"></div><p>Tumhari nazar mere din ko better bana deti hai😚.</p></div>
+    <div class="story"><div class="media-box"><img src="./photos/memory6-metro.jpg.jpeg"></div><p>Tumhari nazar mere din ko better bana deta hai😚.</p></div>
     <div class="story"><div class="media-box"><img src="./photos/memory7-garden.jpg.jpeg"></div><p>Tumhari smile mein kuch rukne nahi deta😘.</p></div>
     <div class="story"><div class="media-box"><img src="./photos/memory8-night-play.jpg.jpeg"></div><p>Tumhare saath serious hona mushkil hai 😄</p></div>
     <div class="story"><div class="media-box"><img src="./photos/memory9-sit-talk.jpg.jpeg"></div><p>Shaant moments… aur tum. Bas kaafi hai🤗.</p></div>
     <div class="story"><div class="media-box"><img src="./photos/memory10-film.jpg.jpeg"></div><p>Yeh moment mujhe future yaad dilata hai😌.</p></div>
   </div>
-  <button id="nextBtn" onclick="nextStory()">Next Memory ❤️</button>
+  <button id="nextBtn" onclick="nextStory()">See Next Memory 🌹</button>
 </section>
 
 <section id="sec-onlyone" class="hidden">
-  <img src="https://media.tenor.com/fbeXW8p1-v8AAAAi/milk-and-mocha-bear.gif" class="bear-gif">
-  <h2>The Most Beautiful Girl...</h2>
+  <img src="https://media.tenor.com/T_7HIdy493EAAAAi/mocha-milk.gif" class="bear-gif">
+  <h2>My Only Rose...</h2>
   <p class="desc">
-    Main sirf itna kehna chahta hoon ki tum jitni bahar se beautiful ho, usse kahin zyada andar se ho.
+    Tum mere life ki sabse khoobsurat rose ho—jo kabhi nahi murjhayegi. 
     <br><br>
-    Is puri duniya mein, mere liye sirf tum hi ho. <strong>You are the only girl in my life, today and forever.</strong>
+    <strong>You are the only girl I see, and the only one I want by my side.</strong>
   </p>
   <button onclick="nav('sec-onlyone', 'sec-ask')">I have a question... 💌</button>
 </section>
 
 <section id="sec-ask" class="hidden">
-  <img src="https://media.tenor.com/T_7HIdy493EAAAAi/mocha-milk.gif" class="bear-gif">
+  <img src="https://media.tenor.com/n9Eis_Y06S8AAAAi/milk-and-mocha-bear.gif" class="bear-gif">
   <h2>Will you be my Valentine?</h2>
-  <p class="desc">Choose your answer wisely! 😉</p>
-  
   <div class="proposal-box">
     <button onclick="celebrate()">YES 💖</button>
     <button id="noBtn" onmouseover="moveNo()" onclick="moveNo()">No</button>
@@ -161,9 +187,9 @@ button {
         <br><br>
         With you, love doesn’t feel forced or complicated; it feels safe, warm, and honest. You are the person I want to share my silences with, the one I want to laugh with on the best days and hold onto on the hardest ones. This Valentine’s Day is not just about celebrating love—it’s about celebrating us, what we are, and what we can become together. 
         <br><br>
-        I don’t know what tomorrow holds, but I know this: as long as you’re with me, I’m ready to face everything. So with all the love, respect, and sincerity my heart can offer, I ask you—will you be my Valentine, Kismis, and choose me, just as I choose you, today and always? 💖🌸
+        I don’t know what tomorrow holds, but I know this: as long as you’re with me, I’m ready to face everything. So with all the love, respect, and sincerity my heart can offer, I ask you—will you be my Valentine, Kismis, and choose me, just as I choose you, today and always? 💖🌹
     </div>
-    <p style="font-family:'Pacifico'; color:var(--primary); font-size:1.4rem; text-align:center;">— Chikku ❤️</p>
+    <p style="font-family:'Pacifico'; color:var(--rose-red); font-size:1.4rem; text-align:center;">— Chikku ❤️</p>
   </div>
 </section>
 
@@ -171,6 +197,35 @@ button {
 let currentStory = 0;
 const stories = document.querySelectorAll(".story");
 const music = document.getElementById("bgMusic");
+
+// COUNTDOWN LOGIC
+function updateTimer() {
+    const vday = new Date("Feb 14, 2026 00:00:00").getTime();
+    const now = new Date().getTime();
+    const diff = vday - now;
+
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+    document.getElementById("days").innerHTML = d < 10 ? "0"+d : d;
+    document.getElementById("hours").innerHTML = h < 10 ? "0"+h : h;
+    document.getElementById("mins").innerHTML = m < 10 ? "0"+m : m;
+}
+setInterval(updateTimer, 1000);
+
+// ROSE PETAL GENERATOR
+function createPetal() {
+    const p = document.createElement("div");
+    p.className = "petal";
+    p.innerHTML = ["🌹", "🌸", "🍃", "🌹"][Math.floor(Math.random()*4)];
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.fontSize = Math.random() * 15 + 10 + "px";
+    p.style.animationDuration = Math.random() * 3 + 4 + "s";
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 6000);
+}
+setInterval(createPetal, 400);
 
 function nav(hide, show) {
     document.getElementById(hide).classList.add('hidden');
@@ -180,53 +235,41 @@ function nav(hide, show) {
 }
 
 function start() {
-  music.play();
-  nav('sec-intro', 'sec-story');
+    music.play();
+    nav('sec-intro', 'sec-story');
 }
 
 function nextStory(){
-  stories[currentStory].classList.remove("active");
-  const vid = document.getElementById('loveVid');
-  if(vid) vid.pause();
+    stories[currentStory].classList.remove("active");
+    const vid = document.getElementById('loveVid');
+    if(vid) vid.pause();
 
-  currentStory++;
-  if(currentStory < stories.length) {
-    stories[currentStory].classList.add("active");
-    if(stories[currentStory].contains(vid)) vid.play();
-  } else {
-    nav('sec-story', 'sec-onlyone');
-  }
+    currentStory++;
+    if(currentStory < stories.length) {
+        stories[currentStory].classList.add("active");
+        if(stories[currentStory].contains(vid)) vid.play();
+    } else {
+        nav('sec-story', 'sec-onlyone');
+    }
 }
 
-// THE FAKE BUTTON LOGIC
 function moveNo() {
-  const btn = document.getElementById('noBtn');
-  // Moves button randomly within the proposal section area
-  const x = Math.random() * (window.innerWidth - btn.offsetWidth - 20);
-  const y = Math.random() * (window.innerHeight - btn.offsetHeight - 20);
-  
-  btn.style.left = x + 'px';
-  btn.style.top = y + 'px';
+    const btn = document.getElementById('noBtn');
+    const x = Math.random() * (window.innerWidth - btn.offsetWidth - 20);
+    const y = Math.random() * (window.innerHeight - btn.offsetHeight - 20);
+    btn.style.left = x + 'px';
+    btn.style.top = y + 'px';
 }
 
 function celebrate() {
-  nav('sec-ask', 'sec-final');
-  setInterval(createHeart, 300);
-}
-
-function createHeart() {
-  const h = document.createElement("div");
-  h.className = "heart";
-  h.innerHTML = ["❤️", "💖", "💕", "🌸"][Math.floor(Math.random()*4)];
-  h.style.left = Math.random() * 100 + "vw";
-  h.style.fontSize = Math.random() * 20 + 20 + "px";
-  document.body.appendChild(h);
-  setTimeout(() => h.remove(), 5000);
+    nav('sec-ask', 'sec-final');
+    setInterval(createPetal, 100);
 }
 </script>
 
 </body>
 </html>
+
 
 
 
