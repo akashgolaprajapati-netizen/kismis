@@ -3,210 +3,407 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>I'm Sorry Kismis 🥺</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<title>For My Only One | Twinkle</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --text-dark: #4a4e69;
-  --accent: #6d597a;
-  --heart-blue: #00b4d8;
-  --heart-pink: #ff4d6d;
+    --primary: #ff4d6d;
+    --blue: #00b4d8;
+    --yellow: #ffb703;
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
-body{
-  font-family:'Poppins',sans-serif;
-  background: linear-gradient(180deg, #fdfcfb 0%, #e2d1c3 100%);
-  color: var(--text-dark);
-  overflow-x:hidden;
-  height: 100vh;
+body {
+    background: #fffafa;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    color: #333;
 }
 
-section{
-  min-height:100vh;
-  padding:40px 22px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  position: relative;
-}
-
-.bear-gif { width: 160px; margin-bottom: 20px; border-radius: 15px; z-index: 10; pointer-events: none;}
-
-/* TEXT STYLES */
-h1{ font-family:'Pacifico',cursive; color: var(--accent); font-size:2.6rem; margin-bottom:15px; }
-h2{ font-family:'Playfair Display', serif; color: #353131; margin-bottom:16px; font-weight: 700; }
-.desc { font-size:1.1rem; line-height:1.7; max-width:340px; color: #555; }
-
-/* PROMISE LIST */
-.promise-list {
-  text-align: left;
-  background: rgba(255, 255, 255, 0.6);
-  padding: 20px;
-  border-radius: 20px;
-  margin: 20px 0;
-  max-width: 340px;
-}
-.promise-item { margin-bottom: 12px; font-size: 1rem; display: flex; gap: 10px; }
-
-/* STORY CARDS */
-.story-container{ width:100%; max-width:340px; margin:auto; min-height: 420px; position: relative; }
-.story{ display:none; flex-direction:column; align-items:center; animation:slideFade .8s ease; }
-.story.active{ display:flex; }
-.media-box {
-  width:100%; border-radius:25px; overflow:hidden; 
-  box-shadow:0 15px 35px rgba(0,0,0,0.1); margin-bottom:16px;
-  border: 5px solid white;
-}
-.story img, .story video { width:100%; display: block; }
-
-/* PROPOSAL AREA */
-.proposal-box { position: relative; width: 100%; height: 120px; display: flex; justify-content: center; align-items: center; margin-top: 20px;}
-button {
-  padding:15px 45px; border:none; border-radius:999px;
-  background: var(--accent); color:white; font-size:1.1rem;
-  font-weight: 600; cursor:pointer; box-shadow:0 8px 20px rgba(0,0,0,0.1);
-  z-index: 100;
-}
-#noBtn { background: white; color: var(--accent); border: 2px solid var(--accent); position: absolute; transition: 0.1s ease; z-index: 50; }
-
-/* FINAL CARD */
-#final-card {
-  background: white; padding: 40px 25px; border-radius: 30px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.05); text-align: justify;
-  max-width: 450px; border-top: 8px solid var(--accent); animation: slideUp 1s ease;
-}
-.letter-text { font-family: 'Playfair Display', serif; font-size: 1.05rem; line-height: 1.8; color: #444; margin: 20px 0; }
-
-/* PARTICLES */
+/* --- Particles --- */
 .particle {
-  position: fixed; top: -10%; user-select: none; pointer-events: none;
-  z-index: 999; animation: fall linear forwards;
+    position: fixed; top: -10%; pointer-events: none; z-index: 999;
+    animation: fall linear forwards;
 }
 
 @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
-@keyframes slideFade{ from{opacity:0;transform:translateX(30px)} to{opacity:1;transform:translateX(0)} }
-@keyframes slideUp{ from{opacity:0;transform:translateY(50px)} to{opacity:1;transform:translateY(0)} }
+
+/* --- Layout --- */
+section {
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; padding: 20px; text-align: center;
+}
+
 .hidden { display: none !important; }
+
+/* --- Flip Cards --- */
+.card-container {
+    perspective: 1000px; width: 300px; height: 400px; margin: 20px auto;
+}
+
+.card-inner {
+    position: relative; width: 100%; height: 100%;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d; cursor: pointer;
+}
+
+.card-inner.flipped { transform: rotateY(180deg); }
+
+.card-front, .card-back {
+    position: absolute; width: 100%; height: 100%;
+    backface-visibility: hidden; border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 4px solid white;
+}
+
+.card-front img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; }
+
+.card-back {
+    background: white; color: #333; transform: rotateY(180deg);
+    padding: 20px; font-size: 1.1rem; line-height: 1.6;
+}
+
+/* --- Bucket List --- */
+.bucket-list {
+    background: white; padding: 25px; border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); width: 100%; max-width: 350px;
+}
+.trip-item { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; text-align: left; }
+.trip-item span { font-size: 1.5rem; }
+
+/* --- Buttons --- */
+.btn-main {
+    background: var(--primary); color: white; padding: 15px 40px;
+    border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 600;
+    cursor: pointer; box-shadow: 0 10px 20px rgba(255, 77, 109, 0.3);
+    margin-top: 20px; transition: 0.3s;
+}
+
+#noBtn {
+    background: #eee; color: #666; position: absolute; transition: 0.1s;
+}
+
+.gif-bunny { width: 150px; margin-bottom: 20px; }
+
+/* --- Video Styling --- */
+video {
+    width: 100%; max-width: 400px; border-radius: 20px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1 { font-family: 'Pacifico', cursive; color: var(--primary); margin-bottom: 10px; }
 </style>
 </head>
 <body>
 
 <audio id="bgMusic" loop>
-  <source src="music.mp3" type="audio/mpeg">
+    <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<section id="sec-intro">
-  <img src="https://media.tenor.com/T0_6_f7Mh38AAAAi/milk-and-mocha-bear-sorry.gif" class="bear-gif">
-  <h1>I'm Sorry, Kismis 🥺</h1>
-  <p class="desc">I know I messed up. Can we please take a moment to look back at us?</p>
-  <button onclick="start()">Please Open This ❤️</button>
+<section id="p1">
+    <img src="https://media.tenor.com/7p48-8uXidIAAAAi/milk-and-mocha.gif" class="gif-bunny">
+    <h1>Hey Twinkle...</h1>
+    <p>This isn't about a day. It's about you being the only one.</p>
+    <button class="btn-main" onclick="startExperience()">Touch Here</button>
 </section>
 
-<section id="sec-story" class="hidden">
-  <h2>The Moments That Matter...</h2>
-  <div class="story-container">
-    <div class="story active"><div class="media-box"><img src="./photos/memory1-hands.jpg.jpeg"></div><p>Yeh connection mere liye sabse upar hai.</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory3-hug-night.jpg.jpeg"></div><p>Tumhari baahon mein hi mera sukoon hai.</p></div>
-    <div class="story"><div class="media-box"><video id="loveVid" playsinline loop><source src="./videos/love.mp4.mp4" type="video/mp4"></video></div><p>Main hamesha tumhe aise hi dekhna chahta hoon.</p></div>
-    <div class="story"><div class="media-box"><img src="./photos/memory10-film.jpg.jpeg"></div><p>Mujhe hamara future kabhi nahi khona.</p></div>
-  </div>
-  <button id="nextBtn" onclick="nextStory()">See More ❤️</button>
-</section>
-
-<section id="sec-promise" class="hidden">
-  <img src="https://media.tenor.com/fbeXW8p1-v8AAAAi/milk-and-mocha-bear.gif" class="bear-gif">
-  <h2>My Promises To You</h2>
-  <div class="promise-list">
-    <div class="promise-item"><span>✨</span> <p>I promise to listen to you more carefully.</p></div>
-    <div class="promise-item"><span>✨</span> <p>I promise to never let a small fight grow big.</p></div>
-    <div class="promise-item"><span>✨</span> <p>I promise to cherish you as my only one, forever.</p></div>
-  </div>
-  <p class="desc">You are the most beautiful person I know, inside and out.</p>
-  <button onclick="nav('sec-promise', 'sec-ask')">I have a question... 💌</button>
-</section>
-
-<section id="sec-ask" class="hidden">
-  <img src="https://media.tenor.com/T_7HIdy493EAAAAi/mocha-milk.gif" class="bear-gif">
-  <h2>Maaf kar doge? 🥺</h2>
-  <p class="desc">I really miss us. Will you forgive me and be my Valentine again?</p>
-  <div class="proposal-box">
-    <button onclick="celebrate()">YES 💖</button>
-    <button id="noBtn" onmouseover="moveNo()" onclick="moveNo()">Nahi 😤</button>
-  </div>
-</section>
-
-<section id="sec-final" class="hidden">
-  <div id="final-card">
-    <h1>Kismis 💕</h1>
-    <div class="letter-text">
-        Sometimes I sit quietly and think about how lucky I am that you exist in my life. I know I’ve made mistakes, and I am truly sorry for hurting you. 
-        <br><br>
-        You are the only girl in my life, and you are so beautiful that sometimes I just lose myself looking at you. I don't want to lose what we have over something silly. 
-        <br><br>
-        This Valentine’s Week, my only wish is to have you back by my side, smiling. So with all the love and sincerity I have, I ask you—will you choose me again? 💖🌸
+<section id="p2" class="hidden">
+    <p style="font-size: 0.9rem; margin-bottom: 10px;">(Tap the card to flip it)</p>
+    <div class="card-container">
+        <div class="card-inner" onclick="this.classList.toggle('flipped')">
+            <div class="card-front">
+                <img src="photo1.jpg" alt="Your Photo">
+            </div>
+            <div class="card-back">
+                <p>Tu jaanti hai, main har kisi se sab kuch nahi kehta. Bas tu hi hai jiske saamne main 'main' hota hoon. You make me feel safe.</p>
+            </div>
+        </div>
     </div>
-    <p style="font-family:'Pacifico'; color:var(--accent); font-size:1.4rem; text-align:center;">— Chikku ❤️</p>
-  </div>
+    <button class="btn-main" onclick="nav('p2', 'p3')">Next Surprise</button>
+</section>
+
+<section id="p3" class="hidden">
+    <h1>Our Moments</h1>
+    <video id="mainVideo" controls playsinline>
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support video.
+    </video>
+    <p style="margin-top: 15px; padding: 0 20px;">Every frame reminds me of how special you are.</p>
+    <button class="btn-main" onclick="nav('p3', 'p4')">Our Future</button>
+</section>
+
+<section id="p4" class="hidden">
+    <h1>Our Bucket List ✈️</h1>
+    <div class="bucket-list">
+        <div class="trip-item"><span>🕌</span> <div><b>Taj Mahal:</b> To see the monument of love with my real love.</div></div>
+        <div class="trip-item"><span>🌊</span> <div><b>Ganga Aarti:</b> Peace, spirituality, and your hand in mine.</div></div>
+        <div class="trip-item"><span>🏔️</span> <div><b>Manali & Rishikesh:</b> Road trips, cold winds, and warm memories.</div></div>
+    </div>
+    <button class="btn-main" onclick="nav('p4', 'p5')">A Promise</button>
+</section>
+
+<section id="p5" class="hidden">
+    <img src="https://media.tenor.com/N28R_ZpS66QAAAAi/milk-and-mocha-bear.gif" class="gif-bunny">
+    <h1>Maaf kar degi na?</h1>
+    <p>Can we start over and make these trips happen?</p>
+    <div style="height: 150px; position: relative; width: 100%;">
+        <button class="btn-main" onclick="nav('p5', 'p6')">Yes, Chikku ❤️</button>
+        <button id="noBtn" onmouseover="moveNo()" onclick="moveNo()">No 😤</button>
+    </div>
+</section>
+
+<section id="p6" class="hidden">
+    <div style="background: white; padding: 30px; border-radius: 30px; border-top: 10px solid var(--primary); max-width: 400px; text-align: justify;">
+        <h1 style="text-align: center;">Twinkle ✨</h1>
+        <p>Mujhe maaf kar de... Tu meri life ki wo pehli aur aakhri ladki hai jise main khona nahi chahta. Main waada karta hoon ki ab se teri muskurahat meri priority hogi. Taj Mahal se lekar Rishikesh tak, har jagah tere saath jaana hai. I love you.</p>
+    </div>
 </section>
 
 <script>
-let currentStory = 0;
-const stories = document.querySelectorAll(".story");
 const music = document.getElementById("bgMusic");
+const video = document.getElementById("mainVideo");
 
-// RED, PINK, BLUE HEART RAIN
-function createParticle() {
-    const p = document.createElement("div");
-    p.className = "particle";
-    const types = ["❤️", "💖", "💙", "💕", "✨"];
-    p.innerHTML = types[Math.floor(Math.random() * types.length)];
-    p.style.left = Math.random() * 100 + "vw";
-    p.style.fontSize = Math.random() * 20 + 15 + "px";
-    p.style.animationDuration = Math.random() * 3 + 4 + "s";
-    p.style.opacity = Math.random() * 0.5 + 0.5;
-    document.body.appendChild(p);
-    setTimeout(() => p.remove(), 6000);
+function startExperience() {
+    music.play().catch(e => console.log("Music blocked"));
+    nav('p1', 'p2');
+    startRain();
 }
-setInterval(createParticle, 400);
 
 function nav(hide, show) {
     document.getElementById(hide).classList.add('hidden');
-    const s = document.getElementById(show);
-    s.classList.remove('hidden');
-    s.style.display = 'flex';
-}
-
-function start() { music.play(); nav('sec-intro', 'sec-story'); }
-
-function nextStory(){
-    stories[currentStory].classList.remove("active");
-    const vid = document.getElementById('loveVid');
-    if(vid) vid.pause();
-    currentStory++;
-    if(currentStory < stories.length) {
-        stories[currentStory].classList.add("active");
-        if(stories[currentStory].contains(vid)) vid.play();
-    } else { nav('sec-story', 'sec-promise'); }
+    const next = document.getElementById(show);
+    next.classList.remove('hidden');
+    if(show === 'p3') video.play(); else video.pause();
 }
 
 function moveNo() {
     const btn = document.getElementById('noBtn');
-    const x = Math.random() * (window.innerWidth - btn.offsetWidth - 30);
-    const y = Math.random() * (window.innerHeight - btn.offsetHeight - 30);
+    const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - btn.offsetHeight);
     btn.style.left = x + 'px';
     btn.style.top = y + 'px';
 }
 
-function celebrate() {
-    nav('sec-ask', 'sec-final');
-    setInterval(createParticle, 100); 
+function startRain() {
+    setInterval(() => {
+        const p = document.createElement("div");
+        p.className = "particle";
+        const items = ["🌹", "❤️", "💙", "💛"];
+        p.innerHTML = items[Math.floor(Math.random() * items.length)];
+        p.style.left = Math.random() * 100 + "vw";
+        p.style.fontSize = Math.random() * 20 + 20 + "px";
+        p.style.animationDuration = Math.random() * 3 + 2 + "s";
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 5000);
+    }, 300);
 }
 </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Only One | Twinkle</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --primary: #ff4d6d;
+    --blue: #00b4d8;
+    --yellow: #ffb703;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+    background: #fffafa;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    color: #333;
+}
+
+/* --- Particles --- */
+.particle {
+    position: fixed; top: -10%; pointer-events: none; z-index: 999;
+    animation: fall linear forwards;
+}
+
+@keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+
+/* --- Layout --- */
+section {
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; padding: 20px; text-align: center;
+}
+
+.hidden { display: none !important; }
+
+/* --- Flip Cards --- */
+.card-container {
+    perspective: 1000px; width: 300px; height: 400px; margin: 20px auto;
+}
+
+.card-inner {
+    position: relative; width: 100%; height: 100%;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d; cursor: pointer;
+}
+
+.card-inner.flipped { transform: rotateY(180deg); }
+
+.card-front, .card-back {
+    position: absolute; width: 100%; height: 100%;
+    backface-visibility: hidden; border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 4px solid white;
+}
+
+.card-front img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; }
+
+.card-back {
+    background: white; color: #333; transform: rotateY(180deg);
+    padding: 20px; font-size: 1.1rem; line-height: 1.6;
+}
+
+/* --- Bucket List --- */
+.bucket-list {
+    background: white; padding: 25px; border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); width: 100%; max-width: 350px;
+}
+.trip-item { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; text-align: left; }
+.trip-item span { font-size: 1.5rem; }
+
+/* --- Buttons --- */
+.btn-main {
+    background: var(--primary); color: white; padding: 15px 40px;
+    border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 600;
+    cursor: pointer; box-shadow: 0 10px 20px rgba(255, 77, 109, 0.3);
+    margin-top: 20px; transition: 0.3s;
+}
+
+#noBtn {
+    background: #eee; color: #666; position: absolute; transition: 0.1s;
+}
+
+.gif-bunny { width: 150px; margin-bottom: 20px; }
+
+/* --- Video Styling --- */
+video {
+    width: 100%; max-width: 400px; border-radius: 20px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1 { font-family: 'Pacifico', cursive; color: var(--primary); margin-bottom: 10px; }
+</style>
+</head>
+<body>
+
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<section id="p1">
+    <img src="https://media.tenor.com/7p48-8uXidIAAAAi/milk-and-mocha.gif" class="gif-bunny">
+    <h1>Hey Twinkle...</h1>
+    <p>This isn't about a day. It's about you being the only one.</p>
+    <button class="btn-main" onclick="startExperience()">Touch Here</button>
+</section>
+
+<section id="p2" class="hidden">
+    <p style="font-size: 0.9rem; margin-bottom: 10px;">(Tap the card to flip it)</p>
+    <div class="card-container">
+        <div class="card-inner" onclick="this.classList.toggle('flipped')">
+            <div class="card-front">
+                <img src="photo1.jpg" alt="Your Photo">
+            </div>
+            <div class="card-back">
+                <p>Tu jaanti hai, main har kisi se sab kuch nahi kehta. Bas tu hi hai jiske saamne main 'main' hota hoon. You make me feel safe.</p>
+            </div>
+        </div>
+    </div>
+    <button class="btn-main" onclick="nav('p2', 'p3')">Next Surprise</button>
+</section>
+
+<section id="p3" class="hidden">
+    <h1>Our Moments</h1>
+    <video id="mainVideo" controls playsinline>
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support video.
+    </video>
+    <p style="margin-top: 15px; padding: 0 20px;">Every frame reminds me of how special you are.</p>
+    <button class="btn-main" onclick="nav('p3', 'p4')">Our Future</button>
+</section>
+
+<section id="p4" class="hidden">
+    <h1>Our Bucket List ✈️</h1>
+    <div class="bucket-list">
+        <div class="trip-item"><span>🕌</span> <div><b>Taj Mahal:</b> To see the monument of love with my real love.</div></div>
+        <div class="trip-item"><span>🌊</span> <div><b>Ganga Aarti:</b> Peace, spirituality, and your hand in mine.</div></div>
+        <div class="trip-item"><span>🏔️</span> <div><b>Manali & Rishikesh:</b> Road trips, cold winds, and warm memories.</div></div>
+    </div>
+    <button class="btn-main" onclick="nav('p4', 'p5')">A Promise</button>
+</section>
+
+<section id="p5" class="hidden">
+    <img src="https://media.tenor.com/N28R_ZpS66QAAAAi/milk-and-mocha-bear.gif" class="gif-bunny">
+    <h1>Maaf kar degi na?</h1>
+    <p>Can we start over and make these trips happen?</p>
+    <div style="height: 150px; position: relative; width: 100%;">
+        <button class="btn-main" onclick="nav('p5', 'p6')">Yes, Chikku ❤️</button>
+        <button id="noBtn" onmouseover="moveNo()" onclick="moveNo()">No 😤</button>
+    </div>
+</section>
+
+<section id="p6" class="hidden">
+    <div style="background: white; padding: 30px; border-radius: 30px; border-top: 10px solid var(--primary); max-width: 400px; text-align: justify;">
+        <h1 style="text-align: center;">Twinkle ✨</h1>
+        <p>Mujhe maaf kar de... Tu meri life ki wo pehli aur aakhri ladki hai jise main khona nahi chahta. Main waada karta hoon ki ab se teri muskurahat meri priority hogi. Taj Mahal se lekar Rishikesh tak, har jagah tere saath jaana hai. I love you.</p>
+    </div>
+</section>
+
+<script>
+const music = document.getElementById("bgMusic");
+const video = document.getElementById("mainVideo");
+
+function startExperience() {
+    music.play().catch(e => console.log("Music blocked"));
+    nav('p1', 'p2');
+    startRain();
+}
+
+function nav(hide, show) {
+    document.getElementById(hide).classList.add('hidden');
+    const next = document.getElementById(show);
+    next.classList.remove('hidden');
+    if(show === 'p3') video.play(); else video.pause();
+}
+
+function moveNo() {
+    const btn = document.getElementById('noBtn');
+    const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+    btn.style.left = x + 'px';
+    btn.style.top = y + 'px';
+}
+
+function startRain() {
+    setInterval(() => {
+        const p = document.createElement("div");
+        p.className = "particle";
+        const items = ["🌹", "❤️", "💙", "💛"];
+        p.innerHTML = items[Math.floor(Math.random() * items.length)];
+        p.style.left = Math.random() * 100 + "vw";
+        p.style.fontSize = Math.random() * 20 + 20 + "px";
+        p.style.animationDuration = Math.random() * 3 + 2 + "s";
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 5000);
+    }, 300);
+}
+</script>
+</body>
+</html>
+
