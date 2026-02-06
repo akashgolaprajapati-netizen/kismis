@@ -1,1 +1,200 @@
-INDEX FILE READY
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Twinkle | Rose Day Special 🌹</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --rose-red: #d00000;
+  --soft-cream: #fff5f5;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background: linear-gradient(180deg, #fff5f5 0%, #ffdada 100%);
+  color:#4a0404;
+  overflow-x:hidden;
+}
+
+section{
+  min-height:100vh;
+  padding:40px 22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.hidden{display:none!important}
+
+h1{font-family:'Pacifico';color:var(--rose-red);font-size:2.8rem}
+h2{font-family:'Playfair Display';color:var(--rose-red);margin-bottom:15px}
+
+button{
+  padding:15px 45px;
+  border:none;
+  border-radius:999px;
+  background:var(--rose-red);
+  color:white;
+  font-size:1.1rem;
+  font-weight:600;
+  cursor:pointer;
+  margin-top:15px;
+}
+
+.letter-box{
+  background:white;
+  padding:30px;
+  border-radius:25px;
+  max-width:450px;
+  line-height:1.8;
+  margin:20px 0;
+  text-align:left;
+}
+
+.story-container{max-width:340px}
+.story{display:none}
+.story.active{display:block}
+.media-box{
+  border-radius:25px;
+  overflow:hidden;
+  margin-bottom:12px;
+}
+.story img,.story video{width:100%;display:block}
+
+.bear-gif{width:150px;margin-bottom:20px}
+
+#noBtn{
+  background:white;
+  color:var(--rose-red);
+  border:2px solid var(--rose-red);
+  position:absolute;
+}
+
+.proposal-box{position:relative;height:150px;width:100%}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 BACKGROUND MUSIC -->
+<audio id="bgMusic" loop muted preload="auto">
+  <source src="./Music/Music.mp3" type="audio/mpeg">
+</audio>
+
+<section id="sec-intro">
+  <img src="https://media.tenor.com/267t1mSQu_YAAAAi/pink-rose-flower.gif" class="bear-gif">
+  <h1>Happy Rose Day, Twinkle 🌹</h1>
+  <p>A digital journey for my heart.</p>
+  <button onclick="start()">Start the Journey ❤️</button>
+</section>
+
+<section id="sec-letter1" class="hidden">
+  <h2>To My Only One ❤️</h2>
+  <div class="letter-box">
+    Loving you feels like home. You make my loud days calm and my quiet nights warm.
+  </div>
+  <button onclick="nav('sec-letter1','sec-story')">Our Memories 📸</button>
+</section>
+
+<section id="sec-story" class="hidden">
+  <div class="story-container">
+
+    <div class="story active">
+      <div class="media-box"><img src="./photos/memory1-hands.jpg.jpeg"></div>
+      <p>Our first touch.</p>
+    </div>
+
+    <div class="story">
+      <div class="media-box"><img src="./photos/memory2-mirror.jpg.jpeg"></div>
+      <p>You are my favorite view.</p>
+    </div>
+
+    <div class="story">
+      <div class="media-box">
+        <video id="loveVid" muted autoplay playsinline loop preload="auto">
+          <source src="./Videos/love.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p>Bina filter ke.</p>
+    </div>
+
+  </div>
+  <button onclick="nextStory()">Next 🌹</button>
+</section>
+
+<section id="sec-letter2" class="hidden">
+  <h2>My Kismis ❤️</h2>
+  <div class="letter-box">
+    I promise honesty, effort, and a forever kind of love.
+  </div>
+  <button onclick="nav('sec-letter2','sec-ask')">One Question 💌</button>
+</section>
+
+<section id="sec-ask" class="hidden">
+  <img src="https://media.tenor.com/n9Eis_Y06S8AAAAi/milk-and-mocha-bear.gif" class="bear-gif">
+  <h2>Will you be my Valentine?</h2>
+  <div class="proposal-box">
+    <button onclick="celebrate()">YES 💖</button>
+    <button id="noBtn" onmouseover="moveNo()">No 😤</button>
+  </div>
+</section>
+
+<section id="sec-final" class="hidden">
+  <h1>Forever Yours ✨</h1>
+  <p>Happy Rose Day, My Jaan.</p>
+  <p style="font-family:Pacifico;color:var(--rose-red)">— Chikku 🌙</p>
+</section>
+
+<script>
+const music=document.getElementById("bgMusic");
+const stories=document.querySelectorAll(".story");
+let current=0;
+
+function start(){
+  music.muted=false;
+  music.play().catch(()=>{});
+  nav("sec-intro","sec-letter1");
+}
+
+function nav(hide,show){
+  document.getElementById(hide).classList.add("hidden");
+  document.getElementById(show).classList.remove("hidden");
+  window.scrollTo(0,0);
+}
+
+function nextStory(){
+  stories[current].classList.remove("active");
+  current++;
+  if(current<stories.length){
+    stories[current].classList.add("active");
+    const v=document.getElementById("loveVid");
+    if(stories[current].contains(v)){
+      v.muted=false;
+      v.play().catch(()=>{});
+    }
+  }else{
+    nav("sec-story","sec-letter2");
+  }
+}
+
+function moveNo(){
+  const b=document.getElementById("noBtn");
+  b.style.left=Math.random()*200+"px";
+  b.style.top=Math.random()*100+"px";
+}
+
+function celebrate(){
+  nav("sec-ask","sec-final");
+}
+</script>
+
+</body>
+</html>
