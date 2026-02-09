@@ -1,1 +1,192 @@
-INDEX FILE READY
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate Day | For My Kismis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --choco: #4e342e; --milk: #795548; --gold: #ffd700; --primary: #ff4d6d; --bg: #2d1b17; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); font-family: 'Poppins', sans-serif; overflow-x: hidden; color: #fdf5e6; }
+
+        /* Falling Treats */
+        .particle { position: fixed; top: -10%; pointer-events: none; z-index: 999; animation: fall linear forwards; }
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+
+        section { min-height: 100vh; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 30px; text-align: center; }
+        .active { display: flex; animation: fadeIn 0.8s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Progress Bar */
+        .progress-container { position: fixed; top: 0; width: 100%; height: 6px; background: #1a0f0d; z-index: 1000; }
+        .progress-bar { height: 100%; background: var(--gold); width: 0%; transition: 0.5s; box-shadow: 0 0 10px var(--gold); }
+
+        /* Chocolate Box Cards */
+        .card-container { perspective: 1000px; width: 320px; height: 350px; margin: 15px auto; }
+        .card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; cursor: pointer; }
+        .card-inner.flipped { transform: rotateY(180deg); }
+        .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 25px; border: 3px solid var(--gold); }
+        .card-front { background: var(--choco); }
+        .card-back { background: #fff; color: var(--choco); transform: rotateY(180deg); font-weight: 600; }
+
+        /* Buttons */
+        .btn-main { background: var(--gold); color: var(--choco); padding: 15px 40px; border: none; border-radius: 50px; font-size: 1rem; font-weight: 800; cursor: pointer; margin-top: 20px; text-transform: uppercase; box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4); }
+        #noBtn { background: #555; color: #eee; position: absolute; border-radius: 50px; padding: 10px 25px; border: none; transition: 0.1s; z-index: 99; }
+
+        h1 { font-family: 'Pacifico', cursive; color: var(--gold); font-size: 2rem; text-shadow: 2px 2px #000; }
+        .gif { width: 130px; margin-bottom: 20px; border-radius: 15px; }
+        .quote-box { background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 15px; margin: 20px 0; border-left: 5px solid var(--gold); text-align: left; line-height: 1.6; }
+    </style>
+</head>
+<body>
+
+<div class="progress-container"><div class="progress-bar" id="pBar"></div></div>
+<audio id="bgMusic" loop><source src="music.mp3" type="audio/mpeg"></audio>
+
+<section id="s1" class="active">
+    <img src="https://media.tenor.com/7p48-8uXidIAAAAi/milk-and-mocha.gif" class="gif">
+    <h1>Happy Chocolate Day, Kismis! 🍫</h1>
+    <p>You're sweeter than any chocolate in the world. Ready for your digital treat?</p>
+    <button class="btn-main" onclick="startApp()">Open the Box 💝</button>
+</section>
+
+<section id="s2">
+    <h1>Selecting the best piece...</h1>
+    <div style="width: 250px; height: 10px; background: #444; border-radius: 10px; overflow: hidden; margin-top: 20px;">
+        <div id="loader" style="height: 100%; width: 0%; background: var(--gold); transition: 2s linear;"></div>
+    </div>
+    <p style="margin-top: 10px;" id="loadText">Finding your favorite flavor...</p>
+</section>
+
+<section id="s3">
+    <h1>Flavor: Pure Love ❤️</h1>
+    <div class="card-container">
+        <div class="card-inner" onclick="this.classList.toggle('flipped')">
+            <div class="card-front">
+                <p>Kismis, why are you my "Only One"?</p>
+                <p style="font-size: 0.7rem; margin-top: 20px; color: var(--gold);">(Tap to unwrap)</p>
+            </div>
+            <div class="card-back">
+                <p>“Kismis, you’re not just someone I love… you’re someone my heart chose without any doubt.”</p>
+            </div>
+        </div>
+    </div>
+    <button class="btn-main" onclick="nav('s3','s4')">Next Piece 🍫</button>
+</section>
+
+<section id="s4">
+    <h1>Flavor: Sweet Home 🏠</h1>
+    <img src="https://media.tenor.com/YmKzG75uN_oAAAAi/bunny-cute.gif" class="gif">
+    <div class="quote-box">
+        “Kismis, you feel like home to me. Safe, comforting, and full of love. Can I call you mine forever?”
+    </div>
+    <button class="btn-main" onclick="nav('s4','s5')">Keep Eating! 😍</button>
+</section>
+
+<section id="s5">
+    <h1>The "Chocolate Tax" Meme 🧾</h1>
+    <div style="background: #fff; color: #333; padding: 20px; border-radius: 15px; text-align: left;">
+        <p><b>From:</b> Chikku (The Collector)</p>
+        <p><b>To:</b> Kismis (The Sweetest)</p>
+        <p style="margin-top: 10px;">For being this cute today, you owe me:</p>
+        <p>• 1000% of your attention.</p>
+        <p>• Unlimited forehead kisses.</p>
+        <p>• Half of every chocolate you buy today.</p>
+    </div>
+    <button class="btn-main" onclick="nav('s5','s6')">I Accept! 🤝</button>
+</section>
+
+<section id="s6">
+    <h1>Flavor: Forever Bliss ✨</h1>
+    <div class="card-container">
+        <div class="card-inner" onclick="this.classList.toggle('flipped')">
+            <div class="card-front">
+                <p>What is my biggest wish?</p>
+            </div>
+            <div class="card-back">
+                <p>“Kismis, with you every ordinary day feels special. I don’t want a future where your hand isn’t in mine.”</p>
+            </div>
+        </div>
+    </div>
+    <button class="btn-main" onclick="nav('s6','s7')">One last bite...</button>
+</section>
+
+<section id="s7">
+    <img src="https://media.tenor.com/N28R_ZpS66QAAAAi/milk-and-mocha-bear.gif" class="gif">
+    <h1>Will you be my Chocolate?</h1>
+    <p>I know I can be a bit bitter sometimes, but I promise to be sweet for you forever. Forgive your Chikku?</p>
+    <div style="height: 100px; position: relative; width: 100%; margin-top: 20px;">
+        <button class="btn-main" onclick="nav('s7','s8')">Yes, Always! ❤️</button>
+        <button id="noBtn" onmouseover="moveNo()" onclick="moveNo()">No 😤</button>
+    </div>
+</section>
+
+<section id="s8">
+    <h1>Virtual Chocolate Treat 🍬</h1>
+    <p>Press the button to feed Kismis a digital chocolate!</p>
+    <button class="btn-main" onclick="feedChoco()">Feed Kismis</button>
+    <p id="feedMsg" style="display:none; margin-top: 20px; font-size: 1.5rem;">YUMMY! 😋❤️</p>
+    <button class="btn-main" id="lastBtn" style="display:none;" onclick="nav('s8','s9')">Final Message</button>
+</section>
+
+<section id="s9">
+    <div style="border: 4px solid var(--gold); padding: 40px; border-radius: 40px; background: rgba(0,0,0,0.5);">
+        <h1>Happy Chocolate Day!</h1>
+        <p class="quote-box" style="border-left-color: var(--primary);">“I may not say it perfectly every time, Kismis, but my heart knows only one name. Will you be my person?”</p>
+        <p style="font-family: 'Pacifico'; font-size: 1.8rem; color: var(--gold);">“I choose you—today, tomorrow, and always.”</p>
+        <p style="margin-top: 20px; font-size: 1.5rem;">I Love You! ❤️</p>
+    </div>
+</section>
+
+<script>
+    let step = 1;
+    const total = 9;
+    const music = document.getElementById('bgMusic');
+
+    function startApp() {
+        music.play();
+        nav('s1', 's2');
+        document.getElementById('loader').style.width = '100%';
+        setTimeout(() => {
+            document.getElementById('loadText').innerText = "Chocolate Found! ❤️";
+            setTimeout(() => nav('s2','s3'), 1000);
+        }, 2000);
+        startRain();
+    }
+
+    function nav(oldId, newId) {
+        document.getElementById(oldId).classList.remove('active');
+        document.getElementById(newId).classList.add('active');
+        step++;
+        document.getElementById('pBar').style.width = (step / total * 100) + '%';
+    }
+
+    function moveNo() {
+        const btn = document.getElementById('noBtn');
+        btn.style.left = Math.random() * 70 + 'vw';
+        btn.style.top = Math.random() * 70 + 'vh';
+    }
+
+    function feedChoco() {
+        document.getElementById('feedMsg').style.display = 'block';
+        document.getElementById('lastBtn').style.display = 'inline-block';
+    }
+
+    function startRain() {
+        setInterval(() => {
+            const p = document.createElement("div");
+            p.className = "particle";
+            // Chocolate Day Mix: Chocolate, Roses, Red, Blue, Yellow hearts
+            const items = ["🍫", "🌹", "❤️", "💙", "💛", "🍩", "🍪"];
+            p.innerHTML = items[Math.floor(Math.random() * items.length)];
+            p.style.left = Math.random() * 100 + "vw";
+            p.style.fontSize = Math.random() * 20 + 20 + "px";
+            p.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), 5000);
+        }, 300);
+    }
+</script>
+</body>
+</html>
