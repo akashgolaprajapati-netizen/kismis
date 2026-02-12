@@ -1,1 +1,122 @@
-INDEX FILE READY
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Forever Kismis | Chikku</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --crimson: #800000; --gold: #d4af37; --deep-black: #0a0000; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--deep-black); font-family: 'Poppins', sans-serif; overflow-x: hidden; color: #fff; }
+
+        /* Heartbeat Animation Background */
+        .bg-glow { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100vw; height: 100vh; background: radial-gradient(circle, #4a0000 0%, transparent 70%); z-index: -1; animation: beat 2s infinite; }
+        @keyframes beat { 0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); } }
+
+        /* Falling Soul Particles */
+        .particle { position: fixed; top: -10%; pointer-events: none; z-index: 999; animation: fall linear forwards; }
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
+
+        section { min-height: 100vh; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 40px; text-align: center; }
+        .active { display: flex; animation: fadeIn 1.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Deep Love Quotes */
+        .love-card { background: rgba(0, 0, 0, 0.7); border-left: 3px solid var(--gold); padding: 30px; border-radius: 0 20px 20px 0; max-width: 400px; box-shadow: 20px 20px 60px #000; margin: 20px auto; }
+        
+        h1 { font-family: 'Playfair Display', serif; font-style: italic; color: var(--gold); font-size: 2.5rem; margin-bottom: 20px; }
+        p { line-height: 1.8; letter-spacing: 0.5px; opacity: 0.9; }
+
+        /* Buttons */
+        .btn-love { background: transparent; color: var(--gold); border: 1px solid var(--gold); padding: 15px 45px; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: 0.5s; margin-top: 30px; }
+        .btn-love:hover { background: var(--gold); color: #000; box-shadow: 0 0 30px var(--gold); }
+        
+        #noBtn { background: transparent; color: #333; position: absolute; border: 1px solid #111; padding: 10px 20px; z-index: 99; cursor: pointer; }
+
+        .signature { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<section id="s1" class="active">
+    <h1>Kismis...</h1>
+    <p>I don't just love you. I am consumed by you.</p>
+    <button class="btn-love" onclick="nav('s1','s2')">Look Into My Heart</button>
+</section>
+
+<section id="s2">
+    <div class="love-card">
+        <p>“Kismis, you’re not just someone I love… you’re someone my heart chose without any doubt.”</p>
+    </div>
+    <p style="margin-top: 20px;">Every day I wake up and realize that among billions, my soul only recognizes yours. You are my only truth.</p>
+    <button class="btn-love" onclick="nav('s2','s3')">Always You</button>
+</section>
+
+<section id="s3">
+    <h1>The Only Home</h1>
+    <p>“Kismis, you feel like home to me. Safe, comforting, and full of love.”</p>
+    <p class="signature" style="font-size: 1rem; opacity: 0.8; margin-top: 20px;">I want to stay wrapped in you forever. Your scent, your touch, your voice—it's the only peace I know.</p>
+    <button class="btn-love" onclick="nav('s3','s4')">I Belong To You</button>
+</section>
+
+<section id="s4">
+    <div class="love-card">
+        <p>“I don’t want a future where your hand isn’t in mine.”</p>
+    </div>
+    <p>I promise to hold you through every storm, to celebrate you in every joy, and to love you even when the world forgets how to.</p>
+    <button class="btn-love" onclick="nav('s4','s5')">Our Eternity</button>
+</section>
+
+<section id="s5">
+    <h1>Forgive your Duffer?</h1>
+    <p>“I may not say it perfectly every time, Kismis, but my heart knows only one name.”</p>
+    <p style="margin-top: 15px;">I am far from perfect, but my love for you is the most perfect thing I own. Let me hold you again?</p>
+    <div style="height: 100px; position: relative; width: 100%; margin-top: 30px;">
+        <button class="btn-love" onclick="nav('s5','s6')">Yes, Forever ❤️</button>
+        <button id="noBtn" onmouseover="moveNo()" onclick="moveNo()">Never 😤</button>
+    </div>
+</section>
+
+<section id="s6">
+    <p style="letter-spacing: 5px; font-size: 0.8rem; color: var(--gold);">THE ULTIMATE PROMISE</p>
+    <h1 style="margin: 20px 0;">“Kismis, I choose you—today, tomorrow, and always.”</h1>
+    <p>My love for you isn't a feeling, it's a permanent state of being. I am yours. Completely. Entirely. Infinitely.</p>
+    <div class="signature">I Love You, Kismis. ❤️</div>
+</section>
+
+<script>
+    function nav(oldId, newId) {
+        document.getElementById(oldId).classList.remove('active');
+        document.getElementById(newId).classList.add('active');
+        if(newId === 's2') startLoveRain();
+    }
+
+    function moveNo() {
+        const btn = document.getElementById('noBtn');
+        btn.style.left = Math.random() * 80 + 'vw';
+        btn.style.top = Math.random() * 80 + 'vh';
+    }
+
+    function startLoveRain() {
+        setInterval(() => {
+            const p = document.createElement("div");
+            p.className = "particle";
+            // Signature Love Mix: ❤️, 💙, 💛, 🌹, 💋
+            const items = ["❤️", "💙", "💛", "🌹", "💋", "✨"];
+            p.innerHTML = items[Math.floor(Math.random() * items.length)];
+            p.style.left = Math.random() * 100 + "vw";
+            p.style.fontSize = Math.random() * 20 + 15 + "px";
+            p.style.animationDuration = Math.random() * 4 + 3 + "s";
+            p.style.opacity = Math.random();
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), 6000);
+        }, 300);
+    }
+    
+    window.onload = startLoveRain;
+</script>
+</body>
+</html>
