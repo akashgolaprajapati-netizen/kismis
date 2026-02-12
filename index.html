@@ -1,1 +1,112 @@
-INDEX FILE READY
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Favorite Distraction | Chikku</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --rose: #ff85a1; --gold: #f9dcc4; --dark: #1a0a0a; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--dark); font-family: 'Montserrat', sans-serif; overflow-x: hidden; color: #fff; }
+
+        /* Floating Hearts */
+        .particle { position: fixed; bottom: -10%; pointer-events: none; z-index: 999; animation: floatUp linear forwards; }
+        @keyframes floatUp { to { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
+
+        section { min-height: 100vh; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 30px; text-align: center; }
+        .active { display: flex; animation: fadeIn 1s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+        /* Beautiful Cards */
+        .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 133, 161, 0.3); border-radius: 25px; padding: 30px; width: 320px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+
+        h1 { font-family: 'Dancing Script', cursive; font-size: 3rem; color: var(--rose); margin-bottom: 10px; }
+        .flirt-text { font-style: italic; color: var(--gold); margin-top: 15px; font-size: 1.1rem; }
+        
+        /* Buttons */
+        .btn-fancy { background: linear-gradient(45deg, var(--rose), #ff4d6d); color: white; border: none; padding: 15px 40px; border-radius: 50px; font-weight: 600; cursor: pointer; margin-top: 30px; letter-spacing: 1px; transition: 0.3s; }
+        .btn-fancy:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--rose); }
+
+        /* Hug Meter */
+        .meter-container { width: 100%; height: 10px; background: #333; border-radius: 10px; margin: 20px 0; overflow: hidden; }
+        #meter-fill { width: 0%; height: 100%; background: var(--rose); transition: 2s; }
+    </style>
+</head>
+<body>
+
+<section id="s1" class="active">
+    <p style="letter-spacing: 3px; font-size: 0.7rem; color: var(--rose);">WARNING: TOO MUCH CUTENESS AHEAD</p>
+    <h1>Hey Beautiful!</h1>
+    <div class="glass-card">
+        <p>I was going to write something poetic, but then I looked at your photo and forgot how to use my brain. 😍</p>
+    </div>
+    <button class="btn-fancy" onclick="nav('s1','s2')">Check My Pulse 💓</button>
+</section>
+
+<section id="s2">
+    <h1>The Only View</h1>
+    <div class="glass-card">
+        <p>“They say the world is big, but my whole world is currently reading this text and looking way too pretty while doing it.”</p>
+        <p class="flirt-text">Honestly Kismis, you're a serious threat to my concentration. 😈</p>
+    </div>
+    <button class="btn-fancy" onclick="nav('s2','s3')">The "Cuddle" Test</button>
+</section>
+
+<section id="s3">
+    <h1>Hug Compatibility</h1>
+    <p>Calculating how perfectly you fit in my arms...</p>
+    <div class="glass-card">
+        <div class="meter-container"><div id="meter-fill"></div></div>
+        <h2 id="result">Scanning...</h2>
+    </div>
+    <button class="btn-fancy" id="testBtn" onclick="runTest()">Start Analysis 🔬</button>
+    <button class="btn-fancy" id="nextBtn" style="display:none;" onclick="nav('s3','s4')">I Knew It! ❤️</button>
+</section>
+
+<section id="s4">
+    <p class="flirt-text" style="font-size: 0.8rem;">NO MORE JOKES NOW...</p>
+    <h1>You're Mine.</h1>
+    <div class="glass-card" style="border-color: var(--gold);">
+        <p>“You aren't just a part of my life, Kismis. You are the heartbeat that keeps it all alive. I promise to hold you through every storm and never let go of the hand that fits so perfectly in mine.”</p>
+    </div>
+    <p style="margin-top: 25px; font-family: 'Dancing Script'; font-size: 2rem; color: var(--rose);">I Love You, Forever. ❤️</p>
+</section>
+
+<script>
+    function nav(oldId, newId) {
+        document.getElementById(oldId).classList.remove('active');
+        document.getElementById(newId).classList.add('active');
+        startHearts();
+    }
+
+    function runTest() {
+        document.getElementById('meter-fill').style.width = '100%';
+        document.getElementById('testBtn').style.display = 'none';
+        setTimeout(() => {
+            document.getElementById('result').innerText = "1000% MATCH! 🔥";
+            document.getElementById('result').style.color = "#ff85a1";
+            alert("Warning: Kismis is dangerously huggable. Chikku's arms are the only authorized safety zone.");
+            document.getElementById('nextBtn').style.display = 'inline-block';
+        }, 2000);
+    }
+
+    function startHearts() {
+        setInterval(() => {
+            const p = document.createElement("div");
+            p.className = "particle";
+            // Red, Blue, Yellow hearts + Sparkles
+            const items = ["❤️", "💙", "💛", "✨", "💋"];
+            p.innerHTML = items[Math.floor(Math.random() * items.length)];
+            p.style.left = Math.random() * 100 + "vw";
+            p.style.fontSize = Math.random() * 20 + 15 + "px";
+            p.style.animationDuration = Math.random() * 3 + 4 + "s";
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), 6000);
+        }, 300);
+    }
+
+    window.onload = startHearts;
+</script>
+</body>
+</html>
