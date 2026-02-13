@@ -1,137 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Kismis | From Chikku</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-        :root { --warm-red: #d62828; --soft-gold: #f9dcc4; --deep-bg: #120101; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--deep-bg); font-family: 'Montserrat', sans-serif; color: #fff; overflow-x: hidden; touch-action: manipulation; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Kismis ❤️ | By Chikku</title>
 
-        /* Floating Kisses & Hearts */
-        .particle { position: fixed; bottom: -10%; pointer-events: none; z-index: 999; animation: floatUp linear forwards; }
-        @keyframes floatUp { to { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
-        section { min-height: 100vh; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 30px; text-align: center; }
-        .active { display: flex; animation: fadeIn 1.2s ease; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+<style>
+:root{
+  --primary:#ff2e63;
+  --soft:#ff85a1;
+  --gold:#ffd700;
+  --dark-bg:#0f0101;
+}
 
-        .message-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(214, 40, 40, 0.2); border-radius: 20px; padding: 30px; width: 320px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin: 20px auto; }
-        
-        h1 { font-family: 'Dancing Script', cursive; font-size: 2.8rem; color: var(--warm-red); margin-bottom: 10px; }
-        .sub { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--soft-gold); margin-bottom: 20px; }
-        p { line-height: 1.6; font-size: 0.95rem; font-weight: 300; }
-        
-        /* Buttons */
-        .btn-warm { background: var(--warm-red); color: white; border: none; padding: 14px 35px; border-radius: 50px; cursor: pointer; margin-top: 25px; transition: 0.3s; font-family: 'Montserrat'; font-weight: 500; }
-        .btn-warm:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(214, 40, 40, 0.4); }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-        /* Kiss Counter Styling */
-        .kiss-zone { margin: 20px 0; }
-        #kissBtn { background: transparent; font-size: 3rem; border: none; cursor: pointer; transition: transform 0.1s; display: block; margin: 0 auto; }
-        #kissBtn:active { transform: scale(1.2); }
-        .counter-text { font-family: 'Dancing Script'; font-size: 1.5rem; color: var(--soft-gold); margin-top: 10px; }
-    </style>
+body{
+  font-family:'Montserrat',sans-serif;
+  background: radial-gradient(circle at top, #1a0005, #0f0101 60%);
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* Progress Bar */
+.progress-container{
+  position:fixed;
+  top:0;
+  width:100%;
+  height:6px;
+  background:#000;
+  z-index:1000;
+}
+.progress-bar{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,var(--primary),var(--soft));
+  transition:.4s;
+  box-shadow:0 0 15px var(--primary);
+}
+
+/* Sections */
+section{
+  min-height:100vh;
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px;
+}
+.active{
+  display:flex;
+  animation:zoomIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes zoomIn{
+  from{opacity:0;transform:scale(0.8);}
+  to{opacity:1;transform:scale(1);}
+}
+
+/* Image */
+.main-img{
+  width:240px;
+  border-radius:25px;
+  margin:20px 0;
+  border: 1px solid rgba(255,46,99,0.3);
+  box-shadow:0 20px 40px rgba(0,0,0,.8);
+  transition:0.4s;
+}
+.main-img:hover{
+  transform:scale(1.05);
+}
+
+/* Button */
+.btn{
+  background:linear-gradient(45deg,var(--primary),var(--soft));
+  color:#fff;
+  padding:15px 45px;
+  border:none;
+  border-radius:50px;
+  font-weight:600;
+  cursor:pointer;
+  margin-top:20px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  box-shadow:0 10px 25px rgba(255,46,99,.4);
+  transition:0.3s;
+}
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 35px rgba(255,46,99,.6);
+}
+
+/* Headings */
+h1{
+  font-family:'Dancing Script',cursive;
+  color:var(--soft);
+  font-size:3rem;
+  text-shadow:0 0 15px rgba(255,133,161,0.5);
+}
+
+.vow-tag{
+  letter-spacing:4px;
+  font-size:0.7rem;
+  color:var(--gold);
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+/* Kiss Zone */
+.kiss-zone{
+  margin:20px 0;
+  padding:25px;
+  background:rgba(255,255,255,0.03);
+  border-radius:20px;
+  border:1px dashed var(--soft);
+}
+
+#kissBtn{
+  background:transparent;
+  font-size:3.5rem;
+  border:none;
+  cursor:pointer;
+  transition:0.2s;
+}
+#kissBtn:active{
+  transform:scale(1.4);
+}
+
+.counter-text{
+  font-family:'Dancing Script';
+  font-size:1.6rem;
+  color:var(--gold);
+  margin-top:10px;
+}
+
+/* Letter Card */
+.letter-box{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.1);
+  padding:30px;
+  border-radius:25px;
+  max-width:500px;
+  text-align:left;
+  line-height:1.9;
+  margin-top:25px;
+  display:none;
+  animation:slideUp 1s ease;
+}
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* Floating particles */
+.particle{
+  position:fixed;
+  bottom:-10%;
+  pointer-events:none;
+  animation:floatUp linear forwards;
+}
+@keyframes floatUp{
+  to{transform:translateY(-110vh) rotate(360deg);opacity:0;}
+}
+
+@media(max-width:600px){
+  h1{font-size:2.3rem;}
+  .main-img{width:200px;}
+}
+</style>
 </head>
+
 <body>
 
-<div id="pBar" style="position: fixed; top: 0; height: 4px; background: var(--warm-red); width: 0%; transition: 0.4s;"></div>
+<div class="progress-container">
+  <div class="progress-bar" id="bar"></div>
+</div>
 
 <section id="s1" class="active">
-    <p class="sub">A quick confession...</p>
-    <h1>Hey Kismis</h1>
-    <div class="message-card">
-        <p>I’m sorry for being a bit quiet last night. I was feeling a little low, and the match at college just kept me occupied. I hate that it made us lose some of our time together.</p>
-    </div>
-    <button class="btn-warm" onclick="nav('s1','s2')">But honestly...</button>
+  <span class="vow-tag">To My Favorite Person</span>
+  <h1>Hey Kismis</h1>
+  <img class="main-img" src="https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?q=80&w=1000&auto=format&fit=crop">
+  <p style="max-width:350px;">
+    Even when the world gets loud — matches, college, stress —  
+    your voice is the only thing that brings me back to peace.
+  </p>
+  <button class="btn" onclick="next('s1','s2')">Look Inside ❤️</button>
 </section>
 
 <section id="s2">
-    <p class="sub">The Real Truth</p>
-    <h1>You’re the Prize</h1>
-    <div class="message-card">
-        <p>Matches come and go, but the only win I actually care about is you. Even when I’m busy or silent, you’re the first person I want to talk to when the noise stops. You’re my peace, Kismis.</p>
+  <span class="vow-tag">Kiss Day 💋</span>
+  <h1>A Thousand Kisses</h1>
+  <div class="kiss-zone">
+    <p style="margin-bottom:15px;font-size:0.9rem;">
+      Each tap is a promise. I may not always be there physically,  
+      but my love never misses a moment.
+    </p>
+    <button id="kissBtn" onclick="addKiss()">💋</button>
+    <div class="counter-text">
+      Kisses Collected: <span id="kCount">0</span>
     </div>
-    <button class="btn-warm" onclick="nav('s2','s3')">It’s Kiss Day! 💋</button>
+  </div>
+  <button class="btn" id="nextBtn" style="display:none;" onclick="next('s2','s3')">
+    The Final Secret ✨
+  </button>
 </section>
 
 <section id="s3">
-    <p class="sub">Interactive Love</p>
-    <h1>One isn’t enough...</h1>
-    <div class="message-card">
-        <p>I’m sending you all the kisses I couldn’t give you yesterday. Tap the lips to collect them! 😉</p>
-        <div class="kiss-zone">
-            <button id="kissBtn" onclick="addKiss()">💋</button>
-            <div class="counter-text">Kisses from Chikku: <span id="kCount">0</span></div>
-        </div>
-    </div>
-    <button class="btn-warm" id="nextBtn" style="display:none;" onclick="nav('s3','s4')">That's more like it ❤️</button>
-</section>
+  <span class="vow-tag">Happy Valentine's Day</span>
+  <h1>My Whole World</h1>
 
-<section id="s4">
-    <p class="sub">Just For You</p>
-    <h1>Always Yours</h1>
-    <div class="message-card">
-        <p>Thank you for being so patient with me. I promise to make it up to you soon with some real ones. I love you, and I’m always, always here.</p>
-    </div>
-    <p style="font-family: 'Dancing Script'; font-size: 2.2rem; color: var(--warm-red); margin-top: 20px;">I Love You, Kismis. ❤️</p>
+  <p style="color:var(--gold);font-style:italic;">
+    “In a world of noise, you are my favorite silence.”
+  </p>
+
+  <button class="btn" id="revealBtn" onclick="reveal()">Read Your Letter 🎁</button>
+
+  <div id="letterCard" class="letter-box">
+    <p><strong>Dearest Kismis,</strong><br><br>
+    I’m sorry for the distance sometimes. Life gets noisy,  
+    but you are my calm. You are my safe place.<br><br>
+    I don’t just want you for the perfect days.  
+    I want you for the messy ones too.  
+    Your smile is my victory, and your hand in mine  
+    is the only trophy I’ll ever need.<br><br>
+    I promise to always come back to you.  
+    You are my home.<br><br>
+    <strong>Will you be my Valentine forever?</strong><br><br>
+    Forever Yours,<br>
+    Chikku ❤️</p>
+  </div>
+
+  <p style="margin-top:40px;font-family:'Dancing Script';font-size:1.8rem;color:var(--soft);">
+    Happy Valentine's Day, Kismis!
+  </p>
 </section>
 
 <script>
-    let kissCount = 0;
+let step=1,total=3,kissCount=0;
 
-    function nav(oldId, newId) {
-        document.getElementById(oldId).classList.remove('active');
-        document.getElementById(newId).classList.add('active');
-        // Update bar
-        const steps = { s1: 25, s2: 50, s3: 75, s4: 100 };
-        document.getElementById('pBar').style.width = steps[newId] + '%';
-    }
+function next(a,b){
+  document.getElementById(a).classList.remove("active");
+  document.getElementById(b).classList.add("active");
+  step++;
+  document.getElementById("bar").style.width=(step/total*100)+"%";
+  window.scrollTo(0,0);
+}
 
-    function addKiss() {
-        kissCount++;
-        document.getElementById('kCount').innerText = kissCount;
-        
-        // Visual feedback
-        if(kissCount >= 5) {
-            document.getElementById('nextBtn').style.display = 'inline-block';
-        }
+function addKiss(){
+  kissCount++;
+  document.getElementById("kCount").innerText=kissCount;
+  if(kissCount>=5)
+    document.getElementById("nextBtn").style.display="inline-block";
 
-        // Mini heart burst effect
-        const heart = document.createElement("div");
-        heart.innerHTML = "❤️";
-        heart.style.position = "fixed";
-        heart.style.left = "50%";
-        heart.style.top = "50%";
-        heart.style.transform = "translate(-50%, -50%)";
-        heart.style.fontSize = "2rem";
-        heart.style.zIndex = "1000";
-        heart.animate([
-            { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
-            { transform: `translate(${Math.random() * 200 - 100}px, -200px) scale(2)`, opacity: 0 }
-        ], { duration: 800 });
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 800);
-    }
+  const heart=document.createElement("div");
+  heart.innerHTML="❤️";
+  heart.style.position="fixed";
+  heart.style.left="50%";
+  heart.style.top="50%";
+  heart.style.fontSize="2.5rem";
+  heart.style.zIndex="1001";
 
-    function startRain() {
-        setInterval(() => {
-            const p = document.createElement("div");
-            p.className = "particle";
-            // Red, Blue, Yellow hearts + Lips
-            const items = ["❤️", "💙", "💛", "💋", "✨"];
-            p.innerHTML = items[Math.floor(Math.random() * items.length)];
-            p.style.left = Math.random() * 100 + "vw";
-            p.style.fontSize = Math.random() * 20 + 15 + "px";
-            p.style.animationDuration = Math.random() * 3 + 4 + "s";
-            document.body.appendChild(p);
-            setTimeout(() => p.remove(), 6000);
-        }, 300);
-    }
+  heart.animate([
+    {transform:'translate(-50%,-50%) scale(1)',opacity:1},
+    {transform:`translate(${Math.random()*300-150}px,-300px) scale(2)`,opacity:0}
+  ],{duration:1000});
 
-    window.onload = startRain;
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),1000);
+}
+
+function reveal(){
+  document.getElementById("letterCard").style.display="block";
+  document.getElementById("revealBtn").style.display="none";
+  document.getElementById("letterCard").scrollIntoView({behavior:"smooth"});
+}
+
+function rain(){
+  setInterval(()=>{
+    const p=document.createElement("div");
+    p.className="particle";
+    const icons=["❤️","💙","💛","✨","💋"];
+    p.innerText=icons[Math.floor(Math.random()*icons.length)];
+    p.style.left=Math.random()*100+"vw";
+    p.style.fontSize=Math.random()*20+15+"px";
+    p.style.animationDuration=Math.random()*3+3+"s";
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),5000);
+  },350);
+}
+rain();
 </script>
+
 </body>
 </html>
