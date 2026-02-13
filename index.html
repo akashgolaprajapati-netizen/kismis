@@ -1,1 +1,137 @@
-INDEX FILE READY
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Kismis | From Chikku</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --warm-red: #d62828; --soft-gold: #f9dcc4; --deep-bg: #120101; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--deep-bg); font-family: 'Montserrat', sans-serif; color: #fff; overflow-x: hidden; touch-action: manipulation; }
+
+        /* Floating Kisses & Hearts */
+        .particle { position: fixed; bottom: -10%; pointer-events: none; z-index: 999; animation: floatUp linear forwards; }
+        @keyframes floatUp { to { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
+
+        section { min-height: 100vh; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 30px; text-align: center; }
+        .active { display: flex; animation: fadeIn 1.2s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .message-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(214, 40, 40, 0.2); border-radius: 20px; padding: 30px; width: 320px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin: 20px auto; }
+        
+        h1 { font-family: 'Dancing Script', cursive; font-size: 2.8rem; color: var(--warm-red); margin-bottom: 10px; }
+        .sub { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--soft-gold); margin-bottom: 20px; }
+        p { line-height: 1.6; font-size: 0.95rem; font-weight: 300; }
+        
+        /* Buttons */
+        .btn-warm { background: var(--warm-red); color: white; border: none; padding: 14px 35px; border-radius: 50px; cursor: pointer; margin-top: 25px; transition: 0.3s; font-family: 'Montserrat'; font-weight: 500; }
+        .btn-warm:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(214, 40, 40, 0.4); }
+
+        /* Kiss Counter Styling */
+        .kiss-zone { margin: 20px 0; }
+        #kissBtn { background: transparent; font-size: 3rem; border: none; cursor: pointer; transition: transform 0.1s; display: block; margin: 0 auto; }
+        #kissBtn:active { transform: scale(1.2); }
+        .counter-text { font-family: 'Dancing Script'; font-size: 1.5rem; color: var(--soft-gold); margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div id="pBar" style="position: fixed; top: 0; height: 4px; background: var(--warm-red); width: 0%; transition: 0.4s;"></div>
+
+<section id="s1" class="active">
+    <p class="sub">A quick confession...</p>
+    <h1>Hey Kismis</h1>
+    <div class="message-card">
+        <p>I’m sorry for being a bit quiet last night. I was feeling a little low, and the match at college just kept me occupied. I hate that it made us lose some of our time together.</p>
+    </div>
+    <button class="btn-warm" onclick="nav('s1','s2')">But honestly...</button>
+</section>
+
+<section id="s2">
+    <p class="sub">The Real Truth</p>
+    <h1>You’re the Prize</h1>
+    <div class="message-card">
+        <p>Matches come and go, but the only win I actually care about is you. Even when I’m busy or silent, you’re the first person I want to talk to when the noise stops. You’re my peace, Kismis.</p>
+    </div>
+    <button class="btn-warm" onclick="nav('s2','s3')">It’s Kiss Day! 💋</button>
+</section>
+
+<section id="s3">
+    <p class="sub">Interactive Love</p>
+    <h1>One isn’t enough...</h1>
+    <div class="message-card">
+        <p>I’m sending you all the kisses I couldn’t give you yesterday. Tap the lips to collect them! 😉</p>
+        <div class="kiss-zone">
+            <button id="kissBtn" onclick="addKiss()">💋</button>
+            <div class="counter-text">Kisses from Chikku: <span id="kCount">0</span></div>
+        </div>
+    </div>
+    <button class="btn-warm" id="nextBtn" style="display:none;" onclick="nav('s3','s4')">That's more like it ❤️</button>
+</section>
+
+<section id="s4">
+    <p class="sub">Just For You</p>
+    <h1>Always Yours</h1>
+    <div class="message-card">
+        <p>Thank you for being so patient with me. I promise to make it up to you soon with some real ones. I love you, and I’m always, always here.</p>
+    </div>
+    <p style="font-family: 'Dancing Script'; font-size: 2.2rem; color: var(--warm-red); margin-top: 20px;">I Love You, Kismis. ❤️</p>
+</section>
+
+<script>
+    let kissCount = 0;
+
+    function nav(oldId, newId) {
+        document.getElementById(oldId).classList.remove('active');
+        document.getElementById(newId).classList.add('active');
+        // Update bar
+        const steps = { s1: 25, s2: 50, s3: 75, s4: 100 };
+        document.getElementById('pBar').style.width = steps[newId] + '%';
+    }
+
+    function addKiss() {
+        kissCount++;
+        document.getElementById('kCount').innerText = kissCount;
+        
+        // Visual feedback
+        if(kissCount >= 5) {
+            document.getElementById('nextBtn').style.display = 'inline-block';
+        }
+
+        // Mini heart burst effect
+        const heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.style.position = "fixed";
+        heart.style.left = "50%";
+        heart.style.top = "50%";
+        heart.style.transform = "translate(-50%, -50%)";
+        heart.style.fontSize = "2rem";
+        heart.style.zIndex = "1000";
+        heart.animate([
+            { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+            { transform: `translate(${Math.random() * 200 - 100}px, -200px) scale(2)`, opacity: 0 }
+        ], { duration: 800 });
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 800);
+    }
+
+    function startRain() {
+        setInterval(() => {
+            const p = document.createElement("div");
+            p.className = "particle";
+            // Red, Blue, Yellow hearts + Lips
+            const items = ["❤️", "💙", "💛", "💋", "✨"];
+            p.innerHTML = items[Math.floor(Math.random() * items.length)];
+            p.style.left = Math.random() * 100 + "vw";
+            p.style.fontSize = Math.random() * 20 + 15 + "px";
+            p.style.animationDuration = Math.random() * 3 + 4 + "s";
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), 6000);
+        }, 300);
+    }
+
+    window.onload = startRain;
+</script>
+</body>
+</html>
