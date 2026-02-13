@@ -1,1 +1,209 @@
-INDEX FILE READY
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine's Day, Kismis ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --val-red:#ff4d6d;
+  --val-pink:#ff85a1;
+  --gold:#ffd700;
+  --dark-bg:#0a0101;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Montserrat',sans-serif;
+  background:var(--dark-bg);
+  color:#fff;
+  overflow-x:hidden;
+  touch-action: manipulation;
+}
+
+.progress-container{position:fixed;top:0;width:100%;height:4px;background:#000;z-index:1000;}
+.progress-bar{height:100%;width:0;background:var(--val-red);transition:.4s;box-shadow: 0 0 10px var(--val-red);}
+
+section{
+  min-height:100vh;
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px;
+}
+.active{display:flex;animation:fadeIn 1s ease-in-out;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+/* Hero Image */
+.hero-img{
+  width:260px;
+  border-radius:30px;
+  margin:20px 0;
+  border: 1px solid rgba(255,77,109,0.3);
+  box-shadow:0 15px 50px rgba(255,77,109,0.2);
+}
+
+/* Luxury Buttons */
+.btn-v{
+  background: linear-gradient(45deg, var(--val-red), var(--val-pink));
+  color:#fff;
+  padding:16px 40px;
+  border:none;
+  border-radius:50px;
+  font-weight:600;
+  cursor:pointer;
+  margin-top:25px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  box-shadow:0 10px 20px rgba(255,77,109,0.3);
+}
+
+h1{font-family:'Dancing Script',cursive; color:var(--val-pink); font-size: 3.2rem;}
+.v-tag{letter-spacing:5px; font-size:0.7rem; color:var(--gold); text-transform:uppercase; margin-bottom:15px;}
+
+/* Interaction Box */
+.love-box { 
+    background: rgba(255,255,255,0.03); 
+    border: 1px solid rgba(255,133,161,0.2); 
+    border-radius: 25px; 
+    padding: 30px; 
+    width: 100%; 
+    max-width: 350px; 
+    margin: 20px auto;
+}
+
+/* Floating Elements */
+.particle{
+  position:fixed;
+  bottom:-10%;
+  pointer-events:none;
+  animation:rise linear forwards;
+}
+@keyframes rise{to{transform:translateY(-110vh) rotate(360deg); opacity:0;}}
+
+/* Final Letter */
+.final-letter {
+  display:none;
+  text-align:left;
+  line-height:1.8;
+  padding:25px;
+  background:rgba(255,255,255,0.05);
+  border-radius:20px;
+  margin-top:20px;
+  border-left: 3px solid var(--gold);
+}
+</style>
+</head>
+
+<body>
+
+<div class="progress-container"><div class="progress-bar" id="pbar"></div></div>
+
+<section id="s1" class="active">
+  <span class="v-tag">February 14, 2026</span>
+  <h1>Happy Valentine's</h1>
+  <div class="love-box">
+    <p>I know I was a bit quiet last night. Between the college match and just feeling a little down, I got lost in my own head. I’m sorry if that felt like distance.</p>
+  </div>
+  <button class="btn-v" onclick="nav('s1','s2')">Look at me? ❤️</button>
+</section>
+
+<section id="s2">
+  <span class="v-tag">My Only Win</span>
+  <h1>You are my Peace</h1>
+  <div class="love-box">
+    <p>Matches and scores don't really matter. The only thing that truly recharges me after a long, chaotic day is you. You're the prize I care about keeping forever.</p>
+  </div>
+  <button class="btn-v" onclick="nav('s2','s3')">A Kiss Day Gift 💋</button>
+</section>
+
+<section id="s3">
+  <span class="v-tag">Kiss Day Redux</span>
+  <h1>100 Kisses for You</h1>
+  <div class="love-box" style="border-style: dashed;">
+    <p style="font-size: 0.8rem; margin-bottom: 15px;">I'm making up for every second I wasn't talking last night. Tap the lips to unlock my letter!</p>
+    <button id="kissBtn" onclick="tapKiss()" style="background:none; border:none; font-size: 4rem; cursor:pointer;">💋</button>
+    <p style="margin-top:10px; font-family:'Dancing Script'; color:var(--gold); font-size:1.5rem;">Total Kisses: <span id="kCount">0</span></p>
+  </div>
+  <button class="btn-v" id="nextBtn" style="display:none;" onclick="nav('s3','s4')">Read my Vow ✨</button>
+</section>
+
+<section id="s4">
+  <span class="v-tag">Our 2026 Promise</span>
+  <h1>Forever, Kismis.</h1>
+  
+  <button class="btn-v" id="revealBtn" onclick="revealLetter()">Open Your Letter 🎁</button>
+
+  <div id="letter" class="final-letter">
+    <p><strong>My Dearest Kismis,</strong><br><br>
+    Today is Valentine’s Day, but my love for you isn't just for today. It’s for the quiet nights, the busy match days, and even the moments when I’m a bit difficult to talk to.<br><br>
+    Thank you for being my sanctuary. You aren't just my girlfriend; you're the person who makes everything okay. I don’t promise to be perfect, but I promise to always come back to you, to always choose you, and to never let go of the hand that fits so perfectly in mine.<br><br>
+    I’m yours. Completely. In every timeline and every year.<br><br>
+    <strong>Will you be my Valentine forever?</strong><br><br>
+    With all my love,<br>
+    Chikku ❤️</p>
+  </div>
+  
+  <p style="margin-top: 30px; font-family: 'Dancing Script'; font-size: 2rem; color: var(--val-pink);">I Love You. ❤️</p>
+</section>
+
+<script>
+let kisses = 0;
+
+function nav(oldId, newId) {
+  document.getElementById(oldId).classList.remove('active');
+  document.getElementById(newId).classList.add('active');
+  const barWidth = { s1: 25, s2: 50, s3: 75, s4: 100 };
+  document.getElementById('pbar').style.width = barWidth[newId] + '%';
+  window.scrollTo(0,0);
+}
+
+function tapKiss() {
+  kisses++;
+  document.getElementById('kCount').innerText = kisses;
+  if(kisses >= 5) document.getElementById('nextBtn').style.display = 'inline-block';
+  
+  // Heart effect
+  const h = document.createElement("div");
+  h.innerHTML = "❤️";
+  h.style.position = "fixed";
+  h.style.left = "50%"; h.style.top = "50%";
+  h.style.fontSize = "2rem";
+  h.animate([
+    { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+    { transform: `translate(${Math.random()*200-100}px, -200px) scale(2)`, opacity: 0 }
+  ], { duration: 800 });
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(), 800);
+}
+
+function revealLetter() {
+  document.getElementById('letter').style.display = 'block';
+  document.getElementById('revealBtn').style.display = 'none';
+  document.getElementById('letter').scrollIntoView({behavior: 'smooth'});
+}
+
+function createRain() {
+  setInterval(() => {
+    const p = document.createElement("div");
+    p.className = "particle";
+    const items = ["❤️", "💙", "💛", "🌹", "✨", "💋"];
+    p.innerText = items[Math.floor(Math.random()*items.length)];
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.fontSize = Math.random() * 20 + 15 + "px";
+    p.style.animationDuration = Math.random() * 3 + 4 + "s";
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 5000);
+  }, 350);
+}
+createRain();
+</script>
+
+</body>
+</html>
