@@ -1,1 +1,234 @@
-INDEX FILE READY
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kismis & Chikku: The 6-Month Epic 🫦</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --velvet:#3d001f;
+  --crimson:#ff0055;
+  --gold:#ffd700;
+  --silk:#2d0036;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Montserrat',sans-serif;
+  background: radial-gradient(circle, var(--silk) 0%, #000 100%);
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* Luxury Progress Bar */
+.progress-container{position:fixed;top:0;width:100%;height:8px;background:rgba(0,0,0,0.5);z-index:1000;}
+.progress-bar{height:100%;width:0;background:linear-gradient(90deg, var(--crimson), var(--gold));transition:.6s;box-shadow: 0 0 20px var(--crimson);}
+
+section{
+  min-height:100vh;
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:50px 25px;
+}
+.active{display:flex;animation:epicIn 1.5s cubic-bezier(0.19, 1, 0.22, 1);}
+@keyframes epicIn{from{opacity:0; transform:scale(1.1) translateY(50px);}to{opacity:1; transform:scale(1) translateY(0);}}
+
+h1{font-family:'Dancing Script',cursive; color:var(--crimson); font-size: 3.8rem; text-shadow: 0 0 15px rgba(255,0,85,0.6);}
+.sub-tag{letter-spacing:6px; font-size:0.75rem; color:var(--gold); text-transform:uppercase; margin-bottom:20px; font-weight:700;}
+
+/* Elegant Content Containers */
+.luxury-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,215,0,0.2);
+    padding: 40px 30px;
+    border-radius: 40px;
+    max-width: 500px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+    margin-bottom: 25px;
+}
+
+.btn-main {
+    background: linear-gradient(45deg, var(--crimson), #9e0031);
+    color: white;
+    padding: 20px 50px;
+    border: none;
+    border-radius: 100px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 15px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    transition: 0.5s;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.btn-main:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 40px var(--crimson); }
+
+/* Interactive Elements */
+.kiss-counter { font-size: 4rem; cursor: pointer; display: block; margin: 20px 0; transition: 0.2s; }
+.kiss-counter:active { transform: scale(1.4) rotate(10deg); }
+
+/* The Long Letter */
+.scroll-letter {
+    text-align: left;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1.5s ease-in-out;
+    font-size: 0.95rem;
+    line-height: 2;
+    color: #e0e0e0;
+}
+
+.particle{position:fixed;bottom:-10%;pointer-events:none;z-index: 999;animation:floatUp linear forwards;}
+@keyframes floatUp{to{transform:translateY(-110vh) rotate(360deg); opacity:0;}}
+
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+.stat-box { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 20px; border: 1px solid rgba(255,0,85,0.2); }
+</style>
+</head>
+
+<body>
+
+<div class="progress-container"><div class="progress-bar" id="bar"></div></div>
+
+<section id="s1" class="active">
+    <span class="sub-tag">Private Entry | For Kismis Only</span>
+    <h1>Oh, Hello... 🫦</h1>
+    <div class="luxury-card">
+        <p>I was going to write a normal "Happy 6 Months" message, but then I remembered who I’m talking to. A girl so gorgeous it’s actually distracting. A girl who makes my heart beat faster just by typing "Hi".</p>
+        <p style="margin-top: 20px; color: var(--crimson); font-weight: 600;">Warning: Looking at this for too long might cause extreme blushing.</p>
+    </div>
+    <button class="btn-main" onclick="nav('s1','s2')">Prove me wrong 💓</button>
+</section>
+
+<section id="s2">
+    <span class="sub-tag">Chikku's Vitals</span>
+    <h1>My Addiction Level</h1>
+    <div class="luxury-card">
+        <p>Since we hit 6 months, my system has been acting weird. Let's run a diagnostic on how much I'm obsessed with you...</p>
+        <div style="width: 100%; height: 15px; background: #111; border-radius: 10px; margin: 30px 0; border: 1px solid #444;">
+            <div id="fill" style="width: 0%; height: 100%; background: var(--crimson); transition: 2.5s; box-shadow: 0 0 15px var(--crimson);"></div>
+        </div>
+        <h2 id="status" style="color: var(--gold);">Waiting for input...</h2>
+    </div>
+    <button class="btn-main" id="mBtn" onclick="runMeter()">Run Diagnostic 🔬</button>
+    <button class="btn-main" id="nextBtn" style="display:none;" onclick="nav('s2','s3')">The 🫦 Challenge</button>
+</section>
+
+<section id="s3">
+    <span class="sub-tag">Penalty for Last Night</span>
+    <h1>Pay Your Dues</h1>
+    <div class="luxury-card">
+        <p>I know I was quiet last night, so I'm paying my fine in advance. These are the 6-month special smooches. Tap the lips to collect them all.</p>
+        <span class="kiss-counter" onclick="addKiss()">🫦</span>
+        <p style="font-family:'Dancing Script'; font-size: 2rem; color: var(--gold);">Kisses Collected: <span id="kCount">0</span></p>
+    </div>
+    <button class="btn-main" id="kBtn" style="display:none;" onclick="nav('s3','s4')">The Real Confession</button>
+</section>
+
+<section id="s4">
+    <span class="sub-tag">Half a Year | 180 Days</span>
+    <h1>The Only One</h1>
+    <div class="luxury-card">
+        <div class="stats-grid">
+            <div class="stat-box"><strong>6</strong><br><small>Months</small></div>
+            <div class="stat-box"><strong>∞</strong><br><small>Feelings</small></div>
+        </div>
+        
+        <p style="margin-top: 25px; font-style: italic;">“Matches come and go, but you are the only win that recharges my soul.”</p>
+        
+        <button class="btn-main" id="revealBtn" onclick="showLetter()" style="background:none; border: 1px solid var(--gold); font-size: 0.7rem;">Open the Deep Secret 💌</button>
+        
+        <div class="scroll-letter" id="letter">
+            <br>Dearest Kismis,<br><br>
+            It’s been 6 months. That’s 180 days of waking up and realizing that the best part of my day is you. Whether it’s our deep talks that go into the night, or those small, silly fights where I’m clearly the Duffer—I wouldn't trade a single second.<br><br>
+            I know I was a bit off last night. Sometimes, when college gets loud or my head gets heavy, I sink into myself. But I need you to know that even in my silence, I’m thinking about you. You are my "Safe Space". When the world is chaos, your voice is the only thing that brings me back to peace. You’re not just my girlfriend; you are my home.<br><br>
+            And let’s talk about how dangerously beautiful you are. It’s actually unfair. Every time I see you, or even just think about that 🫦 look you give, I lose my train of thought. You are my favorite obsession, my most beautiful distraction, and the person I want to hold onto for the next 60 years.<br><br>
+            Thank you for putting up with me. Thank you for being the 'recharge' to my battery. I love you more than these words can ever show.<br><br>
+            <strong>Forever Yours, Chikku ❤️</strong>
+        </div>
+    </div>
+    <button class="btn-main" id="finalBtn" style="display:none;" onclick="nav('s4','s5')">A Final Promise</button>
+</section>
+
+<section id="s5">
+    <h1>Forever Yours</h1>
+    <div class="luxury-card">
+        <p>No more dates, no more calendars. Just us. From Feb 17, 2026, to the end of time.</p>
+        <p style="margin-top: 20px; font-size: 2.5rem; font-family:'Dancing Script'; color: var(--crimson);">I Love You, Kismis. ❤️</p>
+    </div>
+    <span style="font-size: 3rem;">🫦💋💍</span>
+</section>
+
+<script>
+let kisses = 0;
+
+function nav(oldId, newId) {
+    document.getElementById(oldId).classList.remove('active');
+    document.getElementById(newId).classList.add('active');
+    const steps = { s1: 20, s2: 40, s3: 60, s4: 80, s5: 100 };
+    document.getElementById('bar').style.width = steps[newId] + '%';
+    window.scrollTo(0,0);
+}
+
+function runMeter() {
+    document.getElementById('fill').style.width = '100%';
+    document.getElementById('mBtn').style.display = 'none';
+    setTimeout(() => {
+        document.getElementById('status').innerText = "FATAL ERROR: BEYOND LIMITS 🔥";
+        document.getElementById('status').style.color = "#ff0055";
+        document.getElementById('nextBtn').style.display = 'inline-block';
+    }, 2500);
+}
+
+function addKiss() {
+    kisses++;
+    document.getElementById('kCount').innerText = kisses;
+    if(kisses >= 6) document.getElementById('kBtn').style.display = 'inline-block';
+    
+    // Epic Pop Effect
+    const h = document.createElement("div");
+    h.innerHTML = "🫦";
+    h.style.position = "fixed";
+    h.style.left = "50%"; h.style.top = "50%";
+    h.style.fontSize = "3rem";
+    h.style.zIndex = "1001";
+    h.animate([
+        { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+        { transform: `translate(${Math.random()*400-200}px, -300px) scale(3) rotate(${Math.random()*90}deg)`, opacity: 0 }
+    ], { duration: 1000 });
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(), 1000);
+}
+
+function showLetter() {
+    const l = document.getElementById('letter');
+    l.style.maxHeight = "1000px";
+    document.getElementById('revealBtn').style.display = 'none';
+    document.getElementById('finalBtn').style.display = 'inline-block';
+}
+
+function createRain() {
+    setInterval(() => {
+        const p = document.createElement("div");
+        p.className = "particle";
+        const items = ["❤️", "💙", "💛", "🫦", "✨", "🔥", "💋"];
+        p.innerText = items[Math.floor(Math.random()*items.length)];
+        p.style.left = Math.random() * 100 + "vw";
+        p.style.fontSize = Math.random() * 20 + 20 + "px";
+        p.style.animationDuration = Math.random() * 3 + 5 + "s";
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 7000);
+    }, 300);
+}
+createRain();
+</script>
+
+</body>
+</html>
