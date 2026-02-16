@@ -1,209 +1,146 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Valentine's Day, Kismis ❤️</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-
+<title>For My Only One | Twinkle</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --val-red:#ff4d6d;
-  --val-pink:#ff85a1;
-  --gold:#ffd700;
-  --dark-bg:#0a0101;
-}
-
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-  font-family:'Montserrat',sans-serif;
-  background:var(--dark-bg);
-  color:#fff;
-  overflow-x:hidden;
-  touch-action: manipulation;
-}
-
-.progress-container{position:fixed;top:0;width:100%;height:4px;background:#000;z-index:1000;}
-.progress-bar{height:100%;width:0;background:var(--val-red);transition:.4s;box-shadow: 0 0 10px var(--val-red);}
-
-section{
-  min-height:100vh;
-  display:none;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:30px;
-}
-.active{display:flex;animation:fadeIn 1s ease-in-out;}
-@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-
-/* Hero Image */
-.hero-img{
-  width:260px;
-  border-radius:30px;
-  margin:20px 0;
-  border: 1px solid rgba(255,77,109,0.3);
-  box-shadow:0 15px 50px rgba(255,77,109,0.2);
-}
-
-/* Luxury Buttons */
-.btn-v{
-  background: linear-gradient(45deg, var(--val-red), var(--val-pink));
-  color:#fff;
-  padding:16px 40px;
-  border:none;
-  border-radius:50px;
-  font-weight:600;
-  cursor:pointer;
-  margin-top:25px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 0.8rem;
-  box-shadow:0 10px 20px rgba(255,77,109,0.3);
-}
-
-h1{font-family:'Dancing Script',cursive; color:var(--val-pink); font-size: 3.2rem;}
-.v-tag{letter-spacing:5px; font-size:0.7rem; color:var(--gold); text-transform:uppercase; margin-bottom:15px;}
-
-/* Interaction Box */
-.love-box { 
-    background: rgba(255,255,255,0.03); 
-    border: 1px solid rgba(255,133,161,0.2); 
-    border-radius: 25px; 
-    padding: 30px; 
-    width: 100%; 
-    max-width: 350px; 
-    margin: 20px auto;
-}
-
-/* Floating Elements */
-.particle{
-  position:fixed;
-  bottom:-10%;
-  pointer-events:none;
-  animation:rise linear forwards;
-}
-@keyframes rise{to{transform:translateY(-110vh) rotate(360deg); opacity:0;}}
-
-/* Final Letter */
-.final-letter {
-  display:none;
-  text-align:left;
-  line-height:1.8;
-  padding:25px;
-  background:rgba(255,255,255,0.05);
-  border-radius:20px;
-  margin-top:20px;
-  border-left: 3px solid var(--gold);
-}
+:root { --primary:#ff4d6d; --blue:#00b4d8; --yellow:#ffb703; }
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{background:#fffafa;font-family:'Poppins',sans-serif;overflow-x:hidden;color:#333}
+.particle{position:fixed;top:-10%;pointer-events:none;z-index:1;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+section{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center;position:relative;z-index:2}
+.hidden{display:none!important}
+.card-container{perspective:1000px;width:300px;height:400px;margin:20px auto}
+.card-inner{position:relative;width:100%;height:100%;transition:transform .8s cubic-bezier(.175,.885,.32,1.275);transform-style:preserve-3d;cursor:pointer}
+.card-inner.flipped{transform:rotateY(180deg)}
+.card-front,.card-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:20px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,.15);border:4px solid #fff}
+.card-front img{width:100%;height:100%;object-fit:cover;border-radius:16px}
+.card-back{background:#fff;color:#333;transform:rotateY(180deg);padding:20px;font-size:1.1rem;line-height:1.6}
+.bucket-list{background:#fff;padding:25px;border-radius:25px;box-shadow:0 10px 25px rgba(0,0,0,.05);width:100%;max-width:350px}
+.trip-item{display:flex;align-items:center;gap:15px;margin-bottom:15px;text-align:left}
+.trip-item span{font-size:1.5rem}
+.btn-main{background:var(--primary);color:#fff;padding:15px 40px;border:none;border-radius:50px;font-size:1.1rem;font-weight:600;cursor:pointer;box-shadow:0 10px 20px rgba(255,77,109,.3);margin-top:20px;transition:.3s}
+#noBtn{background:#eee;color:#666;position:absolute;transition:.1s}
+.gif-bunny{width:150px;margin-bottom:20px}
+video{width:100%;max-width:400px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+h1{font-family:'Pacifico',cursive;color:var(--primary);margin-bottom:10px}
 </style>
 </head>
-
 <body>
 
-<div class="progress-container"><div class="progress-bar" id="pbar"></div></div>
+<audio id="bgMusic" loop muted>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 
-<section id="s1" class="active">
-  <span class="v-tag">February 14, 2026</span>
-  <h1>Happy Valentine's</h1>
-  <div class="love-box">
-    <p>I know I was a bit quiet last night. Between the college match and just feeling a little down, I got lost in my own head. I’m sorry if that felt like distance.</p>
-  </div>
-  <button class="btn-v" onclick="nav('s1','s2')">Look at me? ❤️</button>
+<section id="p1">
+  <img src="https://media.tenor.com/7p48-8uXidIAAAAi/milk-and-mocha.gif" class="gif-bunny">
+  <h1>Hey Twinkle...</h1>
+  <p>This isn't about a day. It's about you being the only one.</p>
+  <button class="btn-main" onclick="startExperience()">Touch Here</button>
 </section>
 
-<section id="s2">
-  <span class="v-tag">My Only Win</span>
-  <h1>You are my Peace</h1>
-  <div class="love-box">
-    <p>Matches and scores don't really matter. The only thing that truly recharges me after a long, chaotic day is you. You're the prize I care about keeping forever.</p>
+<section id="p2" class="hidden">
+  <p style="font-size:.9rem;margin-bottom:10px">(Tap the card to flip it)</p>
+  <div class="card-container">
+    <div class="card-inner" onclick="this.classList.toggle('flipped')">
+      <div class="card-front"><img src="photo1.jpg" alt="Your Photo"></div>
+      <div class="card-back">
+        <p>Tu jaanti hai, main har kisi se sab kuch nahi kehta. Bas tu hi hai jiske saamne main 'main' hota hoon. You make me feel safe.</p>
+      </div>
+    </div>
   </div>
-  <button class="btn-v" onclick="nav('s2','s3')">A Kiss Day Gift 💋</button>
+  <button class="btn-main" onclick="nav('p2','p3')">Next Surprise</button>
 </section>
 
-<section id="s3">
-  <span class="v-tag">Kiss Day Redux</span>
-  <h1>100 Kisses for You</h1>
-  <div class="love-box" style="border-style: dashed;">
-    <p style="font-size: 0.8rem; margin-bottom: 15px;">I'm making up for every second I wasn't talking last night. Tap the lips to unlock my letter!</p>
-    <button id="kissBtn" onclick="tapKiss()" style="background:none; border:none; font-size: 4rem; cursor:pointer;">💋</button>
-    <p style="margin-top:10px; font-family:'Dancing Script'; color:var(--gold); font-size:1.5rem;">Total Kisses: <span id="kCount">0</span></p>
-  </div>
-  <button class="btn-v" id="nextBtn" style="display:none;" onclick="nav('s3','s4')">Read my Vow ✨</button>
+<section id="p3" class="hidden">
+  <h1>Our Moments</h1>
+  <video id="mainVideo" controls playsinline muted>
+    <source src="video.mp4" type="video/mp4">
+    Your browser does not support video.
+  </video>
+  <p style="margin-top:15px;padding:0 20px">Every frame reminds me of how special you are.</p>
+  <button class="btn-main" onclick="nav('p3','p4')">Our Future</button>
 </section>
 
-<section id="s4">
-  <span class="v-tag">Our 2026 Promise</span>
-  <h1>Forever, Kismis.</h1>
-  
-  <button class="btn-v" id="revealBtn" onclick="revealLetter()">Open Your Letter 🎁</button>
-
-  <div id="letter" class="final-letter">
-    <p><strong>My Dearest Kismis,</strong><br><br>
-    Today is Valentine’s Day, but my love for you isn't just for today. It’s for the quiet nights, the busy match days, and even the moments when I’m a bit difficult to talk to.<br><br>
-    Thank you for being my sanctuary. You aren't just my girlfriend; you're the person who makes everything okay. I don’t promise to be perfect, but I promise to always come back to you, to always choose you, and to never let go of the hand that fits so perfectly in mine.<br><br>
-    I’m yours. Completely. In every timeline and every year.<br><br>
-    <strong>Will you be my Valentine forever?</strong><br><br>
-    With all my love,<br>
-    Chikku ❤️</p>
+<section id="p4" class="hidden">
+  <h1>Our Bucket List ✈️</h1>
+  <div class="bucket-list">
+    <div class="trip-item"><span>🕌</span><div><b>Taj Mahal:</b> To see the monument of love with my real love.</div></div>
+    <div class="trip-item"><span>🌊</span><div><b>Ganga Aarti:</b> Peace, spirituality, and your hand in mine.</div></div>
+    <div class="trip-item"><span>🏔️</span><div><b>Manali & Rishikesh:</b> Road trips, cold winds, and warm memories.</div></div>
   </div>
-  
-  <p style="margin-top: 30px; font-family: 'Dancing Script'; font-size: 2rem; color: var(--val-pink);">I Love You. ❤️</p>
+  <button class="btn-main" onclick="nav('p4','p5')">A Promise</button>
+</section>
+
+<section id="p5" class="hidden">
+  <img src="https://media.tenor.com/N28R_ZpS66QAAAAi/milk-and-mocha-bear.gif" class="gif-bunny">
+  <h1>Maaf kar degi na?</h1>
+  <p>Can we start over and make these trips happen?</p>
+  <div style="height:150px;position:relative;width:100%">
+    <button class="btn-main" onclick="nav('p5','p6')">Yes, Chikku ❤️</button>
+    <button id="noBtn" onmouseover="moveNo()" onclick="moveNo()">No 😤</button>
+  </div>
+</section>
+
+<section id="p6" class="hidden">
+  <div style="background:#fff;padding:30px;border-radius:30px;border-top:10px solid var(--primary);max-width:400px;text-align:justify">
+    <h1 style="text-align:center">Twinkle ✨</h1>
+    <p>Mujhe maaf kar de... Tu meri life ki wo pehli aur aakhri ladki hai jise main khona nahi chahta. Main waada karta hoon ki ab se teri muskurahat meri priority hogi. Taj Mahal se lekar Rishikesh tak, har jagah tere saath jaana hai. I love you.</p>
+  </div>
 </section>
 
 <script>
-let kisses = 0;
+const music=document.getElementById("bgMusic");
+const video=document.getElementById("mainVideo");
+let rainStarted=false;
 
-function nav(oldId, newId) {
-  document.getElementById(oldId).classList.remove('active');
-  document.getElementById(newId).classList.add('active');
-  const barWidth = { s1: 25, s2: 50, s3: 75, s4: 100 };
-  document.getElementById('pbar').style.width = barWidth[newId] + '%';
-  window.scrollTo(0,0);
+function startExperience(){
+  music.muted=false;
+  music.play().catch(()=>console.log("Music blocked"));
+  nav('p1','p2');
+  startRain();
 }
 
-function tapKiss() {
-  kisses++;
-  document.getElementById('kCount').innerText = kisses;
-  if(kisses >= 5) document.getElementById('nextBtn').style.display = 'inline-block';
-  
-  // Heart effect
-  const h = document.createElement("div");
-  h.innerHTML = "❤️";
-  h.style.position = "fixed";
-  h.style.left = "50%"; h.style.top = "50%";
-  h.style.fontSize = "2rem";
-  h.animate([
-    { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
-    { transform: `translate(${Math.random()*200-100}px, -200px) scale(2)`, opacity: 0 }
-  ], { duration: 800 });
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(), 800);
+function nav(hide,show){
+  document.getElementById(hide).classList.add('hidden');
+  const next=document.getElementById(show);
+  next.classList.remove('hidden');
+  if(show==='p3'){
+    video.muted=true;
+    video.play().catch(err=>console.log("Video blocked:",err));
+  } else {
+    video.pause();
+  }
 }
 
-function revealLetter() {
-  document.getElementById('letter').style.display = 'block';
-  document.getElementById('revealBtn').style.display = 'none';
-  document.getElementById('letter').scrollIntoView({behavior: 'smooth'});
+function moveNo(){
+  const btn=document.getElementById('noBtn');
+  const parent=btn.parentElement;
+  const maxX=parent.clientWidth-btn.offsetWidth;
+  const maxY=parent.clientHeight-btn.offsetHeight;
+  btn.style.left=(Math.random()*maxX)+'px';
+  btn.style.top=(Math.random()*maxY)+'px';
 }
 
-function createRain() {
-  setInterval(() => {
-    const p = document.createElement("div");
-    p.className = "particle";
-    const items = ["❤️", "💙", "💛", "🌹", "✨", "💋"];
-    p.innerText = items[Math.floor(Math.random()*items.length)];
-    p.style.left = Math.random() * 100 + "vw";
-    p.style.fontSize = Math.random() * 20 + 15 + "px";
-    p.style.animationDuration = Math.random() * 3 + 4 + "s";
+function startRain(){
+  if(rainStarted) return;
+  rainStarted=true;
+  setInterval(()=>{
+    const p=document.createElement("div");
+    p.className="particle";
+    const items=["🌹","❤️","💙","💛"];
+    p.innerHTML=items[Math.floor(Math.random()*items.length)];
+    p.style.left=Math.random()*100+"vw";
+    p.style.fontSize=Math.random()*20+20+"px";
+    p.style.animationDuration=Math.random()*3+2+"s";
     document.body.appendChild(p);
-    setTimeout(() => p.remove(), 5000);
-  }, 350);
+    setTimeout(()=>p.remove(),5000);
+  },300);
 }
-createRain();
 </script>
-
 </body>
 </html>
