@@ -1,1 +1,134 @@
-INDEX FILE READY
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Always You | Chikku & Kismis</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --deep-teal:#002b2d;
+  --soft-gold:#e2c792;
+  --warm-white:#fcf8f1;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Montserrat',sans-serif;
+  background:var(--deep-teal);
+  color:var(--warm-white);
+  overflow-x:hidden;
+  touch-action: manipulation;
+}
+
+.progress-bar{position:fixed;top:0;height:4px;width:0;background:var(--soft-gold);z-index:1000;transition:0.5s;}
+
+section{
+  min-height:100vh;
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px;
+}
+.active{display:flex;animation:fadeIn 1s ease-in;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+h1{font-family:'Dancing Script',cursive; color:var(--soft-gold); font-size: 3rem; margin-bottom:10px;}
+.date-tag{letter-spacing:4px; font-size:0.7rem; color:rgba(255,255,255,0.6); text-transform:uppercase; margin-bottom:20px;}
+
+.content-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(226,199,146,0.2);
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 400px;
+    line-height: 1.8;
+}
+
+.btn-minimal {
+    background: transparent;
+    border: 1px solid var(--soft-gold);
+    color: var(--soft-gold);
+    padding: 12px 35px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+.btn-minimal:hover { background: var(--soft-gold); color: var(--deep-teal); }
+
+/* Signature Rain */
+.particle{
+  position:fixed;
+  bottom:-10%;
+  pointer-events:none;
+  animation:floatUp linear forwards;
+}
+@keyframes floatUp{to{transform:translateY(-110vh) rotate(360deg); opacity:0;}}
+</style>
+</head>
+
+<body>
+
+<div class="progress-bar" id="bar"></div>
+
+<section id="s1" class="active">
+    <span class="date-tag">February 17, 2026</span>
+    <h1>Beyond the Dates</h1>
+    <div class="content-card">
+        <p>The roses might dry up and the celebrations might end, but my feelings for you only get stronger with every ordinary day we spend together.</p>
+    </div>
+    <button class="btn-minimal" onclick="nav('s1','s2')">The Real Me</button>
+</section>
+
+<section id="s2">
+    <h1>My Safe Space</h1>
+    <div class="content-card">
+        <p>I know I get busy with college matches, or sometimes I just sink into my own thoughts. Thank you for being the person who understands me even when I'm silent. You are my true win, Kismis.</p>
+    </div>
+    <button class="btn-minimal" onclick="nav('s2','s3')">A Promise</button>
+</section>
+
+<section id="s3">
+    <h1>6 Months & Forever</h1>
+    <div class="content-card">
+        <p>We’ve officially crossed the half-year mark. No more "new relationship" jitters—just us, real and steady. I promise to keep choosing you, especially on the days when life gets loud.</p>
+        <p style="margin-top:20px; font-family:'Dancing Script'; font-size:1.8rem; color:var(--soft-gold);">I Love You, Kismis. ❤️</p>
+    </div>
+</section>
+
+<script>
+function nav(oldId, newId) {
+    document.getElementById(oldId).classList.remove('active');
+    document.getElementById(newId).classList.add('active');
+    const steps = { s1: 33, s2: 66, s3: 100 };
+    document.getElementById('bar').style.width = steps[newId] + '%';
+    window.scrollTo(0,0);
+}
+
+function rain() {
+    setInterval(() => {
+        const p = document.createElement("div");
+        p.className = "particle";
+        // Signature: Red, Blue, Yellow Hearts
+        const icons = ["❤️", "💙", "💛", "✨"];
+        p.innerText = icons[Math.floor(Math.random()*icons.length)];
+        p.style.left = Math.random() * 100 + "vw";
+        p.style.fontSize = Math.random() * 20 + 15 + "px";
+        p.style.animationDuration = Math.random() * 3 + 4 + "s";
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 6000);
+    }, 400);
+}
+rain();
+</script>
+
+</body>
+</html>
