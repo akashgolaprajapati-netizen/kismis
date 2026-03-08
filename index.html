@@ -1,1 +1,184 @@
-INDEX FILE READY
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To My Queen: Women's Day 2026 👑</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --royal-purple:#2e004f;
+  --gold:#ffcc00;
+  --soft-pink:#ff8fab;
+  --deep-rose:#c9184a;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Montserrat',sans-serif;
+  background: radial-gradient(circle, var(--royal-purple) 0%, #000 100%);
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* Luxury Progress Bar */
+.progress-container{position:fixed;top:0;width:100%;height:8px;background:rgba(0,0,0,0.5);z-index:1000;}
+.progress-bar{height:100%;width:0;background:linear-gradient(90deg, var(--gold), var(--soft-pink));transition:.6s;box-shadow: 0 0 20px var(--gold);}
+
+section{
+  min-height:100vh;
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:50px 25px;
+}
+.active{display:flex;animation:epicIn 1.5s cubic-bezier(0.19, 1, 0.22, 1);}
+@keyframes epicIn{from{opacity:0; transform:scale(1.1) translateY(50px);}to{opacity:1; transform:scale(1) translateY(0);}}
+
+h1{font-family:'Dancing Script',cursive; color:var(--gold); font-size: 3.5rem; text-shadow: 0 0 15px rgba(255,204,0,0.4);}
+.sub-tag{letter-spacing:6px; font-size:0.75rem; color:var(--soft-pink); text-transform:uppercase; margin-bottom:20px; font-weight:700;}
+
+.luxury-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,204,0,0.3);
+    padding: 40px 30px;
+    border-radius: 40px;
+    max-width: 500px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+    margin-bottom: 25px;
+}
+
+.btn-main {
+    background: linear-gradient(45deg, var(--deep-rose), #5e001f);
+    color: white;
+    padding: 18px 45px;
+    border: none;
+    border-radius: 100px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 15px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    transition: 0.5s;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.btn-main:hover { transform: translateY(-5px); box-shadow: 0 15px 40px var(--deep-rose); }
+
+.scroll-letter {
+    text-align: left;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1.5s ease-in-out;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #f0f0f0;
+}
+
+.particle{position:fixed;bottom:-10%;pointer-events:none;z-index: 999;animation:floatUp linear forwards;}
+@keyframes floatUp{to{transform:translateY(-110vh) rotate(360deg); opacity:0;}}
+
+.sorry-box {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255,0,0,0.1);
+    border-radius: 15px;
+    border-left: 4px solid var(--deep-rose);
+    font-style: italic;
+    font-size: 0.9rem;
+}
+</style>
+</head>
+
+<body>
+
+<div class="progress-container"><div class="progress-bar" id="bar"></div></div>
+
+<section id="s1" class="active">
+    <span class="sub-tag">March 8, 2026 | International Women's Day</span>
+    <h1>Happy Women's Day, Twinkle 👑</h1>
+    <div class="luxury-card">
+        <p>Today the world celebrates women, but I want to celebrate the one woman who makes my world spin. The strongest, most beautiful, and most patient soul I know.</p>
+    </div>
+    <button class="btn-main" onclick="nav('s1','s2')">For My Better Half 🌹</button>
+</section>
+
+<section id="s2">
+    <span class="sub-tag">A Moment of Honesty</span>
+    <h1>I'm Sorry...</h1>
+    <div class="luxury-card">
+        <p>Before we celebrate how amazing you are, I need to say something I should have said better before.</p>
+        <div class="sorry-box">
+            "I know I haven't been the perfect partner lately. I've made mistakes, I've been quiet when I should've spoken, and I've let my own stress get in the way of 'us'. Please forgive your Duffer for the times I let you down."
+        </div>
+        <p style="margin-top: 15px;">You deserve the world, and I'm working to be the man who can give it to you.</p>
+    </div>
+    <button class="btn-main" onclick="nav('s2','s3')">Let's move forward ❤️</button>
+</section>
+
+<section id="s3">
+    <span class="sub-tag">The Confession</span>
+    <h1>My Inspiration</h1>
+    <div class="luxury-card">
+        <p>You handle everything with such grace. Seeing you grow, study, and shine makes me so proud to be yours.</p>
+        
+        <button class="btn-main" id="revealBtn" onclick="showLetter()" style="background:none; border: 1px solid var(--gold); font-size: 0.7rem;">Open Your Letter 💌</button>
+        
+        <div class="scroll-letter" id="letter">
+            <br>My Dearest Kismis,<br><br>
+            Happy Women's Day to the woman who defines strength for me. Whether you're navigating your studies or dealing with my moods, you do it with a heart that's far bigger than mine.<br><br>
+            Thank you for being my anchor. I know I’ve been a "Duffer" and my mistakes might have hurt you, but please know that my love for you is the only constant in my life. You aren't just my girlfriend; you're the person I admire most.<br><br>
+            Today is about you. Your dreams, your smile, and your incredible spirit. I promise to listen more, love better, and never stop trying to make you as happy as you make me.<br><br>
+            <strong>With all my love and a million apologies, <br>Chikku ❤️</strong>
+        </div>
+    </div>
+    <button class="btn-main" id="finalBtn" style="display:none;" onclick="nav('s3','s4')">One Final Wish</button>
+</section>
+
+<section id="s4">
+    <h1>Forever Your Biggest Fan</h1>
+    <div class="luxury-card">
+        <p>Keep shining, Kismis. The world is brighter because you're in it.</p>
+        <p style="margin-top: 20px; font-size: 2.2rem; font-family:'Dancing Script'; color: var(--gold);">Happy Women's Day, My Love! 👸✨</p>
+    </div>
+    <span style="font-size: 3rem;">🌸💍🫦</span>
+</section>
+
+<script>
+function nav(oldId, newId) {
+    document.getElementById(oldId).classList.remove('active');
+    document.getElementById(newId).classList.add('active');
+    const steps = { s1: 25, s2: 50, s3: 75, s4: 100 };
+    document.getElementById('bar').style.width = steps[newId] + '%';
+    window.scrollTo(0,0);
+}
+
+function showLetter() {
+    const l = document.getElementById('letter');
+    l.style.maxHeight = "1000px";
+    document.getElementById('revealBtn').style.display = 'none';
+    document.getElementById('finalBtn').style.display = 'inline-block';
+}
+
+function createRain() {
+    setInterval(() => {
+        const p = document.createElement("div");
+        p.className = "particle";
+        const items = ["🌸", "👑", "✨", "❤️", "🌹", "💎"];
+        p.innerText = items[Math.floor(Math.random()*items.length)];
+        p.style.left = Math.random() * 100 + "vw";
+        p.style.fontSize = Math.random() * 20 + 20 + "px";
+        p.style.animationDuration = Math.random() * 3 + 5 + "s";
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 7000);
+    }, 300);
+}
+createRain();
+</script>
+
+</body>
+</html>
