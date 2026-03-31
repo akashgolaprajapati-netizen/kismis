@@ -1,1 +1,295 @@
-INDEX FILE READY
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You've Got This, Twinkle! ✨</title>
+    <style>
+        :root {
+            --primary: #574b90; /* Soft Purple */
+            --secondary: #9b59b6;
+            --accent-red: #e74c3c; /* Rose Color */
+            --accent-blue: #3498db; /* Blue Heart Color */
+            --bg-light: #f4f7f6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll from petals */
+        }
+
+        /* --- Full Screen Container with Background Decoration --- */
+        .main-wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+            position: relative;
+        }
+
+        /* --- Falling Decoration (Roses/Hearts/Petals) --- */
+        .decoration-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Let clicks pass through */
+            z-index: -1; /* Behind everything */
+        }
+
+        .petal, .heart-red, .heart-blue {
+            position: absolute;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        /* Falling animation */
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* --- Main Content Card --- */
+        .container {
+            max-width: 650px;
+            width: 100%;
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        header { text-align: center; margin-bottom: 40px; }
+        h1 { color: var(--primary); margin: 0 0 10px 0; font-size: 2.2rem; }
+        .subtitle { color: #7f8c8d; font-size: 1.1rem; }
+
+        /* --- Pro-Tips Section --- */
+        .tips {
+            background: #fdfefe;
+            border-left: 5px solid var(--accent-blue);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .tips h3 { margin-top: 0; color: var(--accent-blue); }
+        .tips ul { list-style: none; padding: 0; margin: 0; }
+        .tips li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            font-size: 1.05rem;
+        }
+        .tips li:last-child { border-bottom: none; }
+        .tips li:before { content: "✍️"; margin-right: 15px; }
+
+        /* --- Confidence Booster Section --- */
+        .confidence-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .confidence-label {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        .progress-container {
+            height: 15px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        #confidence-bar {
+            width: 30%; /* Starting point */
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-red));
+            transition: width 0.6s ease;
+        }
+        .motivation-msg {
+            font-size: 1.1rem;
+            margin-top: 15px;
+            min-height: 2em;
+            color: #555;
+            font-style: italic;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 15px;
+            background: var(--primary);
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        button:hover { background-color: var(--secondary); transform: translateY(-2px); }
+        button:active { transform: translateY(1px); }
+
+        /* --- THE HIDDEN MESSAGE SECTION --- */
+        .secret-box {
+            margin-top: 50px;
+            text-align: center;
+            border-top: 2px dashed #eee;
+            padding-top: 30px;
+            cursor: pointer;
+        }
+        .secret-key {
+            font-size: 2rem;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+        .secret-box:hover .secret-key {
+            transform: scale(1.3) rotate(15deg);
+        }
+        .hidden-content {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.5s, max-height 0.5s;
+            margin-top: 20px;
+            padding: 20px;
+            background: #fffafa; /* Very faint rose white */
+            border-radius: 15px;
+            border: 1px solid #ffebeb;
+        }
+        /* When the secret box is hovered OR tapped */
+        .secret-box:hover .hidden-content,
+        .secret-box:active .hidden-content {
+            opacity: 1;
+            max-height: 300px;
+        }
+        .secret-msg h2 { color: var(--accent-red); margin-top: 0; }
+        .secret-msg p { font-size: 1.1rem; line-height: 1.6; }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #aaa;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="decoration-container" id="decorations"></div>
+
+<div class="main-wrapper">
+    <div class="container">
+        <header>
+            <h1>Twinkle, You've Got This! 🚀</h1>
+            <p class="subtitle">Your official support dashboard for tomorrow's paper</p>
+        </header>
+
+        <div class="tips">
+            <h3>Final Battle Plan:</h3>
+            <ul>
+                <li>You have prepared for this. Trust your memory.</li>
+                <li>Answer the easy questions first to build momentum.</li>
+                <li>If you get stuck, breathe, and move to the next.</li>
+                <li>I'm already proud of you. The result doesn't change that.</li>
+            </ul>
+        </div>
+
+        <div class="confidence-section">
+            <div class="confidence-label">Your Current Confidence Level:</div>
+            <div class="progress-container">
+                <div id="confidence-bar"></div>
+            </div>
+            <button onclick="boostConfidence()">RECHARGE FOCUS ⚡</button>
+            <p class="motivation-msg" id="motivation-msg">"Click the button. You know more than you think."</p>
+        </div>
+
+        <div class="secret-box" id="secret-box">
+            <span class="secret-key">🎁</span>
+            <div class="hidden-content">
+                <div class="secret-msg">
+                    <h2>💙 My Secret Weapon 💙</h2>
+                    <p>I wanted you to know that regardless of how difficult tomorrow’s paper feels, **I have always believed in you.** You are brilliant, resilient, and you are going to shine.</p>
+                    <p>**I Love You.** Go crush it! 🌹</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        Handcrafted for Twinkle by her #1 Fan
+    </footer>
+</div>
+
+<script>
+    // --- CONFIDENCE BOOSTER LOGIC ---
+    let currentConfidence = 30; // Starting %
+    const boostMessages = [
+        "Take a deep breath. You are smarter than you feel right now.",
+        "Your hard work is about to pay off. Stay calm!",
+        "Every page you’ve read is locked inside your brain.",
+        "Just focus on the next sentence, not the whole paper.",
+        "Tomorrow is just another victory waiting for you.",
+        "I believe in you more than words can say!"
+    ];
+
+    function boostConfidence() {
+        if (currentConfidence < 100) {
+            currentConfidence += 15;
+            if (currentConfidence > 100) currentConfidence = 100;
+            document.getElementById('confidence-bar').style.width = currentConfidence + '%';
+        }
+
+        const msgEl = document.getElementById('motivation-msg');
+        if (currentConfidence === 100) {
+            msgEl.innerHTML = "<strong>FULL POWER! You are officially ready. Go to sleep knowing you've got this! 🏆🏆🏆</strong>";
+        } else {
+            const randomMsg = boostMessages[Math.floor(Math.random() * boostMessages.length)];
+            msgEl.innerText = `"${randomMsg}"`;
+        }
+    }
+
+    // --- BACKGROUND DECORATION LOGIC (Petals, Hearts) ---
+    function createDecorations() {
+        const container = document.getElementById('decorations');
+        // Define the types of items to fall
+        const types = ['🌹', '💙', '❤️', '🍃'];
+        
+        // Number of elements to create
+        const count = 40;
+
+        for (let i = 0; i < count; i++) {
+            const el = document.createElement('div');
+            el.innerText = types[Math.floor(Math.random() * types.length)];
+            
+            // Random styling for variety
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.fontSize = (Math.random() * 20 + 10) + 'px'; // 10px to 30px
+            el.style.animationDuration = (Math.random() * 3 + 2) + 's'; // 2s to 5s fall
+            el.style.animationDelay = (Math.random() * 5) + 's';
+            
+            // Add different animation classes or handle style here
+            el.classList.add('petal'); // Generic class name for positioning
+
+            container.appendChild(el);
+        }
+    }
+
+    // Start decorations when page loads
+    window.onload = createDecorations;
+</script>
+
+</body>
+</html>
