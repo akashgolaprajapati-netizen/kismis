@@ -1,1 +1,299 @@
-INDEX FILE READY
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>❤️ Our Story</title>
+
+<style>
+body{
+  margin:0;
+  background:#0d0408;
+  color:#fff;
+  font-family: 'Georgia', serif;
+  text-align:center;
+}
+
+/* LOCK SCREEN */
+#lock-screen{
+  position:fixed; inset:0;
+  background:#0d0408;
+  display:flex; justify-content:center; align-items:center;
+  z-index:9999;
+}
+.lock-box{
+  background:#1a0a10;
+  padding:2rem;
+  border-radius:15px;
+  border:1px solid #3a1520;
+}
+input,button{
+  padding:10px;
+  margin-top:10px;
+  border:none;
+  border-radius:8px;
+}
+button{
+  background:#e8476a;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* HERO */
+.hero{
+  padding:70px 20px 40px;
+}
+.hero h1{
+  font-size:80px;
+  color:#e8476a;
+  margin:0;
+}
+.hero h2{
+  font-size:26px;
+  margin:10px 0;
+  color:#f9c6d0;
+}
+.hero p{
+  color:#c9a8b0;
+}
+
+/* SECTION */
+.section{
+  padding:40px 20px;
+}
+
+/* MESSAGE */
+#message{
+  max-width:500px;
+  margin:auto;
+  line-height:1.7;
+  font-style:italic;
+}
+
+/* SLIDESHOW */
+#slideshow{
+  height:260px;
+  position:relative;
+  overflow:hidden;
+  border-radius:12px;
+}
+.slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transition:1s;
+}
+.slide.active{opacity:1;}
+.slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* CHAT */
+.chat{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  max-width:400px;
+  margin:auto;
+}
+.msg{
+  max-width:70%;
+  padding:10px 14px;
+  border-radius:16px;
+  font-size:0.9rem;
+}
+.left{
+  background:#2a0d1a;
+  align-self:flex-start;
+}
+.right{
+  background:#e8476a;
+  align-self:flex-end;
+}
+
+/* SURPRISE */
+#surprise{
+  position:fixed;
+  inset:0;
+  background:#000000cc;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+.box{
+  background:#1a0a10;
+  padding:25px;
+  border-radius:16px;
+  max-width:300px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOCK -->
+<div id="lock-screen">
+  <div class="lock-box">
+    <h2>Enter Our Secret ❤️</h2>
+    <input type="password" id="pass" placeholder="Hint...">
+    <br>
+    <button onclick="checkPassword()">Unlock</button>
+    <p id="err"></p>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>8</h1>
+  <h2>Months with <span id="her"></span></h2>
+  <p id="counter"></p>
+  <p>Since 17 August 2025 ❤️</p>
+</div>
+
+<!-- MESSAGE -->
+<div class="section">
+  <p id="message"></p>
+</div>
+
+<!-- SLIDESHOW -->
+<div class="section">
+  <h3>Our Journey</h3>
+  <div id="slideshow"></div>
+</div>
+
+<!-- CHAT -->
+<div class="section">
+  <h3>Our Story</h3>
+  <div class="chat">
+    <div class="msg left">Hey ❤️</div>
+    <div class="msg right">Hi 😊</div>
+    <div class="msg left">You came into my life…</div>
+    <div class="msg right">And stayed 💖</div>
+    <div class="msg left">Best decision ever.</div>
+  </div>
+</div>
+
+<!-- SURPRISE -->
+<div id="surprise">
+  <div class="box">
+    <h2>💌 Just for You</h2>
+    <p id="surText"></p>
+    <button onclick="closeSurprise()">Close ❤️</button>
+  </div>
+</div>
+
+<script>
+/* CUSTOMIZE */
+const herName = "Your Love";
+const yourName = "Your Name";
+const password = "iloveyou";
+
+/* PASSWORD */
+function checkPassword(){
+  if(document.getElementById("pass").value===password){
+    document.getElementById("lock-screen").style.display="none";
+  }else{
+    document.getElementById("err").innerText="Wrong password ❤️";
+  }
+}
+
+/* NAME */
+document.getElementById("her").innerText = herName;
+
+/* COUNTER */
+const start = new Date("2025-08-17");
+const now = new Date();
+const days = Math.floor((now-start)/(1000*60*60*24));
+document.getElementById("counter").innerText =
+`${days} days of loving you ❤️`;
+
+/* MESSAGE (Typing) */
+const msg = `Since 17 August 2025, ${herName},
+
+you became my favorite part of life.
+
+Every moment with you matters more than anything.
+
+And no matter what happens,
+I’ll always choose you.
+
+— ${yourName} ❤️`;
+
+let i=0;
+function type(){
+  if(i<msg.length){
+    document.getElementById("message").innerHTML+=msg[i];
+    i++;
+    setTimeout(type,30);
+  }
+}
+type();
+
+/* SLIDESHOW */
+const images=["img1.jpg","img2.jpg","img3.jpg"];
+const slideBox=document.getElementById("slideshow");
+
+images.forEach((src,i)=>{
+  const d=document.createElement("div");
+  d.className="slide"+(i===0?" active":"");
+  const img=document.createElement("img");
+  img.src=src;
+  d.appendChild(img);
+  slideBox.appendChild(d);
+});
+
+let c=0;
+setInterval(()=>{
+  const s=document.querySelectorAll(".slide");
+  if(s.length===0) return;
+  s[c].classList.remove("active");
+  c=(c+1)%s.length;
+  s[c].classList.add("active");
+},3000);
+
+/* SURPRISE (Long Press) */
+const surpriseMsg = `Hey ${herName} ❤️
+
+If you found this,
+it means you discovered something special.
+
+You are not just part of my life,
+you are the best part of it.
+
+I’ll always choose you.
+
+— ${yourName} 💖`;
+
+let timer;
+
+document.addEventListener("mousedown",()=>{
+  timer=setTimeout(showSurprise,1200);
+});
+document.addEventListener("mouseup",()=>{
+  clearTimeout(timer);
+});
+
+function showSurprise(){
+  document.getElementById("surprise").style.display="flex";
+  let j=0;
+  function typeS(){
+    if(j<surpriseMsg.length){
+      document.getElementById("surText").innerHTML+=surpriseMsg[j];
+      j++;
+      setTimeout(typeS,25);
+    }
+  }
+  typeS();
+}
+
+function closeSurprise(){
+  document.getElementById("surprise").style.display="none";
+  document.getElementById("surText").innerHTML="";
+}
+</script>
+
+</body>
+</html>
