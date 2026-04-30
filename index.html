@@ -1,1 +1,205 @@
-INDEX FILE READY
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Rasmalai ❤️</title>
+    <style>
+        :root {
+            --bg-color: #fff0f5;
+            --primary-pink: #ff69b4;
+            --accent-gold: #ffd700;
+            --text-dark: #4a4a4a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 { color: var(--primary-pink); margin-bottom: 5px; }
+        .subtitle { font-style: italic; margin-bottom: 30px; opacity: 0.8; }
+
+        /* The Slide/Button Logic */
+        .module {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .module:hover {
+            transform: scale(1.02);
+            border-color: var(--primary-pink);
+        }
+
+        .content {
+            display: none;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            margin-top: 15px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn-label {
+            font-weight: bold;
+            color: var(--primary-pink);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .ascii-art {
+            font-family: monospace;
+            white-space: pre;
+            font-size: 10px;
+            color: #ff1493;
+            background: #fff5f8;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .voucher {
+            background: var(--accent-gold);
+            color: #5d4d00;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px 0;
+            font-weight: bold;
+            border: 1px dashed #5d4d00;
+        }
+
+        /* Floating Hearts Animation */
+        .heart {
+            position: fixed;
+            font-size: 20px;
+            color: var(--primary-pink);
+            z-index: -1;
+            animation: float 5s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🌸 For My Rasmalai 🌸</h1>
+        <p class="subtitle">System Status: Maximum Care Protocol Engaged</p>
+
+        <div class="module" onclick="toggle(this)">
+            <div class="btn-label">🔓 Unlock Security Clearance</div>
+            <div class="content">
+                <p><b>Identity Verified:</b> You are the sweetest girl in the world.</p>
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1eHByZzZueW56bmZ6ZzZueW56bmZ6ZzZueW56bmZ6ZzZueW56JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCH/uS071hlk6FcrS/giphy.gif" alt="Cute Cat">
+            </div>
+        </div>
+
+        <div class="module" onclick="toggle(this)">
+            <div class="btn-label">📊 Health Analytics</div>
+            <div class="content">
+                <p>Cramps: 📈 Too High</p>
+                <p>Cute Factor: 📈 Maximum</p>
+                <p><b>Recommendation:</b> Get under a blanket and let Akash bring snacks.</p>
+            </div>
+        </div>
+
+        <div class="module" onclick="toggle(this)">
+            <div class="btn-label">😂 Endorphin Boost (Jokes)</div>
+            <div class="content">
+                <p><i>"Are you a dictionary? Because you add meaning to my life (even when you're grumpy)."</i></p>
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjZlZms2ZzJ6NXByZ3M1bjF6NXByZ3M1bjF6NXByZ3M1bjF6NXByZ3MmbXA9MWMmY3Q9Zw/3o7TKVUn7iM8FMEU24/giphy.gif" alt="Cramp Meme">
+            </div>
+        </div>
+
+        <div class="module" onclick="toggle(this)">
+            <div class="btn-label">🎟️ Redeem Your Vouchers</div>
+            <div class="content">
+                <div class="voucher">1x Full Body Massage</div>
+                <div class="voucher">1x Unlimited Hugs Card</div>
+                <div class="voucher">1x Emergency Rasmalai Delivery</div>
+            </div>
+        </div>
+
+        <div class="module" onclick="toggle(this)">
+            <div class="btn-label">💐 Virtual Flower Delivery</div>
+            <div class="content">
+                <div class="ascii-art">
+           _ _
+         _(_)_          _
+        (_)(_)_        (_)_
+          (_)(_)      (_)(_)_
+            ||          (_)(_)
+      ______||__________||______
+     |                          |
+     |    🌹 FOR MY LOVE 🌹     |
+     |__________________________|
+                </div>
+                <p>"These flowers don't fade, just like my love."</p>
+            </div>
+        </div>
+
+        <div class="module" onclick="toggle(this)">
+            <div class="btn-label">🔴 THE FINAL COMMIT</div>
+            <div class="content">
+                <p>I love you more than all the code in the world, Rasmalai. ❤️</p>
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjZlZms2ZzJ6NXByZ3M1bjF6NXByZ3M1bjF6NXByZ3M1bjF6NXByZ3MmbXA9MWMmY3Q9Zw/l4pTdcifP3TFmSdP2/giphy.gif" alt="Hug">
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Function to open/close sections
+        function toggle(element) {
+            const content = element.querySelector('.content');
+            const isVisible = content.style.display === 'block';
+            content.style.display = isVisible ? 'none' : 'block';
+        }
+
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(createHeart, 400);
+    </script>
+</body>
+</html>
