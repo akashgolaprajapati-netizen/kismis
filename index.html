@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Rasmalai</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .container:hover { transform: scale(1.05); }
+        #jar { font-size: 80px; margin-bottom: 20px; }
+        #memory-text { font-size: 1.2rem; font-weight: bold; min-height: 50px; }
+    </style>
+</head>
+<body>
+
+<div class="container" onclick="showMemory()">
+    <div id="jar">🫙</div>
+    <p id="memory-text">Click the jar to see a memory!</p>
+</div>
+
+<script>
+    const memories = [
+        "1 Month: The day we started our journey together.",
+        "2 Months: Remember the way you laughed that day? It's my favorite sound.",
+        "3 Months: Every day with you feels like a gift.",
+        "4 Months: Thank you for being my safe place.",
+        "5 Months: Distance is hard, but loving you makes it worth it.",
+        "6 Months: You are the most beautiful thing that ever happened to me.",
+        "7 Months: Your support means the world to me.",
+        "8 Months: I cherish every single conversation we've had.",
+        "9 Months: You make my world so much brighter.",
+        "10 Months: Happy Anniversary, my rasmalai! I love you endlessly."
+    ];
+
+    let index = 0;
+    const textElement = document.getElementById("memory-text");
+
+    function showMemory() {
+        if (index < memories.length) {
+            textElement.innerText = memories[index];
+            index++;
+        } else {
+            textElement.innerText = "I love you more than words can say. Happy 10 months!";
+        }
+    }
+</script>
+
+</body>
+</html>
