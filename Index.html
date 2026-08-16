@@ -3,66 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Rasmalai</title>
+    <title>For My Everything</title>
+    <!-- Importing Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            font-family: 'Lora', serif;
+            background: linear-gradient(to bottom, #fff0f5, #f8cdda);
+            color: #3b3b3b;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+        .header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            color: #b52a65;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-style: italic;
+        }
+        .subtitle {
+            font-size: 1.6em;
+            font-style: italic;
+            color: #555;
+            font-family: 'Playfair Display', serif;
+        }
+        .scroll-indicator {
+            margin-top: 40px;
+            font-size: 1.2em;
+            color: #b52a65;
+            animation: bounce 2s infinite;
+        }
+        .content {
+            max-width: 650px;
+            padding: 40px 20px;
+            margin-bottom: 100px;
+        }
+        .paragraph {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+            line-height: 1.9;
+            text-align: left;
+        }
+        .paragraph.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .highlight {
+            color: #b52a65;
+            font-weight: 600;
+        }
+        /* Fake Button Section Styles */
+        .interactive-section {
+            text-align: center;
+            margin: 60px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .interactive-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #b52a65;
+            margin-bottom: 30px;
+        }
+        .button-container {
+            position: relative;
+            height: 100px; /* Gives room for the running button */
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: white;
-            text-align: center;
+            gap: 20px;
         }
-        .container {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 2rem;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        button {
+            font-family: 'Lora', serif;
+            font-size: 1.1em;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            font-weight: 600;
+            transition: transform 0.2s;
         }
-        .container:hover { transform: scale(1.05); }
-        #jar { font-size: 80px; margin-bottom: 20px; }
-        #memory-text { font-size: 1.2rem; font-weight: bold; min-height: 50px; }
+        .btn-yes {
+            background-color: #b52a65;
+            color: white;
+            box-shadow: 0 4px 10px rgba(181, 42, 101, 0.3);
+        }
+        .btn-yes:hover {
+            transform: scale(1.05);
+            background-color: #9c2255;
+        }
+        .btn-no {
+            background-color: #ddd;
+            color: #333;
+            position: absolute; 
+            /* Start positioned normally but ready to move */
+        }
+        .hidden-content {
+            display: none; /* Revealed after clicking Yes */
+        }
+        .signature {
+            text-align: right;
+            font-style: italic;
+            font-size: 1.4em;
+            margin-top: 60px;
+            color: #b52a65;
+            font-family: 'Playfair Display', serif;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(10px); }
+            60% { transform: translateY(5px); }
+        }
     </style>
 </head>
 <body>
 
-<div class="container" onclick="showMemory()">
-    <div id="jar">🫙</div>
-    <p id="memory-text">Click the jar to see a memory!</p>
-</div>
+    <div class="header">
+        <h1>Happy 1-Year Anniversary</h1>
+        <p class="subtitle">My sweet Rasmalai...</p>
+        <div class="scroll-indicator">Scroll Down ↓</div>
+    </div>
 
-<script>
-    const memories = [
-        "1 Month: The day we started our journey together.",
-        "2 Months: Remember the way you laughed that day? It's my favorite sound.",
-        "3 Months: Every day with you feels like a gift.",
-        "4 Months: Thank you for being my safe place.",
-        "5 Months: Distance is hard, but loving you makes it worth it.",
-        "6 Months: You are the most beautiful thing that ever happened to me.",
-        "7 Months: Your support means the world to me.",
-        "8 Months: I cherish every single conversation we've had.",
-        "9 Months: You make my world so much brighter.",
-        "10 Months: Happy Anniversary, my rasmalai! I love you endlessly."
-    ];
+    <div class="content">
+        <!-- Paragraph 1 -->
+        <div class="paragraph">
+            My dearest Twinkle, I wanted to do something a little different for our first anniversary. One whole year. It feels like just yesterday we were starting this journey, and at the exact same time, it feels like my soul has known you for a lifetime.
+        </div>
 
-    let index = 0;
-    const textElement = document.getElementById("memory-text");
+        <!-- Paragraph 2 -->
+        <div class="paragraph">
+            But before I get too deeply romantic, I need to start with an apology. I know that lately, I haven't been giving you the time and attention that you truly deserve. Life gets chaotic and schedules get busy, but that is never an excuse to make you feel like you aren't my absolute priority. I am so deeply sorry for the moments my mind was distracted when it should have been solely on you. You deserve the world, and I promise to be better, to be present, and to give you all the time you deserve.
+        </div>
 
-    function showMemory() {
-        if (index < memories.length) {
-            textElement.innerText = memories[index];
-            index++;
-        } else {
-            textElement.innerText = "I love you more than words can say. Happy 10 months!";
+        <!-- The Fun Fake Button Section -->
+        <div class="interactive-section paragraph">
+            <h2>So, do you forgive me?</h2>
+            <div class="button-container">
+                <button class="btn-yes" onclick="revealRest()">Yes, I forgive you</button>
+                <!-- onmouseover for computers, ontouchstart for phones -->
+                <button class="btn-no" id="runawayBtn" onmouseover="moveButton()" ontouchstart="moveButton()">No, keep begging</button>
+            </div>
+            <p id="forgivenText" style="display:none; color:#b52a65; font-weight:bold; margin-top:20px; font-size:1.3em;">
+                I knew you couldn't resist me! 😉 Keep scrolling...
+            </p>
+        </div>
+
+        <div id="restOfLetter" class="hidden-content">
+            <!-- Paragraph 3 -->
+            <div class="paragraph">
+                Now that we have that out of the way... can we talk about how illegally beautiful you are? Seriously, it is genuinely unfair to the rest of the population. Sometimes I catch myself just staring at you, wondering how I pulled off the biggest heist of the century by getting you to be mine.
+            </div>
+
+            <!-- Paragraph 4 -->
+            <div class="paragraph">
+                You have this effortless glow, and when you smile, it completely disarms me. If being that gorgeous was a crime, you would be serving a life sentence without parole. Every time I see you, I feel that exact same flutter in my chest that I felt on day one.
+            </div>
+
+            <!-- Paragraph 5 -->
+            <div class="paragraph">
+                And honestly? I love you even more than a massive plate of Afghani Tandoori Chaap or perfectly made Kadhi Chawal... and you know exactly how deep my love for food goes, so that is saying a lot. You are probably the only person on this planet I would gladly share my paneer with.
+            </div>
+
+            <!-- Paragraph 6 -->
+            <div class="paragraph">
+                But your beauty goes so much deeper than what I can see. I am in absolute awe of your spirit. The way you navigate the world with such kindness, grace, and an undeniable spark is intoxicating. You bring a special kind of energy to everything you touch, and you light up my life in ways I never thought possible.
+            </div>
+
+            <!-- Paragraph 7 -->
+            <div class="paragraph">
+                It’s in the little things, too. The way you laugh, the way you look at me when you think I’m being ridiculous, and the way your presence instantly calms my mind. You are my safe space, my best friend, and my greatest adventure all rolled into one.
+            </div>
+
+            <!-- Paragraph 8 -->
+            <div class="paragraph">
+                When I look back at the past twelve months, my heart feels like it could burst. Thank you for the greatest memories of my life. I think about the afternoons we spent hopping between cafes and hitting up street food spots in Delhi, talking for hours and completely losing track of time in each other's company.
+            </div>
+
+            <!-- Paragraph 9 -->
+            <div class="paragraph">
+                I think about our movie dates. Sitting in the dark theater, sharing snacks, whispering jokes to each other, and honestly paying way more attention to your reactions than whatever blockbuster was playing on the screen. Those simple moments mean everything to me.
+            </div>
+
+            <!-- Paragraph 10 -->
+            <div class="paragraph">
+                Then there is the sheer energy of the outdoor music concerts and festivals we went to. Feeling the bass, being surrounded by the massive crowds, but feeling like we were in our own little world. The only thing I was truly focused on was holding your hand and watching you smile under the lights.
+            </div>
+
+            <!-- Paragraph 11 -->
+            <div class="paragraph">
+                I also love our little cultural adventures—walking through museums, taking in the history and the artifacts. The exhibits were fascinating, I will admit, but honestly, I was mostly just looking at you. As far as I'm concerned, you are the real masterpiece.
+            </div>
+
+            <!-- Paragraph 12 -->
+            <div class="paragraph">
+                And I will never, ever forget that day boating on the lake. The water, the breeze, and just you and me. It is a picture painted in my mind forever. Every single flirty glance and deep midnight conversation has built this beautiful, unshakable foundation that we stand on today.
+            </div>
+
+            <!-- Paragraph 13 -->
+            <div class="paragraph">
+                You make me want to be the absolute best version of myself. You make me want to dress better, work harder, and be a man who is truly worthy of standing by your side. Watching you live your life and chase your happiness is the greatest privilege I could ever ask for.
+            </div>
+
+            <!-- Paragraph 14 -->
+            <div class="paragraph">
+                Thank you, Twinkle. Thank you for loving me, for being patient with me, and for letting me be yours. This past year was incredible, but it is just the warm-up. I cannot wait for all the trouble we are going to get into next.
+            </div>
+
+            <div class="paragraph signature">
+                Happy 1 Year Anniversary.<br>
+                Forever obsessed with you, <br>
+                Akash
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Reveal the rest of the letter when she clicks 'Yes'
+        function revealRest() {
+            document.getElementById('restOfLetter').style.display = 'block';
+            document.getElementById('forgivenText').style.display = 'block';
+            
+            // Re-trigger the scroll observer for the newly revealed paragraphs
+            observeParagraphs();
         }
-    }
-</script>
 
+        // Make the 'No' button run away
+        function moveButton() {
+            const btn = document.getElementById('runawayBtn');
+            const container = document.querySelector('.button-container');
+            
+            // Calculate random positions within the container's rough area
+            const maxLeft = container.offsetWidth - btn.offsetWidth;
+            const maxTop = 150; // allows it to jump around a bit vertically
+            
+            const newLeft = Math.floor(Math.random() * maxLeft);
+            const newTop = Math.floor(Math.random() * maxTop) - 50; 
+            
+            btn.style.left = newLeft + 'px';
+            btn.style.top = newTop + 'px';
+        }
+
+        // Scroll animation logic
+        function observeParagraphs() {
+            const paragraphs = document.querySelectorAll('.paragraph');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.15 
+            });
+
+            paragraphs.forEach(paragraph => {
+                observer.observe(paragraph);
+            });
+        }
+
+        // Initialize scroll animations on load
+        document.addEventListener("DOMContentLoaded", function() {
+            // Set initial position for No button so it can move absolutely
+            const btnNo = document.getElementById('runawayBtn');
+            btnNo.style.left = '55%';
+            btnNo.style.top = '25px';
+            
+            observeParagraphs();
+        });
+    </script>
 </body>
 </html>
